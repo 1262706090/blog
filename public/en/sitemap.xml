@@ -2,17 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://1262706090.github.io/en/posts/first/</loc>
-    <lastmod>2024-06-21T22:15:38+08:00</lastmod>
+    <loc>https://www.ykzzo.com/en/posts/first/</loc>
+    <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>https://1262706090.github.io/en/posts/</loc>
-    <lastmod>2024-06-21T22:15:38+08:00</lastmod>
+    <loc>https://www.ykzzo.com/en/posts/</loc>
+    <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>https://1262706090.github.io/en/</loc>
-    <lastmod>2024-06-21T22:15:38+08:00</lastmod>
+    <loc>https://www.ykzzo.com/en/</loc>
+    <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>https://1262706090.github.io/en/categories/</loc>
+    <loc>https://www.ykzzo.com/en/archives.fr/</loc>
   </url><url>
-    <loc>https://1262706090.github.io/en/tags/</loc>
+    <loc>https://www.ykzzo.com/en/archives/</loc>
+  </url><url>
+    <loc>https://www.ykzzo.com/en/categories/</loc>
+  </url><url>
+    <loc>https://www.ykzzo.com/en/search/</loc>
+  </url><url>
+    <loc>https://www.ykzzo.com/en/search.fr/</loc>
+  </url><url>
+    <loc>https://www.ykzzo.com/en/tags/</loc>
   </url>
 </urlset>
