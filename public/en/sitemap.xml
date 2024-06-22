@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:54837/en/posts/first/</loc>
+    <loc>https://www.ykzzo.com/en/posts/first/</loc>
     <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:54837/en/posts/</loc>
+    <loc>https://www.ykzzo.com/en/posts/</loc>
     <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:54837/en/</loc>
+    <loc>https://www.ykzzo.com/en/</loc>
     <lastmod>2024-06-22T16:08:49+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:54837/en/archives.fr/</loc>
+    <loc>https://www.ykzzo.com/en/archives.fr/</loc>
   </url><url>
-    <loc>http://localhost:54837/en/archives/</loc>
+    <loc>https://www.ykzzo.com/en/archives/</loc>
   </url><url>
-    <loc>http://localhost:54837/en/categories/</loc>
+    <loc>https://www.ykzzo.com/en/categories/</loc>
   </url><url>
-    <loc>http://localhost:54837/en/search/</loc>
+    <loc>https://www.ykzzo.com/en/search/</loc>
   </url><url>
-    <loc>http://localhost:54837/en/search.fr/</loc>
+    <loc>https://www.ykzzo.com/en/search.fr/</loc>
   </url><url>
-    <loc>http://localhost:54837/en/tags/</loc>
+    <loc>https://www.ykzzo.com/en/tags/</loc>
   </url>
 </urlset>

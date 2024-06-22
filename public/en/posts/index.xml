@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on YK&#39;s Blog</title>
-    <link>http://localhost:54837/en/posts/</link>
+    <link>https://www.ykzzo.com/en/posts/</link>
     <description>Recent content in Posts on YK&#39;s Blog</description>
     <image>
       <title>YK&#39;s Blog</title>
-      <url>http://localhost:54837/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://localhost:54837/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://www.ykzzo.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.ykzzo.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- 0.127.0</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 22 Jun 2024 16:08:49 +0800</lastBuildDate>
-    <atom:link href="http://localhost:54837/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.ykzzo.com/en/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First</title>
-      <link>http://localhost:54837/en/posts/first/</link>
+      <link>https://www.ykzzo.com/en/posts/first/</link>
       <pubDate>Sat, 22 Jun 2024 16:08:49 +0800</pubDate>
-      <guid>http://localhost:54837/en/posts/first/</guid>
+      <guid>https://www.ykzzo.com/en/posts/first/</guid>
       <description>第一篇测试文章。</description>
     </item>
   </channel>
