@@ -5,4 +5,8 @@ draft: true
 draft: false # 是否为草稿
 ---
 
-第一篇测试文章。
+此处内容将会出现在摘要（summary）里
+
+<!--more-->
+
+此处开始为正文
