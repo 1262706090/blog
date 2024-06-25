@@ -1,20 +1,16 @@
 ---
-title: "Test"
+title: "markdown语法及快捷键"
 date: 2024-06-24T20:13:23+08:00
 lastmod: 2024-06-24T20:13:23+08:00
 author: ["YK"]
 
 categories:
-    - category 1
-    - category 2
+    - learningNotes
 
 tags:
-    - tag 1
-    - tag 2
+    - markdown
 
 keywords:
-    - word 1
-    - word 2
 
 description: "" # 文章描述，与搜索优化相关
 weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
@@ -29,15 +25,13 @@ disableShare: true # 底部不显示分享栏
 searchHidden: false # 该页面可以被搜索到
 showbreadcrumbs: true #顶部显示当前路径
 mermaid: true
-summary: "测试" # 文章简单描述，会展示在主页
+summary: "markdown语法及快捷键" # 文章简单描述，会展示在主页
 cover:
     image: ""
     caption: ""
     alt: ""
     relative: false
 ---
-
-# Markdown 语法及其快捷键
 
 ## 标题
 
