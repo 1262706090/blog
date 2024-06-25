@@ -1,0 +1,117 @@
+---
+title: "Test"
+date: 2024-06-24T20:13:23+08:00
+lastmod: 2024-06-24T20:13:23+08:00
+author: ["YK"]
+
+categories:
+    - category 1
+    - category 2
+
+tags:
+    - tag 1
+    - tag 2
+
+keywords:
+    - word 1
+    - word 2
+
+description: "" # 文章描述，与搜索优化相关
+weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+slug: ""
+draft: false # 是否为草稿
+comments: true
+showToc: true # 显示目录
+TocOpen: true # 自动展开目录
+autonumbering: true # 目录自动编号
+hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
+disableShare: true # 底部不显示分享栏
+searchHidden: false # 该页面可以被搜索到
+showbreadcrumbs: true #顶部显示当前路径
+mermaid: true
+summary: "测试" # 文章简单描述，会展示在主页
+cover:
+    image: ""
+    caption: ""
+    alt: ""
+    relative: false
+---
+
+# Markdown 语法及其快捷键
+
+## 标题
+
+-   `# 标题1` 或 `Ctrl+1`
+-   `## 标题2` 或 `Ctrl+2`
+-   `### 标题3` 或 `Ctrl+3`
+-   `#### 标题4` 或 `Ctrl+4`
+-   `##### 标题5` 或 `Ctrl+5`
+-   `###### 标题6` 或 `Ctrl+6`
+
+## 粗体和斜体
+
+-   **粗体**：`**文本**` 或 `Ctrl+B`
+-   _斜体_：`*文本*` 或 `Ctrl+I`
+-   **_粗体加斜体_**：`***文本***`
+
+## 列表
+
+-   无序列表：`- 项目` 或 `Ctrl+Shift+8`
+-   有序列表：`1. 项目` 或 `Ctrl+Shift+7`
+
+## 链接和图片
+
+-   链接：`[链接文本](http://url)`
+-   图片：`![替代文本](http://url/image.jpg)`
+
+## 引用
+
+-   引用：`> 引用文本` 或 `Ctrl+Shift+Q`
+
+## 代码
+
+-   行内代码：`` `代码` ``
+-   代码块：
+    ````
+    ```语言
+    代码
+    ```
+    ````
+
+## 水平线
+
+-   水平线：`---` 或 `Ctrl+Shift+-`
+
+## 表格
+
+-   表格：
+    ```
+    | 头1   | 头2   | 头3   |
+    | ----- | ----- | ----- |
+    | 数据1 | 数据2 | 数据3 |
+    ```
+
+## 任务列表
+
+-   任务列表：
+    ```
+    - [ ] 待办事项1
+    - [x] 已完成事项
+    ```
+
+## 分隔符
+
+-   分隔符：`---` 或 `Ctrl+Shift+-`
+
+## 删除线
+
+-   删除线：`~~删除的文本~~`
+
+## 快捷键总结
+
+-   **粗体**：`Ctrl+B`
+-   _斜体_：`Ctrl+I`
+-   无序列表：`Ctrl+Shift+8`
+-   有序列表：`Ctrl+Shift+7`
+-   引用：`Ctrl+Shift+Q`
+-   水平线：`Ctrl+Shift+-`

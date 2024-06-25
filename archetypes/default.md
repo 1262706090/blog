@@ -1,48 +1,38 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-slug: "{{ replace .TranslationBaseName "_" "-" | title }}"
-# 副标题
-subtitle: ""
-# 文章描述，是搜索引擎呈现在搜索结果链接下方的网页简介，建议设置
-description: ""
+title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 lastmod: {{ .Date }}
-# 文章过期提醒
-outdatedInfoWarning: true
-draft: false
+author: ["YK"]
 
-# 文章的标签
-tags:
--
-
-# 文章所属的类别
 categories:
--
+- category 1
+- category 2
 
-# 文章所属的合集
-collections:
--
+tags:
+- tag 1
+- tag 2
 
-# 是否在侧边栏开启合集
-collectionList: true
-# 是否在帖子末尾启用合集
-collectionNavigation: true
+keywords:
+- word 1
+- word 2
 
-# 如果设为 true, 这篇文章将不会显示在主页上
-hiddenFromHomePage: false
-# 如果设为 true, 这篇文章将不会显示在搜索结果中
-hiddenFromSearch: false
-
-# 文章的特色图片
-featuredImage: ""
-# 用在主页预览的文章特色图片
-featuredImagePreview: ""
-
-license: '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+description: "" # 文章描述，与搜索优化相关
+weight: # 输入1可以顶置文章，用来给文章展示排序，不填就默认按时间排序
+slug: ""
+draft: false # 是否为草稿
+comments: true
+showToc: true # 显示目录
+TocOpen: true # 自动展开目录
+autonumbering: true # 目录自动编号
+hidemeta: false # 是否隐藏文章的元信息，如发布日期、作者等
+disableShare: true # 底部不显示分享栏
+searchHidden: false # 该页面可以被搜索到
+showbreadcrumbs: true #顶部显示当前路径
+mermaid: true
+summary: "" # 文章简单描述，会展示在主页
+cover:
+    image: ""
+    caption: ""
+    alt: ""
+    relative: false
 ---
-
-此处内容将会出现在摘要（summary）里
-
-<!--more-->
-
-此处开始为正文
