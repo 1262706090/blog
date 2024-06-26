@@ -37,15 +37,13 @@ jobs:
                   restore-keys: ${{ runner.os }}-hugocache-
 
             - name: Build
-              run:
-                  hugo --minify # 使用 Hugo 构建静态网页并最小化输出
+              run: hugo --minify # 使用 Hugo 构建静态网页并最小化输出
 
-
-                  # 创建 CNAME，这个是原始配置中没有的
-            - uses: "finnp/create-file-action@master"
-              env:
-              FILE_NAME: "./public/CNAME"
-              FILE_DATA: "ykzzo.com"
+            - name: Create CNAME file # 创建 CNAME 文件
+              uses: finnp/create-file-action@master
+              with:
+                  filename: "./public/CNAME"
+                  content: "ykzzo.com"
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3 # 自动发布 GitHub Pages 的 action
