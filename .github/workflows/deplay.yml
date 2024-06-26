@@ -44,7 +44,7 @@ jobs:
             - uses: "finnp/create-file-action@master"
               env:
                   FILE_NAME: "./public/CNAME"
-                  FILE_DATA: "h1z3y3.me"
+                  FILE_DATA: "ykzzo.com"
 
             - name: Deploy
               uses: peaceiris/actions-gh-pages@v3 # 自动发布 GitHub Pages 的 action
