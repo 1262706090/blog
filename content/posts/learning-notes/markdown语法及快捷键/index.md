@@ -5,7 +5,7 @@ lastmod: 2024-06-24T20:13:23+08:00
 author: ["YK"]
 
 categories:
-    - learningNotes
+    - learning-notes
 
 tags:
     - markdown

@@ -154,9 +154,10 @@
 }
 
 .post-content .highlight:not(table) {
-    margin: 10px auto;
+    margin: auto;
     background: var(--code-block-bg) !important;
-    border-radius: var(--radius);
+    /* border-radius: var(--radius); */
+    border-radius: 0;
     direction: ltr;
 }
 
@@ -229,6 +230,9 @@
 .post-content img {
     border-radius: 4px;
     margin: 1rem 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .post-content img[src*="#center"] {

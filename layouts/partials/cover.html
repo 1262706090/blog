@@ -22,8 +22,8 @@
                         {{- if (ge $cover.Width $size) -}}
                         {{ printf "%s %s" (($cover.Resize (printf "%sx" $size)).Permalink) (printf "%sw ," $size) -}}
                         {{ end }}
-                    {{- end -}}{{$cover.Permalink }} {{printf "%dw" ($cover.Width)}}" 
-            sizes="(min-width: 768px) 720px, 100vw" src="{{ $cover.Permalink }}" alt="{{ $alt }}" 
+                    {{- end -}}{{$cover.Permalink }} {{printf "%dw" ($cover.Width)}}"
+            sizes="(min-width: 768px) 720px, 100vw" src="{{ $cover.Permalink }}" alt="{{ $alt }}"
             width="{{ $cover.Width }}" height="{{ $cover.Height }}">
         {{- else }}{{/* Unprocessable image or responsive images disabled */}}
         <img loading="{{$loading}}" src="{{ (path.Join .RelPermalink .Params.cover.image) | absURL }}" alt="{{ $alt }}">
@@ -31,7 +31,24 @@
     {{- else }}{{/* For absolute urls and external links, no img processing here */}}
         {{- if $addLink }}<a href="{{ (.Params.cover.image) | absURL }}" target="_blank"
             rel="noopener noreferrer">{{ end -}}
-            <img loading="{{$loading}}" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}">
+            <!-- <img loading="{{$loading}}" src="{{ (.Params.cover.image) | absURL }}" alt="{{ $alt }}"> -->
+            {{ if hasPrefix .Params.cover.image "/img" }}
+            {{ $img := os.ReadFile (path.Join "/static" .Params.cover.image) | resources.FromString .Params.cover.image }}
+            {{ if ne $img.MediaType.SubType "svg" }}
+                <img loading="lazy"
+                    src="{{ .Params.cover.image | safeURL }}"
+                    alt="{{ $alt }}"
+                    width="{{ $img.Width }}"
+                    height="{{ $img.Height }}"
+                    style="max-width: 100%; height: auto;"
+                />
+            {{ end }}
+            {{ if or (not $img) (eq $img.MediaType.SubType "svg") }}
+                <img loading="lazy" src="{{ .Params.cover.image | safeURL }}" alt="{{ $alt }}" />
+            {{ end }}
+            {{ else }}
+                <img loading="lazy" src="{{ .Params.cover.image | safeURL }}" alt="{{ $alt }}" />
+            {{ end }}
     {{- end }}
     {{- if $addLink }}</a>{{ end -}}
     {{/*  Display Caption  */}}
