@@ -1,3 +1,12 @@
+.header {
+    position: sticky;
+    top: 0;
+    transition: transform .25s cubic-bezier(.1, .7, .1, 1), box-shadow .25s;
+    backdrop-filter: saturate(180%) blur(20px);
+    z-index: 999;
+    box-shadow: none;
+}
+
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -27,7 +36,8 @@
     font-weight: 700;
 }
 
-.logo a img, .logo a svg {
+.logo a img,
+.logo a svg {
     display: inline;
     vertical-align: middle;
     pointer-events: none;
@@ -57,7 +67,7 @@ body:not(.dark) #sun {
     white-space: nowrap;
 }
 
-#menu li + li {
+#menu li+li {
     margin-inline-start: var(--gap);
 }
 

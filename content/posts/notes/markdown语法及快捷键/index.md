@@ -5,7 +5,7 @@ lastmod: 2024-06-24T20:13:23+08:00
 author: ["YK"]
 
 categories:
-    - learning-notes
+    - notes
 
 tags:
     - markdown
@@ -32,6 +32,8 @@ cover:
     alt: ""
     relative: false
 ---
+
+_markdown 语法及快捷键_
 
 ## 标题
 

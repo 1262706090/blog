@@ -36,13 +36,15 @@ cover:
     relative: false
 ---
 
-### 一、创建项目
+_win11-VS2024 封装“win 应用程序”浏览器插件_
+
+### 创建项目
 
 vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。在 UserControl1.cs 中将之前的项目移过来。
 ![alt text](<images/2024-07-07 160457.png>)
 ![alt text](<images/2024-07-07 162818.png>)
 
-### 二、设置项目属性
+### 设置项目属性
 
 1. 右键项目->属性->应用程序->程序信息->勾选“使程序集 COM 可见”->点击“确定”。
    ![alt text](<images/2024-07-07 171904.png>)
@@ -51,7 +53,7 @@ vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。
    ![alt text](<images/2024-07-07 172747.png>)
 3. 最后保存，重新编译。
 
-### 三、安装外部软件
+### 安装外部软件
 
 #### OLE/COM 对象查看器
 
@@ -74,7 +76,7 @@ vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。
 
 方法同上，地址一般是`C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\guidgen.exe`或者`C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\guidgen.exe`。
 
-### 四、提高 ActiveX 插件的安全等级
+### 提高 ActiveX 插件的安全等级
 
 **IE 通过两个方法判断脚本是否安全：**
 
@@ -215,7 +217,7 @@ namespace ActiveXDemo
 
 {{</details>}}
 
-### 五、制作成安装文件
+### 制作成安装文件
 
 #### 安装扩展
 
@@ -267,7 +269,7 @@ namespace ActiveXDemo
 ![alt text](<images/2024-07-09 172654.png>)
 ![alt text](<images/2024-07-09 172703.png>)
 
-### 六、使用 ActiveX 插件
+### 使用 ActiveX 插件
 
 新建一个 Web 项目或者一个 Html 文件，在需要使用浏览器插件的页面上加入以下代码：
 

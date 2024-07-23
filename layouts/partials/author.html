@@ -4,6 +4,6 @@
 {{- if (or (eq $author_type "[]string") (eq $author_type "[]interface {}")) }}
 {{- (delimit $author ", " ) }}
 {{- else }}
-{{- $author }}
+作者:&nbsp;{{- $author := (.Params.author | default .Site.Params.author) }}
 {{- end }}
 {{- end -}}

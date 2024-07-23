@@ -8,15 +8,15 @@
 
 - id: read_time
   translation:
-    # one : "时长: 1分钟"
-    # other: "时长: {{ .Count }}分钟"
-    one : "1 min"
-    other: "{{ .Count }} min"
+      # one : "时长: 1分钟"
+      # other: "时长: {{ .Count }}分钟"
+      one: "1 min"
+      other: "{{ .Count }} min"
 
 - id: words
   translation:
-    one : "word"
-    other: "{{ .Count }} 字"
+      one: "word"
+      other: "{{ .Count }} 字"
 
 - id: toc
   translation: "文章目录"
@@ -37,5 +37,5 @@
   # translation: "copy"
 
 - id: code_copied
-  translation: "👌🏻已复制!"
+  translation: "已复制!"
   # translation: "copied!"
