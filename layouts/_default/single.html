@@ -1,4 +1,5 @@
-{{- define "main" }}
+{{- define "main" }} {{- if (.Param "ShowToc") }} {{- partial "toc.html" . }} {{- end }} {{- if
+.Content }}
 
 <article class="post-single">
     <header class="post-header">
@@ -29,22 +30,12 @@
         {{- end }}
     </header>
     {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default
-    false }} {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }} {{- if
-    (.Param "ShowToc") }} {{- partial "toc.html" . }} {{- end }} {{- if .Content }}
+    false }} {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
 
     <div class="post-content centered-content">
         {{- if not (.Param "disableAnchoredHeadings") }} {{- partial "anchored_headings.html"
         .Content -}} {{- else }}{{ .Content }}{{ end }}
     </div>
-
-    <!-- <div>
-        {{ if ne (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
-        <p>
-            最后更新于 {{ .Lastmod.Year }} 年 {{ printf "%d" .Lastmod.Month }} 月 {{ .Lastmod.Day }}
-            日
-        </p>
-        {{ end }}
-    </div> -->
 
     {{- end }}
 
