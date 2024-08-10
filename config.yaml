@@ -160,6 +160,12 @@ markup:
         enable: true
 
 markup:
+  goldmark:
+    renderer:
+      unsafe : true
+
+
+markup:
     highlight:
         # anchorLineNos: true
         codeFences: true
