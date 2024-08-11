@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Content_types on YKZZO&#39;s Blog</title>
+    <link>http://localhost:1313/content_type/</link>
+    <description>Recent content in Content_types on YKZZO&#39;s Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <managingEditor>your_email (YKZZO)</managingEditor>
+    <webMaster>your_email (YKZZO)</webMaster>
+    <atom:link href="http://localhost:1313/content_type/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

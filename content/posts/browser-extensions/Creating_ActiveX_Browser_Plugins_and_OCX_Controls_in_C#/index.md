@@ -2,7 +2,7 @@
 title: "C#制作ActiveX浏览器插件&OCX"
 date: 2024-07-07T15:54:36+08:00
 lastmod: 2024-07-10T15:54:36+08:00
-author: ["YK"]
+author: "YK"
 
 categories:
     - browser-extensions
@@ -87,8 +87,6 @@ vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。
 
 -   首先，为控件类`UserControl1`添加一个 GUID，这个编号将用于 B/S 系统的客户端调用时使用（可以使用"工具"->"创建 GUID 菜单"创建一个 GUID），注意`ActiveXDemo.UserControl1`换成自己的命名。
 
-{{<details>}}
-
 ```c#
 using System;
 using System.Collections.Generic;
@@ -103,12 +101,8 @@ namespace ActiveXDemo
     {
 ```
 
-{{</details>}}
-
 -   其次，为了让 ActiveX 控件获得客户端的信任，控件类还需要实现一个名为`IObjectSafety`的接口，因此在项目中添加一个接口类`IObjectSafety`
     直接将下列代码复制粘贴，不要作任何改动，尤其是 GUID，都是固定的，不能改。
-
-{{<details>}}
 
 ```c#
 using System;
@@ -132,11 +126,7 @@ namespace ActiveXDemo
 }
 ```
 
-{{</details>}}
-
 -   接着，在控件类`UserControl1`中实现`IObjectSafety`的接口
-
-{{<details>}}
 
 ```c#
 #region IObjectSafety 成员
@@ -215,8 +205,6 @@ namespace ActiveXDemo
         #endregion
 ```
 
-{{</details>}}
-
 ### 制作成安装文件
 
 #### 安装扩展
@@ -273,8 +261,6 @@ namespace ActiveXDemo
 
 新建一个 Web 项目或者一个 Html 文件，在需要使用浏览器插件的页面上加入以下代码：
 
-{{<details>}}
-
 ```html
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head runat="server">
@@ -305,7 +291,5 @@ namespace ActiveXDemo
     </script>
 </html>
 ```
-
-{{</details>}}
 
 在 IE 浏览器中打开这个页面，查看效果

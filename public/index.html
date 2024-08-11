@@ -1,15 +1,132 @@
-<!doctype html><html lang=en dir=auto><head><meta name=generator content="Hugo 0.127.0"><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>YK's Blog</title>
-<meta name=keywords content="Blog,Portfolio,PaperMod"><meta name=description content="YK的个人博客，hugo，papermod，golang，mysql，微服务"><meta name=author content="
-作者:&nbsp;"><link rel=canonical href=https://www.ykzzo.com/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.ee22345433b28a24633fd612fdc084ff173df2a1f1373f18f20adbebcccb24bf.css integrity="sha256-7iI0VDOyiiRjP9YS/cCE/xc98qHxNz8Y8grb68zLJL8=" rel="preload stylesheet" as=style><link rel=icon href=https://www.ykzzo.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://www.ykzzo.com/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://www.ykzzo.com/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://www.ykzzo.com/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://www.ykzzo.com/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://www.ykzzo.com/index.xml><link rel=alternate type=application/json href=https://www.ykzzo.com/index.json><link rel=alternate hreflang=en href=https://www.ykzzo.com/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css integrity=sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js integrity=sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4 crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js integrity=sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa crossorigin=anonymous onload='renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"\\[",right:"\\]",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1}]})'></script><meta property="og:title" content="YK's Blog"><meta property="og:description" content="YK的个人博客，hugo，papermod，golang，mysql，微服务"><meta property="og:type" content="website"><meta property="og:url" content="https://www.ykzzo.com/"><meta property="og:image" content="https://www.ykzzo.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="og:site_name" content="ExampleSite"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.ykzzo.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="YK's Blog"><meta name=twitter:description content="YK的个人博客，hugo，papermod，golang，mysql，微服务"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Organization","name":"YK's Blog","url":"https://www.ykzzo.com/","description":"YK的个人博客，hugo，papermod，golang，mysql，微服务","thumbnailUrl":"https://www.ykzzo.com/favicon.ico","sameAs":["https://x.com/","https://stackoverflow.com","https://github.com/"]}</script></head><body class=list id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://www.ykzzo.com/ accesskey=h title="Home (Alt + H)"><img src=https://www.ykzzo.com/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://www.ykzzo.com/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://www.ykzzo.com/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://www.ykzzo.com/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://www.ykzzo.com/archives/ title=Archives><span>Archives</span></a></li></ul></nav></header><main class=main><article class="first-entry home-info"><header class=entry-header><h1>Hi there 👋</h1></header><div class=entry-content>Welcome to my blog</div><footer class=entry-footer><div class=social-icons><a href=https://x.com/ target=_blank rel="noopener noreferrer me" title=X><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentcolor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-</a><a href=https://stackoverflow.com target=_blank rel="noopener noreferrer me" title=Stackoverflow><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.913 16.041v6.848h17.599v-6.848M7.16 18.696h8.925M7.65 13.937l8.675 1.8M9.214 9.124l8.058 3.758M12.086 4.65l6.849 5.66M15.774 1.111l5.313 7.162"/></svg>
-</a><a href=https://github.com/ target=_blank rel="noopener noreferrer me" title=Github><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg></a></div></footer></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>编译原理</h2></header><div class=entry-content><p>编译原理</p></div><footer class=entry-footer>创建:&nbsp;<span title='2024-08-02 19:25:34 +0800 CST'>2024-08-02</span>&nbsp;·&nbsp;更新:&nbsp;2024-08-02&nbsp;·&nbsp;2 min&nbsp;·&nbsp;393 字&nbsp;·&nbsp;YK</footer><a class=entry-link aria-label="post link to 编译原理" href=https://www.ykzzo.com/posts/compilerconstruction/compilerconstruction/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>复杂度分析</h2></header><div class=entry-content><p>复杂度分析</p></div><footer class=entry-footer>创建:&nbsp;<span title='2024-07-23 18:56:48 +0800 CST'>2024-07-23</span>&nbsp;·&nbsp;更新:&nbsp;2024-07-27&nbsp;·&nbsp;12 min&nbsp;·&nbsp;2391 字&nbsp;·&nbsp;YK</footer><a class=entry-link aria-label="post link to 复杂度分析" href=https://www.ykzzo.com/posts/algorithm/complexity_analysis/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>初识算法</h2></header><div class=entry-content><p>初识算法</p></div><footer class=entry-footer>创建:&nbsp;<span title='2024-07-23 16:19:04 +0800 CST'>2024-07-23</span>&nbsp;·&nbsp;更新:&nbsp;2024-07-25&nbsp;·&nbsp;1 min&nbsp;·&nbsp;117 字&nbsp;·&nbsp;YK</footer><a class=entry-link aria-label="post link to 初识算法" href=https://www.ykzzo.com/posts/algorithm/introductiontoalgorithms/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>C#制作ActiveX浏览器插件&amp;OCX</h2></header><div class=entry-content><p>win11-VS2024封装“win应用程序”浏览器插件</p></div><footer class=entry-footer>创建:&nbsp;<span title='2024-07-07 15:54:36 +0800 CST'>2024-07-07</span>&nbsp;·&nbsp;更新:&nbsp;2024-07-25&nbsp;·&nbsp;4 min&nbsp;·&nbsp;653 字&nbsp;·&nbsp;YK</footer><a class=entry-link aria-label="post link to C#制作ActiveX浏览器插件&amp;OCX" href=https://www.ykzzo.com/posts/browser-extensions/creating_activex_browser_plugins_and_ocx_controls_in_c%23/></a></article><article class=post-entry><header class=entry-header><h2 class=entry-hint-parent>markdown语法及快捷键</h2></header><div class=entry-content><p>markdown语法及快捷键</p></div><footer class=entry-footer>创建:&nbsp;<span title='2024-06-24 20:13:23 +0800 CST'>2024-06-24</span>&nbsp;·&nbsp;更新:&nbsp;2024-06-24&nbsp;·&nbsp;1 min&nbsp;·&nbsp;115 字&nbsp;·&nbsp;YK</footer><a class=entry-link aria-label="post link to markdown语法及快捷键" href=https://www.ykzzo.com/posts/markdown/markdown_syntax_and_shortcuts/></a></article></main><footer class=footer><span id=runtime_span></span>
-<script type=text/javascript>function show_runtime(){window.setTimeout("show_runtime()",1e3),X=new Date("6/24/2024 8:00:00"),Y=new Date,T=Y.getTime()-X.getTime(),M=24*60*60*1e3,a=T/M,A=Math.floor(a),b=(a-A)*24,B=Math.floor(b),c=(b-B)*60,C=Math.floor((b-B)*60),D=Math.floor((c-C)*60),runtime_span.innerHTML="网站已运行"+A+"天"+B+"小时"+C+"分"+D+"秒"}show_runtime()</script><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><span id=busuanzi_container><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css>总访客数: <i class="fa fa-user"></i><span id=busuanzi_value_site_uv></span>
-|
-总访问量: <i class="fa fa-eye"></i><span id=busuanzi_value_site_pv></span>
-|
-本页访问量: <i class="fa fa-eye"></i><span id=busuanzi_value_page_pv></span>
-</span><span>&copy; 2024 <a href=https://www.ykzzo.com/>YK's Blog</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+	<meta name="generator" content="Hugo 0.131.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=53476&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>YKZZO&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:53476/">
+  <meta property="og:site_name" content="YKZZO&#39;s Blog">
+  <meta property="og:title" content="YKZZO&#39;s Blog">
+  <meta property="og:description" content="ykzzo的博客">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="website">
+    <meta property="og:image" content="http://localhost:53476/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:53476/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+  <meta name="twitter:title" content="YKZZO&#39;s Blog">
+  <meta name="twitter:description" content="ykzzo的博客">
+<meta name="application-name" content="YKZZO&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="YKZZO&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:53476/" /><link rel="alternate" href="/index.xml" type="application/rss+xml" title="YKZZO&#39;s Blog">
+    <link rel="feed" href="/index.xml" type="application/rss+xml" title="YKZZO&#39;s Blog"><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "url": "http:\/\/localhost:53476\/","inLanguage": "zh-CN","author": {
+                "@type": "Person",
+                "name": "YKZZO"
+            },"description": "ykzzo的博客","name": "YKZZO's Blog"
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="YKZZO&#39;s Blog">YKZZO&#39;S BLOG</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="YKZZO&#39;s Blog">YKZZO&#39;S BLOG</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page home" data-home="posts"><div class="home-profile"><div class="home-subtitle"><div id="id-1" class="typeit"></div></div><div class="links"><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw" aria-hidden="true"></i></a></div></div>
+<article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/compilerconstruction/">编译原理</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2024-08-02">2024-08-02</time></span></div><div class="content">编译原理</div><div class="post-footer">
+        <a href="/compilerconstruction/">阅读全文</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/complexity_analysis/">复杂度分析</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2024-07-23">2024-07-23</time></span></div><div class="content">复杂度分析</div><div class="post-footer">
+        <a href="/complexity_analysis/">阅读全文</a></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/introductiontoalgorithms/">初识算法</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2024-07-23">2024-07-23</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/algorithm/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Algorithm</a></span></div><div class="content">初识算法</div><div class="post-footer">
+        <a href="/introductiontoalgorithms/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/algorithm/">Algorithm</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/creating_activex_browser_plugins_and_ocx_controls_in_c/">C#制作ActiveX浏览器插件&OCX</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2024-07-07">2024-07-07</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/browser-extensions/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Browser-Extensions</a></span></div><div class="content">win11-VS2024封装“win应用程序”浏览器插件</div><div class="post-footer">
+        <a href="/creating_activex_browser_plugins_and_ocx_controls_in_c/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href=""></a>,&nbsp;<a href="/tags/activex/">ActiveX</a>,&nbsp;<a href="/tags/ocx/">OCX</a>,&nbsp;<a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/">浏览器插件</a>,&nbsp;<a href="/tags/com-%E7%BC%96%E7%A8%8B/">COM 编程</a>,&nbsp;<a href="/tags/windows-%E7%BC%96%E7%A8%8B/">Windows 编程</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><h1 class="single-title" itemprop="name headline">
+        <a href="/markdown_syntax_and_shortcuts/">markdown语法及快捷键</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-publish">发布于 <time datetime="2024-06-24">2024-06-24</time></span>&nbsp;<span class="post-category">收录于 <a href="/categories/markdown/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Markdown</a></span></div><div class="content">markdown语法及快捷键</div><div class="post-footer">
+        <a href="/markdown_syntax_and_shortcuts/">阅读全文</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/markdown/">Markdown</a></div></div>
+</article></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"data":{"id-1":"欢迎来到我的博客"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
