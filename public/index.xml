@@ -1,49 +1,49 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>YKZZO&#39;s Blog</title>
-        <link>http://localhost:53476/</link>
+        <title>ykzzo&#39;s Blog</title>
+        <link>http://localhost:1313/</link>
         <description>ykzzo的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>your_email (YKZZO)</managingEditor>
             <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Fri, 02 Aug 2024 19:25:34 &#43;0800</lastBuildDate>
-            <atom:link href="http://localhost:53476/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>编译原理</title>
-    <link>http://localhost:53476/compilerconstruction/</link>
+    <link>http://localhost:1313/compilerconstruction/</link>
     <pubDate>Fri, 02 Aug 2024 19:25:34 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:53476/compilerconstruction/</guid>
+    <guid>http://localhost:1313/compilerconstruction/</guid>
     <description><![CDATA[编译原理]]></description>
 </item>
 <item>
     <title>复杂度分析</title>
-    <link>http://localhost:53476/complexity_analysis/</link>
+    <link>http://localhost:1313/complexity_analysis/</link>
     <pubDate>Tue, 23 Jul 2024 18:56:48 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:53476/complexity_analysis/</guid>
+    <guid>http://localhost:1313/complexity_analysis/</guid>
     <description><![CDATA[复杂度分析]]></description>
 </item>
 <item>
     <title>初识算法</title>
-    <link>http://localhost:53476/introductiontoalgorithms/</link>
+    <link>http://localhost:1313/introductiontoalgorithms/</link>
     <pubDate>Tue, 23 Jul 2024 16:19:04 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:53476/introductiontoalgorithms/</guid>
+    <guid>http://localhost:1313/introductiontoalgorithms/</guid>
     <description><![CDATA[初识算法]]></description>
 </item>
 <item>
     <title>C#制作ActiveX浏览器插件&amp;OCX</title>
-    <link>http://localhost:53476/creating_activex_browser_plugins_and_ocx_controls_in_c/</link>
+    <link>http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/</link>
     <pubDate>Sun, 07 Jul 2024 15:54:36 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:53476/creating_activex_browser_plugins_and_ocx_controls_in_c/</guid>
+    <guid>http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/</guid>
     <description><![CDATA[win11-VS2024封装“win应用程序”浏览器插件]]></description>
 </item>
 <item>
     <title>markdown语法及快捷键</title>
-    <link>http://localhost:53476/markdown_syntax_and_shortcuts/</link>
+    <link>http://localhost:1313/markdown_syntax_and_shortcuts/</link>
     <pubDate>Mon, 24 Jun 2024 20:13:23 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:53476/markdown_syntax_and_shortcuts/</guid>
+    <guid>http://localhost:1313/markdown_syntax_and_shortcuts/</guid>
     <description><![CDATA[markdown语法及快捷键]]></description>
 </item>
 </channel>

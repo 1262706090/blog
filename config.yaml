@@ -1,6 +1,6 @@
 baseURL: "https://www.ykzzo.com/"
 theme: LoveIt
-title: YKZZO's Blog
+title: ykzzo's Blog
 defaultContentLanguage: zh-cn
 languageCode: zh-CN
 languageName: 简体中文
@@ -73,7 +73,7 @@ params:
         mobileMode: normal
         title:
             logo: ""
-            name: YKZZO'S BLOG
+            name: ykzzo'S Blog
             pre: ""
             post: ""
             typeit: false
@@ -113,9 +113,9 @@ params:
         highlightTag: em
         absoluteURL: false
         algolia:
-            index: ""
-            appID: ""
-            searchKey: ""
+            index: "ykzzo"
+            appID: "FKTW1AAMOA"
+            searchKey: "48bbf64c00ada38e233bf8f046654419"
     home:
         rss: 10
         profile:
