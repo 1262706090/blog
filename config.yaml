@@ -39,6 +39,13 @@ menu:
           name: 分类
           url: /categories/
           title: ""
+        - weight: 4
+          identifier: about
+          pre: ""
+          post: ""
+          name: 关于
+          url: /about/
+          title: ""
 markup:
     highlight:
         codeFences: true
@@ -99,7 +106,7 @@ params:
     app:
         title: ""
         noFavicon: false
-        svgFavicon: ""
+        svgFavicon: "20240812085355.svg"
         themeColor: "#ffffff"
         iconColor: "#5bbad5"
         tileColor: "#da532c"
@@ -121,7 +128,7 @@ params:
         profile:
             enable: true
             gravatarEmail: ""
-            avatarURL: ""
+            avatarURL: "images/20240812085355.jpg"
             title: ""
             subtitle: 欢迎来到我的博客
             typeit: true
