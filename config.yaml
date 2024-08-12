@@ -273,7 +273,7 @@ params:
             Trello: false
             Mix: false
         comment:
-            enable: false
+            enable: true
             disqus:
                 enable: false
                 shortname: ""
@@ -323,13 +323,13 @@ params:
                 lightTheme: github-light
                 darkTheme: github-dark
             giscus:
-                enable: false
-                repo: ""
-                repoId: ""
-                category: Announcements
-                categoryId: ""
+                enable: true
+                repo: "1262706090/Giscus"
+                repoId: "R_kgDOMiVsFQ"
+                category: "Announcements"
+                categoryId: "DIC_kwDOMiVsFc4ChjcH"
                 lang: ""
-                mapping: pathname
+                mapping: "pathname"
                 reactionsEnabled: "1"
                 emitMetadata: "0"
                 inputPosition: bottom
