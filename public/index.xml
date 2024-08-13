@@ -2,7 +2,7 @@
     <channel>
         <title>ykzzo&#39;s Blog</title>
         <link>http://localhost:1313/</link>
-        <description>ykzzo的博客</description>
+        <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>your_email (YKZZO)</managingEditor>
             <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Mon, 12 Aug 2024 09:08:31 &#43;0800</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
