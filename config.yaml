@@ -68,6 +68,17 @@ markup:
         startLevel: 2
         endLevel: 6
 params:
+    busuanzi:
+        enable: true
+        site_uv: true
+        site_uv_pre: <i class="fa fa-user"></i>
+        site_uv_post: ""
+        site_pv: true
+        site_pv_pre: <i class="fa fa-eye"></i>
+        site_pv_post: ""
+        page_pv: true
+        page_pv_pre: <i class="far fa-eye fa-fw"></i>
+        page_pv_post: ""
     defaultTheme: light
     fingerprint: sha256
     dateFormat: 2006-01-02
@@ -99,6 +110,8 @@ params:
         paginate: 20
         dateFormat: 01-02
         rss: 10
+        # 显示最近更新文章的数量
+        lastUpdatedSize: 10
     list:
         paginate: 20
         dateFormat: 01-02
@@ -218,7 +231,7 @@ params:
         hiddenFromHomePage: false
         hiddenFromSearch: false
         twemoji: false
-        lightgallery: false
+        lightgallery: true
         ruby: true
         fraction: true
         fontawesome: true
@@ -354,7 +367,7 @@ params:
         bing: ""
         yandex: ""
         pinterest: ""
-        baidu: ""
+        baidu: "codeva-rd9ZCXPdEK"
     seo:
         image: ""
         thumbnailUrl: ""
@@ -370,6 +383,12 @@ params:
     compatibility:
         polyfill: false
         objectFit: false
+    # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
+    # 在文章末尾显示提示信息，提醒读者文章内容可能过时。
+    outdatedInfoWarning:
+        enable: true
+        hint: 90
+        warn: 180
 sitemap:
     changefreq: weekly
     filename: sitemap.xml
@@ -407,3 +426,4 @@ outputs:
         - RSS
     taxonomy:
         - HTML
+

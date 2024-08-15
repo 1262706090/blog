@@ -22,7 +22,7 @@
 <meta name="application-name" content="ykzzo&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/complexity_analysis/" /><link rel="prev" href="http://localhost:1313/introductiontoalgorithms/" /><link rel="next" href="http://localhost:1313/compilerconstruction/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,7 +31,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/localhost:1313\/complexity_analysis\/"
-        },"genre": "posts","wordcount":  8005 ,
+        },"genre": "posts","wordcount":  8035 ,
         "url": "http:\/\/localhost:1313\/complexity_analysis\/","datePublished": "2024-07-23T18:56:48+08:00","dateModified": "2024-07-23T18:56:48+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -105,8 +105,22 @@
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">复杂度分析</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8005 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 16 分钟&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-07-23">2024-07-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8035 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 17 分钟&nbsp;
+
+
+
+
+
+
+
+<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+    
+    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+
+
+
+</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>目录</span>
@@ -286,14 +300,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/recursion_sum.png"
-        data-srcset="/complexity_analysis/images/recursion_sum.png, /complexity_analysis/images/recursion_sum.png 1.5x, /complexity_analysis/images/recursion_sum.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/recursion_sum.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/recursion_sum.png" title="alt text" data-thumbnail="/complexity_analysis/images/recursion_sum.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/recursion_sum.png"
+            data-srcset="/complexity_analysis/images/recursion_sum.png, /complexity_analysis/images/recursion_sum.png 1.5x, /complexity_analysis/images/recursion_sum.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/recursion_sum.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>虽然从计算角度看，迭代与递归可以得到相同的结果，但它们代表了两种完全不同的思考和解决问题的范式。</p>
 <ul>
 <li><strong>迭代</strong>：“自下而上”地解决问题。从最基础的步骤开始，然后不断重复或累加这些步骤，直到任务完成。</li>
@@ -311,14 +328,17 @@
 <li>递归调用函数会产生额外的开销。因此<strong>递归通常比循环的时间效率更低</strong>。</li>
 </ul>
 <p>在触发终止条件前，同时存在$n$个未返回的递归函数，递归深度为$n$。
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/recursion_sum_depth.png"
-        data-srcset="/complexity_analysis/images/recursion_sum_depth.png, /complexity_analysis/images/recursion_sum_depth.png 1.5x, /complexity_analysis/images/recursion_sum_depth.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/recursion_sum_depth.png"
-        title="alt text" width="1280" height="720" />
+
+<figure><a class="lightgallery" href="/complexity_analysis/images/recursion_sum_depth.png" title="alt text" data-thumbnail="/complexity_analysis/images/recursion_sum_depth.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/recursion_sum_depth.png"
+            data-srcset="/complexity_analysis/images/recursion_sum_depth.png, /complexity_analysis/images/recursion_sum_depth.png 1.5x, /complexity_analysis/images/recursion_sum_depth.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/recursion_sum_depth.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure>
 在实际中，编程语言允许的递归深度通常是有限的，过深的递归可能导致栈溢出错误。</p>
 <h3 id="222-尾递归">2.2.2 尾递归</h3>
 <p>如果<strong>函数在返回前的最后一步才进行递归调用</strong>，则该函数可以被编译器或解释器优化，使其在空间效率上与迭代相当。这种情况被称为尾递归（tail recursion）。</p>
@@ -348,14 +368,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/tail_recursion_sum.png"
-        data-srcset="/complexity_analysis/images/tail_recursion_sum.png, /complexity_analysis/images/tail_recursion_sum.png 1.5x, /complexity_analysis/images/tail_recursion_sum.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/tail_recursion_sum.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/tail_recursion_sum.png" title="alt text" data-thumbnail="/complexity_analysis/images/tail_recursion_sum.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/tail_recursion_sum.png"
+            data-srcset="/complexity_analysis/images/tail_recursion_sum.png, /complexity_analysis/images/tail_recursion_sum.png 1.5x, /complexity_analysis/images/tail_recursion_sum.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/tail_recursion_sum.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p><em>请注意，许多编译器或解释器并不支持尾递归优化。例如，Python 默认不支持尾递归优化，因此即使函数是尾递归形式，仍然可能会遇到栈溢出问题。</em></p>
 <h3 id="223-递归树">2.2.3 递归树</h3>
 <p>当处理与“分治”相关的算法问题时，递归往往比迭代的思路更加直观、代码更加易读。以“斐波那契数列”为例。</p>
@@ -391,14 +414,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/recursion_tree.png"
-        data-srcset="/complexity_analysis/images/recursion_tree.png, /complexity_analysis/images/recursion_tree.png 1.5x, /complexity_analysis/images/recursion_tree.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/recursion_tree.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/recursion_tree.png" title="alt text" data-thumbnail="/complexity_analysis/images/recursion_tree.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/recursion_tree.png"
+            data-srcset="/complexity_analysis/images/recursion_tree.png, /complexity_analysis/images/recursion_tree.png 1.5x, /complexity_analysis/images/recursion_tree.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/recursion_tree.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>从本质上看，递归体现了“将问题分解为更小子问题”的思维范式，这种分治策略至关重要。</p>
 <h2 id="23-两者对比">2.3 两者对比</h2>
 <table>
@@ -523,14 +549,17 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_simple_example.png"
-        data-srcset="/complexity_analysis/images/time_complexity_simple_example.png, /complexity_analysis/images/time_complexity_simple_example.png 1.5x, /complexity_analysis/images/time_complexity_simple_example.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_simple_example.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_simple_example.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_simple_example.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_simple_example.png"
+            data-srcset="/complexity_analysis/images/time_complexity_simple_example.png, /complexity_analysis/images/time_complexity_simple_example.png 1.5x, /complexity_analysis/images/time_complexity_simple_example.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_simple_example.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>相较于直接统计算法的运行时间，时间复杂度分析有以下特点：</p>
 <ul>
 <li><strong>时间复杂度能够有效评估算法效率</strong>：例如，算法 B 的运行时间呈线性增长，在 $n&gt;1$ 时比算法 A 更慢，在 $n&gt;1000000$ 时比算法 C 更慢。事实上，只要输入数据大小 $n$ 足够大，复杂度为“常数阶”的算法一定优于“线性阶”的算法，这正是时间增长趋势的含义。</li>
@@ -569,14 +598,17 @@
 <p>时间复杂度分析本质上是计算“操作数量 $T(n)$ 的渐近上界，它具有明确的数学定义。</p>
 <p><strong>函数渐近上界</strong>：若存在正实数 $c$ 和实数 $n_0$ ,使得对于所有的 $n&gt;n_0$ ，均有 $T(n) \leq c \times f(n)$ ,则可认为 $f(n)$ 给出了 $T(n)$ 的一个渐进上界，记为 $T(n)=O(f(n))$ 。</p>
 <p>计算渐近上界就是寻找一个函数 $f(n)$ ，使得当 $n$ 趋向于无穷大时，$T(n)$ 和 $f(n)$ 处于相同的增长级别，仅相差一个常数项 $c$ 的倍数。
-<img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/asymptotic_upper_bound.png"
-        data-srcset="/complexity_analysis/images/asymptotic_upper_bound.png, /complexity_analysis/images/asymptotic_upper_bound.png 1.5x, /complexity_analysis/images/asymptotic_upper_bound.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/asymptotic_upper_bound.png"
-        title="alt text" width="1280" height="720" /></p>
+
+<figure><a class="lightgallery" href="/complexity_analysis/images/asymptotic_upper_bound.png" title="alt text" data-thumbnail="/complexity_analysis/images/asymptotic_upper_bound.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/asymptotic_upper_bound.png"
+            data-srcset="/complexity_analysis/images/asymptotic_upper_bound.png, /complexity_analysis/images/asymptotic_upper_bound.png 1.5x, /complexity_analysis/images/asymptotic_upper_bound.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/asymptotic_upper_bound.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <h2 id="33-推算方法">3.3 推算方法</h2>
 <p><strong>1. 统计操作数量</strong></p>
 <p>针对代码，逐行从上到下计算即可。然而，由于上述 $c \times f(n)$ 中的常数项 $c$ 可以取任意大小，因此操作数量 $T(n)$ 中的各种系数、常数项都可以忽略。根据此原则，可以总结出以下计数简化技巧：</p>
@@ -658,14 +690,17 @@
 <p>$$
 O(1)&lt;O(log_n)&lt;O(n)&lt;O(nlog_n)&lt;O(n^2)&lt;O(2^n)&lt;O(n!)
 $$</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_common_types.png"
-        data-srcset="/complexity_analysis/images/time_complexity_common_types.png, /complexity_analysis/images/time_complexity_common_types.png 1.5x, /complexity_analysis/images/time_complexity_common_types.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_common_types.png"
-        title="alt text" width="1280" height="720" /></p>
+<p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_common_types.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_common_types.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_common_types.png"
+            data-srcset="/complexity_analysis/images/time_complexity_common_types.png, /complexity_analysis/images/time_complexity_common_types.png 1.5x, /complexity_analysis/images/time_complexity_common_types.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_common_types.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <ol>
 <li>常数阶 $O(1)$</li>
 </ol>
@@ -720,14 +755,17 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_logarithmic.png"
-        data-srcset="/complexity_analysis/images/time_complexity_logarithmic.png, /complexity_analysis/images/time_complexity_logarithmic.png 1.5x, /complexity_analysis/images/time_complexity_logarithmic.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_logarithmic.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_logarithmic.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_logarithmic.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_logarithmic.png"
+            data-srcset="/complexity_analysis/images/time_complexity_logarithmic.png, /complexity_analysis/images/time_complexity_logarithmic.png 1.5x, /complexity_analysis/images/time_complexity_logarithmic.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_logarithmic.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>与指数阶类似，对数阶也常出现于递归函数中。以下代码形成了一棵高度为 $log_2^n$ 的递归树：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -827,14 +865,17 @@ $$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>二叉树的每一层的操作总数都为 $n$ ，树共有 $log_2^n+1$层，因此时间复杂度为 $O(nlog_n)$</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_logarithmic_linear.png"
-        data-srcset="/complexity_analysis/images/time_complexity_logarithmic_linear.png, /complexity_analysis/images/time_complexity_logarithmic_linear.png 1.5x, /complexity_analysis/images/time_complexity_logarithmic_linear.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_logarithmic_linear.png"
-        title="alt text" width="1280" height="720" /></p>
+<p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_logarithmic_linear.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_logarithmic_linear.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_logarithmic_linear.png"
+            data-srcset="/complexity_analysis/images/time_complexity_logarithmic_linear.png, /complexity_analysis/images/time_complexity_logarithmic_linear.png 1.5x, /complexity_analysis/images/time_complexity_logarithmic_linear.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_logarithmic_linear.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>流排序算法的时间复杂度通常为 $O(nlog_n)$ ，例如快速排序、归并排序、堆排序等。</p>
 <ol start="5">
 <li>平方阶 $O(n^2)$</li>
@@ -869,14 +910,17 @@ $$</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>对比常数阶、线性阶和平方阶三种时间复杂度：</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png"
-        data-srcset="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png, /complexity_analysis/images/time_complexity_constant_linear_quadratic.png 1.5x, /complexity_analysis/images/time_complexity_constant_linear_quadratic.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png"
-        title="alt text" width="1280" height="720" /></p>
+<p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png"
+            data-srcset="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png, /complexity_analysis/images/time_complexity_constant_linear_quadratic.png 1.5x, /complexity_analysis/images/time_complexity_constant_linear_quadratic.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_constant_linear_quadratic.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>以冒泡排序为例，外层循环执行 $n-1$ 次，内层循环执行 $n-1$ 、 $n-2$ 、&hellip; 、2、1 次，平均为 $n/2$ 次，因此时间复杂度为 $O((n-1)n/2)=O(n^2)$ ：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -956,14 +1000,17 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/time_complexity_exponential.png"
-        data-srcset="/complexity_analysis/images/time_complexity_exponential.png, /complexity_analysis/images/time_complexity_exponential.png 1.5x, /complexity_analysis/images/time_complexity_exponential.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/time_complexity_exponential.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/time_complexity_exponential.png" title="alt text" data-thumbnail="/complexity_analysis/images/time_complexity_exponential.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/time_complexity_exponential.png"
+            data-srcset="/complexity_analysis/images/time_complexity_exponential.png, /complexity_analysis/images/time_complexity_exponential.png 1.5x, /complexity_analysis/images/time_complexity_exponential.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/time_complexity_exponential.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <p>在实际算法中，指数阶常出现于递归函数中。例如在以下代码中，其递归地一分为二，经过 $n$ 次分裂后停止：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1122,14 +1169,17 @@ $1$ 至 $n$ 的数字组成，每个数字只出现一次；但元素顺序是�
 <li><strong>指令空间</strong>：用于保存编译后的程序指令，在实际统计中通常忽略不计。</li>
 </ol>
 <p>在分析一段程序的空间复杂度时，我们通常统计暂存数据、栈帧空间和输出数据三部分，如图 2-15 所示。</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/space_types.png"
-        data-srcset="/complexity_analysis/images/space_types.png, /complexity_analysis/images/space_types.png 1.5x, /complexity_analysis/images/space_types.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/space_types.png"
-        title="alt text" width="1280" height="720" /></p>
+<p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/space_types.png" title="alt text" data-thumbnail="/complexity_analysis/images/space_types.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/space_types.png"
+            data-srcset="/complexity_analysis/images/space_types.png, /complexity_analysis/images/space_types.png 1.5x, /complexity_analysis/images/space_types.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/space_types.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1247,14 +1297,17 @@ $1$ 至 $n$ 的数字组成，每个数字只出现一次；但元素顺序是�
 <p>$$
 O(1)&lt;O(log_n)&lt;O(n)&lt;O(n^2)&lt;O(2^n)
 $$</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/space_complexity_common_types.png"
-        data-srcset="/complexity_analysis/images/space_complexity_common_types.png, /complexity_analysis/images/space_complexity_common_types.png 1.5x, /complexity_analysis/images/space_complexity_common_types.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/space_complexity_common_types.png"
-        title="alt text" width="1280" height="720" /></p>
+<p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/space_complexity_common_types.png" title="alt text" data-thumbnail="/complexity_analysis/images/space_complexity_common_types.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/space_complexity_common_types.png"
+            data-srcset="/complexity_analysis/images/space_complexity_common_types.png, /complexity_analysis/images/space_complexity_common_types.png 1.5x, /complexity_analysis/images/space_complexity_common_types.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/space_complexity_common_types.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <ol>
 <li>常数阶 $O(1)$ ：常量、变量、对象。</li>
 </ol>
@@ -1368,14 +1421,17 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/space_complexity_recursive_linear.png"
-        data-srcset="/complexity_analysis/images/space_complexity_recursive_linear.png, /complexity_analysis/images/space_complexity_recursive_linear.png 1.5x, /complexity_analysis/images/space_complexity_recursive_linear.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/space_complexity_recursive_linear.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/space_complexity_recursive_linear.png" title="alt text" data-thumbnail="/complexity_analysis/images/space_complexity_recursive_linear.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/space_complexity_recursive_linear.png"
+            data-srcset="/complexity_analysis/images/space_complexity_recursive_linear.png, /complexity_analysis/images/space_complexity_recursive_linear.png 1.5x, /complexity_analysis/images/space_complexity_recursive_linear.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/space_complexity_recursive_linear.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <ol start="3">
 <li>平方阶 $O(n^2)$ ：矩阵和图</li>
 </ol>
@@ -1432,14 +1488,17 @@ $$</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/complexity_analysis/images/space_complexity_recursive_quadratic.png"
-        data-srcset="/complexity_analysis/images/space_complexity_recursive_quadratic.png, /complexity_analysis/images/space_complexity_recursive_quadratic.png 1.5x, /complexity_analysis/images/space_complexity_recursive_quadratic.png 2x"
-        data-sizes="auto"
-        alt="/complexity_analysis/images/space_complexity_recursive_quadratic.png"
-        title="alt text" width="1280" height="720" /></p>
+</div><p>
+<figure><a class="lightgallery" href="/complexity_analysis/images/space_complexity_recursive_quadratic.png" title="alt text" data-thumbnail="/complexity_analysis/images/space_complexity_recursive_quadratic.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/complexity_analysis/images/space_complexity_recursive_quadratic.png"
+            data-srcset="/complexity_analysis/images/space_complexity_recursive_quadratic.png, /complexity_analysis/images/space_complexity_recursive_quadratic.png 1.5x, /complexity_analysis/images/space_complexity_recursive_quadratic.png 2x"
+            data-sizes="auto"
+            alt="/complexity_analysis/images/space_complexity_recursive_quadratic.png" width="1280" height="720" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
 <ol start="4">
 <li>指数阶 $O(2^n)$ ：二叉树</li>
 </ol>
@@ -1505,8 +1564,43 @@ $$</p>
 </div>
 </article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-        </div>
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+
+
+<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+
+
+
+
+<section>
+    
+    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+        
+        <span id="busuanzi_value_site_pv"></span>
+    </span>
+    
+
+    
+    &nbsp;|&nbsp;
+    
+
+    
+    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+        
+        <span id="busuanzi_value_site_uv"></span>
+    </span>
+    
+</section>
+
+
+
+
+
+
+</div>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
@@ -1514,5 +1608,5 @@ $$</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
 </html>

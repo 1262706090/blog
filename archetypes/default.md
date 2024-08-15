@@ -28,4 +28,6 @@ share:
   enable: true
 comment:
   enable: true
+
+outdatedInfoWarning: true
 ---
