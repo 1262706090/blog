@@ -4,9 +4,17 @@
         <link>http://localhost:1313/</link>
         <description>ykzzo的博客</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>your_email (YKZZO)</managingEditor>
-            <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Mon, 12 Aug 2024 09:08:31 &#43;0800</lastBuildDate>
+            <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Fri, 23 Aug 2024 16:39:14 &#43;0800</lastBuildDate>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>编译原理笔记01-绪论</title>
+    <link>http://localhost:1313/compiler_01/</link>
+    <pubDate>Fri, 23 Aug 2024 14:02:28 &#43;0800</pubDate>
+    <author>YK</author>
+    <guid>http://localhost:1313/compiler_01/</guid>
+    <description><![CDATA[编译原理笔记01-绪论]]></description>
+</item>
+<item>
     <title>编译原理</title>
     <link>http://localhost:1313/compilerconstruction/</link>
     <pubDate>Fri, 02 Aug 2024 19:25:34 &#43;0800</pubDate>

@@ -12,7 +12,8 @@
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2024-08-02T19:25:34+08:00">
-    <meta property="article:modified_time" content="2024-08-02T19:25:34+08:00">
+    <meta property="article:modified_time" content="2024-08-16T19:25:34+08:00">
+    <meta property="article:tag" content="Learn">
     <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
 
   <meta name="twitter:card" content="summary_large_image">
@@ -20,7 +21,7 @@
   <meta name="twitter:title" content="编译原理">
   <meta name="twitter:description" content="编译原理">
 <meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compilerconstruction/" /><link rel="prev" href="http://localhost:1313/complexity_analysis/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compilerconstruction/" /><link rel="prev" href="http://localhost:1313/complexity_analysis/" /><link rel="next" href="http://localhost:1313/compiler_01/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
     {
@@ -31,8 +32,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/localhost:1313\/compilerconstruction\/"
-        },"genre": "posts","wordcount":  879 ,
-        "url": "http:\/\/localhost:1313\/compilerconstruction\/","datePublished": "2024-08-02T19:25:34+08:00","dateModified": "2024-08-02T19:25:34+08:00","publisher": {
+        },"genre": "posts","keywords": "learn","wordcount":  1148 ,
+        "url": "http:\/\/localhost:1313\/compilerconstruction\/","datePublished": "2024-08-02T19:25:34+08:00","dateModified": "2024-08-16T19:25:34+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -104,9 +105,9 @@
             <h2 class="toc-title">目录</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编译原理</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-08-02">2024-08-02</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-08-02">2024-08-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 879 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/compiler/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Compiler</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-08-02">2024-08-02</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-08-16">2024-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1148 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;
 
 
 
@@ -140,6 +141,16 @@
   <ul>
     <li><a href="#31-语言">3.1 语言</a></li>
     <li><a href="#32-正则表达式">3.2 正则表达式</a></li>
+    <li><a href="#33-自动机">3.3 自动机</a></li>
+    <li><a href="#34-它们之间关系">3.4 它们之间关系</a>
+      <ul>
+        <li><a href="#341-re--nfa">3.4.1 RE ==&gt; NFA</a>
+          <ul>
+            <li><a href="#3411-thompsons-构造法">3.4.1.1 Thompsons 构造法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="1-概述">1. 概述</h1>
@@ -716,6 +727,7 @@
             alt="/compilerconstruction/images/2024-08-07-22-03-17.png" width="800" height="691" />
     </a><figcaption class="img-caption">2024-08-07-22-03-17.png</figcaption>
 </figure></p>
+<h2 id="33-自动机">3.3 自动机</h2>
 <p>
 <figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-22-04-51.png" title="2024-08-07-22-04-51.png" data-thumbnail="/compilerconstruction/images/2024-08-07-22-04-51.png" data-sub-html="<h2> </h2><p>2024-08-07-22-04-51.png</p>">
         <img
@@ -727,48 +739,89 @@
             alt="/compilerconstruction/images/2024-08-07-22-04-51.png" width="1139" height="724" />
     </a><figcaption class="img-caption">2024-08-07-22-04-51.png</figcaption>
 </figure></p>
-<p>约定：所有没有对应出边的字符默认指向“空状态”</p>
+<p><em>约定：所有没有对应出边的字符默认指向“空状态”</em></p>
 <p>（非确定性）有穷自动机是一类极其简单的<strong>计算</strong>装置，他可以<strong>识别</strong>（接受/拒绝）$\Sigma$ 上的字符串。</p>
-<p><strong>Definition(接受(Accept))：</strong>
+<p><strong>Definition(接受(Accept))：</strong><br/>
 （非确定性）有穷自动机 $A$ 接受字符串 $x$ ，当且仅当<strong>存在</strong>一条从开始状态 $s_0$ 到<strong>某个</strong>接受状态 $f \in F$ ，标号为 $x$ 的路径。</p>
 <p>因此，$A$ 定义了一种语言 $L(A)$ ：它能接受的所有字符串构成的集合。</p>
-<p><strong>Definition(DFA(Deterministic Finite Automaton))</strong>
-确定性有穷自动机 $A$ 是一个五元组 <strong>$A=(\Sigma,S,s_0,\delta,F)$</strong> ：
-(1) 字母表 $\Sigma (\epsilon \notin \Sigma)$
-(2) 有穷的<strong>状态集合</strong> $S$
-(3) <strong>唯一</strong>的初始集合 $S$
+<p><strong>Definition(DFA(Deterministic Finite Automaton))</strong><br/>
+确定性有穷自动机 $A$ 是一个五元组 <strong>$A=(\Sigma,S,s_0,\delta,F)$</strong> ：<br/>
+(1) 字母表 $\Sigma (\epsilon \notin \Sigma)$<br/>
+(2) 有穷的<strong>状态集合</strong> $S$<br/>
+(3) <strong>唯一</strong>的初始集合 $S$<br/>
 (4) ** 状态转移函数** $\delta$</p>
 <p>$$
 \delta:S\times\Sigma\rightarrow S
 $$</p>
-<p>(5) 接受状态集合 $F\subseteq S$</p>
-<div align=center>
-<div class="mermaid" id="id-1"></div>
-<p>[ c = \pm\sqrt{a^2 + b^2} ]</p>
-<p>[ f(x)=\int_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d \xi ]
-( c = \pm\sqrt{a^2 + b^2} ) and ( f(x)=\int_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i \xi x} d \xi )</p>
+<br/>
+(5) 接受状态集合 $F\subseteq S$
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-16-16-56-12.png" title="2024-08-16-16-56-12.png" data-thumbnail="/compilerconstruction/images/2024-08-16-16-56-12.png" data-sub-html="<h2> </h2><p>2024-08-16-16-56-12.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-16-16-56-12.png"
+            data-srcset="/compilerconstruction/images/2024-08-16-16-56-12.png, /compilerconstruction/images/2024-08-16-16-56-12.png 1.5x, /compilerconstruction/images/2024-08-16-16-56-12.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-16-16-56-12.png" width="380" height="140" />
+    </a><figcaption class="img-caption">2024-08-16-16-56-12.png</figcaption>
+</figure></p>
+<div style="text-align: center;">
+    用 NFA 描述语言，用 DFA 实现词法分析器<br/>
+    <span style="color:red">RE ==> NFA ==> DFA ==>词法分析器</span>
+</div>
+<h2 id="34-它们之间关系">3.4 它们之间关系</h2>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-16-17-05-50.png" title="2024-08-16-17-05-50.png" data-thumbnail="/compilerconstruction/images/2024-08-16-17-05-50.png" data-sub-html="<h2> </h2><p>2024-08-16-17-05-50.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-16-17-05-50.png"
+            data-srcset="/compilerconstruction/images/2024-08-16-17-05-50.png, /compilerconstruction/images/2024-08-16-17-05-50.png 1.5x, /compilerconstruction/images/2024-08-16-17-05-50.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-16-17-05-50.png" width="593" height="235" />
+    </a><figcaption class="img-caption">2024-08-16-17-05-50.png</figcaption>
+</figure></p>
+<h3 id="341-re--nfa">3.4.1 RE ==&gt; NFA</h3>
+<h4 id="3411-thompsons-构造法">3.4.1.1 Thompsons 构造法</h4>
+<p>Thompsons 构造法的基本思想：<strong>按结构归纳</strong></p>
+<p>Definition(正则表达式)</p>
+<p>给定字母表 Σ, Σ 上的正则表达式由且仅由以下规则定义：<br/>
+(1) ϵ 是正则表达式;<br/>
+(2) ∀a ∈ Σ, a 是正则表达式;<br/>
+(3) 如果 s 是正则表达式, 则 (s) 是正则表达式;<br/>
+(4) 如果 s 与 t 是正则表达式, 则 s|t, st, s∗ 也是正则表达式。<br/></p>
+<p>$N(r)$ 的<strong>性质</strong>以及 $Thompsons$ 构造法<strong>复杂度分析</strong>：</p>
+<ol>
+<li>$N(r)$ 的开始状态与接受状态均唯一。</li>
+<li>开始状态没有入边，接受状态没有出边。</li>
+<li>$N(r)$ 的状态数 |S| ≤ 2 × |r|。(|r| : r 中运算符与运算分量的总和)</li>
+<li>每个状态最多有两个 ϵ-入边与两个 ϵ-出边。</li>
+<li>∀a ∈ Σ,每个状态最多有一个 a-入边与一个 a-出边。</li>
+</ol>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2024-08-02</span>
+                <span>更新于 2024-08-16</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compilerconstruction/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compilerconstruction/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理" data-hashtags="learn"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compilerconstruction/" data-hashtag="learn"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compilerconstruction/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/learn/">Learn</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/complexity_analysis/" class="prev" rel="prev" title="复杂度分析"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>复杂度分析</a></div>
+    <div class="post-nav"><a href="/complexity_analysis/" class="prev" rel="prev" title="复杂度分析"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>复杂度分析</a>
+            <a href="/compiler_01/" class="next" rel="next" title="编译原理笔记01-绪论">编译原理笔记01-绪论<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
@@ -816,5 +869,5 @@ $$</p>
             </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
                 <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/mermaid/mermaid.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"data":{"id-1":"\r\nflowchart LR\r\na --\u003e b \u0026 c --\u003e d\r"},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
 </html>

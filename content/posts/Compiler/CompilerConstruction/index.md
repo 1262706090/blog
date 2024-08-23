@@ -1,5 +1,36 @@
-# 编译原理
+---
+title: "编译原理"
+subtitle: ""
+date: 2024-08-02T19:25:34+08:00
+lastmod: 2024-08-16T19:25:34+08:00
+draft: false
+author: "YK"
+authorLink: ""
+license: ""
 
+tags: ["learn"]
+categories: ["Compiler"]
+
+featuredImage: ""
+featuredImagePreview: ""
+
+summary: "编译原理" # 文章简单描述，会展示在主页
+
+hiddenFromHomePage: false
+hiddenFromSearch: false
+
+toc:
+    enable: true
+    auto: true
+
+mapbox:
+share:
+    enable: true
+comment:
+    enable: true
+
+outdatedInfoWarning: true
+---
 
 # 1. 概述
 
@@ -264,4 +295,3 @@ $N(r)$ 的**性质**以及 $Thompsons$ 构造法**复杂度分析**：
 3. $N(r)$ 的状态数 |S| ≤ 2 × |r|。(|r| : r 中运算符与运算分量的总和)
 4. 每个状态最多有两个 ϵ-入边与两个 ϵ-出边。
 5. ∀a ∈ Σ,每个状态最多有一个 a-入边与一个 a-出边。
-
