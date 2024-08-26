@@ -1,36 +1,5 @@
----
-title: "编译原理笔记02-程序设计语言及其文法"
-subtitle: ""
-date: 2024-08-23T16:39:14+08:00
-lastmod: 2024-08-26T16:39:14+08:00
-draft: false
-author: "YK"
-authorLink: ""
-license: ""
+# 编译原理笔记02-程序设计语言及其文法
 
-tags: ["note"]
-categories: ["compiler"]
-
-featuredImage: ""
-featuredImagePreview: ""
-
-summary: "编译原理笔记02-程序设计语言及其文法"
-
-hiddenFromHomePage: false
-hiddenFromSearch: false
-
-toc:
-    enable: true
-    auto: true
-
-mapbox:
-share:
-    enable: true
-comment:
-    enable: true
-
-outdatedInfoWarning: true
----
 
 ## 1. 基本概念
 
@@ -263,3 +232,4 @@ G=（VT，VN，P，S）
 
 -   满足：肯定无二义性
 -   不满足：也不一定有二义性
+
