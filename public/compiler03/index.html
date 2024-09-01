@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>编译原理笔记03-词法分析 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compiler03/">
+  <meta property="og:site_name" content="ykzzo&#39;s Blog">
+  <meta property="og:title" content="编译原理笔记03-词法分析">
+  <meta property="og:description" content="编译原理笔记03-词法分析">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-27T14:12:43+08:00">
+    <meta property="article:modified_time" content="2024-08-27T14:12:43+08:00">
+    <meta property="article:tag" content="Note">
+    <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+  <meta name="twitter:title" content="编译原理笔记03-词法分析">
+  <meta name="twitter:description" content="编译原理笔记03-词法分析">
+<meta name="application-name" content="ykzzo&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compiler03/" /><link rel="prev" href="http://localhost:1313/compiler_02/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "编译原理笔记03-词法分析",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/compiler03\/"
+        },"genre": "posts","keywords": "note","wordcount":  2976 ,
+        "url": "http:\/\/localhost:1313\/compiler03\/","datePublished": "2024-08-27T14:12:43+08:00","dateModified": "2024-08-27T14:12:43+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "YK"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编译原理笔记03-词法分析</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/compiler/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Compiler</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-08-27">2024-08-27</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-08-27">2024-08-27</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2976 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 6 分钟&nbsp;
+
+
+
+
+
+
+
+<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+    
+    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+
+
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-正则表达式">1. 正则表达式</a>
+      <ul>
+        <li><a href="#11-正则表达式的定义">1.1 正则表达式的定义</a></li>
+        <li><a href="#12-re-的代数定律">1.2 RE 的代数定律</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-正则定义">2. 正则定义</a></li>
+    <li><a href="#3-有穷自动机">3. 有穷自动机</a>
+      <ul>
+        <li><a href="#31-fa-模型">3.1 FA 模型</a></li>
+        <li><a href="#32-fa-的表示">3.2 FA 的表示</a></li>
+        <li><a href="#33-fa-定义接收的语言">3.3 FA 定义(接收)的语言</a></li>
+        <li><a href="#34-最长子串匹配原则">3.4 最长子串匹配原则</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-有穷自动机的分类">4. 有穷自动机的分类</a>
+      <ul>
+        <li><a href="#41-确定的有穷自动机dfa">4.1 确定的有穷自动机(DFA)</a></li>
+        <li><a href="#42-非确定的有穷自动机nfa">4.2 非确定的有穷自动机(NFA)</a></li>
+        <li><a href="#43-dfa-和-nfa-的等价性">4.3 DFA 和 NFA 的等价性</a></li>
+        <li><a href="#44-带有空边的-nfa">4.4 带有空边的 NFA</a></li>
+        <li><a href="#45-带有和不带有空边的-nfa-的等价性">4.5 带有和不带有空边的 NFA 的等价性</a></li>
+        <li><a href="#46-dfa-的算法实现">4.6 DFA 的算法实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#5-从-re-到-dfa-的转换">5. 从 RE 到 DFA 的转换</a>
+      <ul>
+        <li><a href="#51-从-re-到-nfa-的转换">5.1 从 RE 到 NFA 的转换</a></li>
+        <li><a href="#52-从-nfa-到-dfa-的转换">5.2 从 NFA 到 DFA 的转换</a></li>
+        <li><a href="#53-nfa-到-dfa-的算法实现">5.3 NFA 到 DFA 的算法实现</a></li>
+      </ul>
+    </li>
+    <li><a href="#6-识别单词的-dfa">6. 识别单词的 DFA</a>
+      <ul>
+        <li><a href="#61-识别标识符的-dfa">6.1 识别标识符的 DFA</a></li>
+        <li><a href="#62-识别无符号数的-dfa">6.2 识别无符号数的 DFA</a></li>
+        <li><a href="#63-识别各进制无符号整数的-dfa">6.3 识别各进制无符号整数的 DFA</a></li>
+        <li><a href="#64-识别多行注释的-dfa">6.4 识别多行注释的 DFA</a></li>
+        <li><a href="#65-识别单词的-dfa">6.5 识别单词的 DFA</a></li>
+      </ul>
+    </li>
+    <li><a href="#7词法分析器的错误处理">7.词法分析器的错误处理</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="1-正则表达式">1. 正则表达式</h2>
+<ul>
+<li><strong>正则表达式(Regular Expression,RE)<strong>是一种用来描述</strong>正则语言</strong>的更紧凑的表示方法。
+<ul>
+<li>【例】语言 L={ a } { a , b }* ( { ε } ∪ ( { . , _ } { a , b } { a , b }_ ) )</li>
+<li>用正则表达式 r 可以表示为：r=a (a | b)* ( ε | (.| _) (a | b) (a | b)_ )</li>
+<li>句子含义是：以 a 开头，连接任意长度的 ab 串，接下来连接一个空串，此时表示句子结束。除此之外，还可以连接一个<code>.</code>和<code>_</code>,接下来连接一个长度大于等于 1 的 ab 串</li>
+<li><code>{}*</code>是克林闭包</li>
+</ul>
+</li>
+</ul>
+<p>正则表达式可以由<strong>较小的正则表达式</strong>按照特定的规则<strong>递归</strong>构建。每个正则表达式 r 定义一个语言，记为 <strong>L(r)</strong>。这个语言也是根据 r 的<strong>子表达式所表示的语言递归定义</strong>的。</p>
+<h3 id="11-正则表达式的定义">1.1 正则表达式的定义</h3>
+<ol>
+<li>
+<p>ε 是一个 RE，L(ε)={ε}</p>
+<ul>
+<li>空串是一个正则表达式，它表示的语言只包含一个空串</li>
+</ul>
+</li>
+<li>
+<p>如果 a∈∑，则 a 是一个 RE，L(a) = {a}</p>
+<ul>
+<li>字母表中任何一个符号都是一个正则表达式。它表示的语言只有它本身</li>
+</ul>
+</li>
+<li>
+<p>假设 r 和 s 都是 RE，表示的语言分别是 L(r)和 L(s)，则</p>
+<ul>
+<li>r|s 是一个 RE，L(r|s)=L(r)∪L(s)</li>
+<li>rs 是一个 RE，L(rs)=L(r)L(s)</li>
+<li>r*是一个 RE，L(r*)=(L(r*))*</li>
+<li>(r)是一个 RE，L((r))=L(r)</li>
+</ul>
+</li>
+<li>
+<p>运算的优先级：<code>*</code>(克林闭包)、连接、<code>|</code>(或运算)</p>
+</li>
+</ol>
+<p>【例】令 Σ = {a，b}，即符号表中包含两个元素 a 和 b，由正则表达式的定义可知 a 是一个正则表达式，b 是一个正则表达式，因此：</p>
+<ul>
+<li>L(a|b) = L(a)∪L(b) ={a}∪{b} = {a, b}
+<ul>
+<li>由于 a 和 b 都是 RE，所以 a|b 还是一个 RE</li>
+</ul>
+</li>
+<li>L((a|b)(a|b))=L(a|b)L(a|b)={a,b}{a,b}={aa,ab,ba,bb}
+<ul>
+<li>由于 a|b 是 RE，所以 a|b 连接 a|b 还是一个 RE</li>
+</ul>
+</li>
+<li>L((a|b)*)=(L(a|b))*={a,b}*= { ε, a, b, aa, ab, ba, bb, aaa, . . .}
+<ul>
+<li>a|b 的克林闭包表示任意长度的 ab 串</li>
+</ul>
+</li>
+<li>L(a|a*b) = { a, b, ab, aab, aaab, . . .}
+<ul>
+<li>a 或上 a 的克林闭包 b，表示一个 a 或者是若干个 a 后面连接一个 b</li>
+</ul>
+</li>
+</ul>
+<p>【例】用 RE 描述 C 语言中的无符号整数</p>
+<ul>
+<li>十进制整数的 RE：(1|&hellip;|9)(0|&hellip;|9)*|0
+<ul>
+<li>表示第一个符号是 1-9 之间的一个数，接下来连接若干个 0-9 之间的数字。除此之外，还可以是整数 0。</li>
+</ul>
+</li>
+<li>八进制整数的 RE：0(1|2|3|4|5|6|7)(0|1|2|3|4|5|6|7)*
+<ul>
+<li>表示第一个符号是数字 0，第二个符号是 1-7 之间的一个数字，接下来连接若干个 0-7 之间的数字。</li>
+</ul>
+</li>
+<li>十六进制整数的 RE： 0x(1|…|9|a|…|f|A|…|F)(0|…|9|a|…|f|A|…|F )*
+<ul>
+<li>表示第一个符号是 0，第二个符号是 x，第三个符合是 1-F 之间的一个符号，接下来连接若干个 0-F 之间的符号。</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-re-的代数定律">1.2 RE 的代数定律</h3>
+<table>
+<thead>
+<tr>
+<th>定律</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r | s = s | r</td>
+<td>| 是可以交换的</td>
+</tr>
+<tr>
+<td>r | ( s | t ) = ( r | s ) | t</td>
+<td>| 是可结合的</td>
+</tr>
+<tr>
+<td>r ( s t ) = ( r s ) t</td>
+<td>连接是可结合的</td>
+</tr>
+<tr>
+<td>r ( s | t ) = r s | r t ; ( s | t ) r = s r | t r</td>
+<td>连接对 | 是可分配的</td>
+</tr>
+<tr>
+<td>εr=rε=r</td>
+<td>ε 是连接的单位元</td>
+</tr>
+<tr>
+<td>r* = ( r | s )*</td>
+<td>克林闭包中一定包含 ε</td>
+</tr>
+<tr>
+<td>r ** = r *</td>
+<td>克林闭包具有幂等性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>正则文法与正则表达式等价</strong></p>
+<ul>
+<li>对任何正则文法 G，存在定义同一语言的正则表达式 r</li>
+<li>对任何正则表达式 r，存在生成统一语言的正则文法 G</li>
+</ul>
+<h2 id="2-正则定义">2. 正则定义</h2>
+<p>为了方便起见，我们可以给某些正则表达式命名，然后像使用字母表中的符号一样使用这些名字构造正则表达式。这是正则定义提出的背景。</p>
+<p>正则定义是具有如下形式的定义序列</p>
+<ul>
+<li>d1→r1</li>
+<li>d2→r2</li>
+<li>…</li>
+<li>dn→rn</li>
+</ul>
+<p>r 是正则表达式，d 是给正则表达式起的名字</p>
+<p>其中：</p>
+<ul>
+<li>每个 di 都是一个<strong>新符号</strong>，他们都不在字母表中，而且<strong>各不相同</strong></li>
+<li>每个 ri 是字母表 Σ∪{d1 ,d2 , … ,di-1}上的<strong>正则表达式</strong>
+<ul>
+<li>每个 RE 只能用字母表中的符号或者是给正则表达式起的名字</li>
+</ul>
+</li>
+</ul>
+<p>综上，<strong>正则定义</strong>就是给一些 RE <strong>命名</strong>，并在之后的 RE 中像使用<strong>字母表中的符号</strong>一样使用这些<strong>名字</strong></p>
+<p>【例】C 语言中标识符的正则定义</p>
+<ul>
+<li>digit -&gt; 0|1|2|&hellip;|9</li>
+<li>letter_ -&gt; A|B|&hellip;|a|b|&hellip;|z_</li>
+<li>id -&gt; letter_(letter_|digit)*</li>
+</ul>
+<p>【例】(整数或浮点数)无符号数的正则定义</p>
+<ul>
+<li>digit -&gt; 0|1|2|&hellip;|9</li>
+<li>digits -&gt; digit digit*
+<ul>
+<li>表示长度大于等于一的字符串</li>
+</ul>
+</li>
+<li>optionalFraction -&gt; .digit
+<ul>
+<li>表示可选的小数部分，因为是可以为空串</li>
+</ul>
+</li>
+<li>optionalExponent -&gt; (E(+|-|ε)digits)ε
+<ul>
+<li>表示可选的小数部分，因为是可以为空串</li>
+</ul>
+</li>
+<li>number → digits optionalFraction optionalExponent</li>
+</ul>
+<h2 id="3-有穷自动机">3. 有穷自动机</h2>
+<ul>
+<li>有穷自动机(Finite Automata,FA)由两位神经物理学家 MeCuloch 和 Pitts 于 1948 年首相提出，是对<strong>一类处理系统</strong>建立的<strong>数学模型</strong></li>
+<li>这类系统具有一系列离散的输入输出信息和有穷数目的内部状态(状态：概括了对过去输入信息处理的状况)</li>
+<li>系统只需要根据<strong>当前所处的状态</strong>和<strong>当前面临的输入信息</strong>就可以决定系统的<strong>后继行为</strong>。每当系统处理了当前的输入后，<strong>系统的内部状态也将发生改变</strong></li>
+</ul>
+<p>【例】电梯控制装置</p>
+<ul>
+<li>输入：顾客的乘梯需求（所要到达的层号）</li>
+<li>状态：电梯所处的层数+运动方向</li>
+<li>电梯控制装置并不需要记住先前全部的服务要求，只需要知道电梯当前所处的状态以及还没有满足的所有服务请求</li>
+</ul>
+<h3 id="31-fa-模型">3.1 FA 模型</h3>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-27-17-16-23.png" title="2024-08-27-17-16-23.png" data-thumbnail="/compiler03/images/2024-08-27-17-16-23.png" data-sub-html="<h2> </h2><p>2024-08-27-17-16-23.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-27-17-16-23.png"
+            data-srcset="/compiler03/images/2024-08-27-17-16-23.png, /compiler03/images/2024-08-27-17-16-23.png 1.5x, /compiler03/images/2024-08-27-17-16-23.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-27-17-16-23.png" width="711" height="284" />
+    </a><figcaption class="img-caption">2024-08-27-17-16-23.png</figcaption>
+</figure></p>
+<ul>
+<li><strong>输入带(input tape)</strong>：用来存放输入字符串</li>
+<li><strong>读头(head)</strong>：从左向右逐个读取输入符号，不能修改(只读)，不能往返</li>
+<li><strong>有穷控制器(finite control)</strong>：根据<strong>当前输入符号</strong>和<strong>当前状态</strong>控制转入<strong>下一状态</strong></li>
+</ul>
+<h3 id="32-fa-的表示">3.2 FA 的表示</h3>
+<ul>
+<li><strong>转换图</strong>(Transition Graph)
+<ul>
+<li><strong>结点</strong>：FA 的状态
+<ul>
+<li>初始状态(开始状态)：只有一个，由<strong>start 箭头</strong>指向</li>
+<li>终止状态(接收状态)：可以有多个，用<strong>双圈</strong>表示</li>
+</ul>
+</li>
+<li>带标记的有向边：如果对于输入 a，存在一个从状态 p 到状态 q 的转换，就在 p，q 之间画一条有向边，并标记上 a。即状态 p 是遇到输入 a，则转换状态到 q。</li>
+</ul>
+</li>
+</ul>
+<p>【例】有穷自动机的转换图</p>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-15-55-51.png" title="2024-08-28-15-55-51.png" data-thumbnail="/compiler03/images/2024-08-28-15-55-51.png" data-sub-html="<h2> </h2><p>2024-08-28-15-55-51.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-15-55-51.png"
+            data-srcset="/compiler03/images/2024-08-28-15-55-51.png, /compiler03/images/2024-08-28-15-55-51.png 1.5x, /compiler03/images/2024-08-28-15-55-51.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-15-55-51.png" width="865" height="216" />
+    </a><figcaption class="img-caption">2024-08-28-15-55-51.png</figcaption>
+</figure></p>
+<h3 id="33-fa-定义接收的语言">3.3 FA 定义(接收)的语言</h3>
+<ul>
+<li>给定输入串 x，如果存爱一个对应于串 x 的从初始状态到某个终止状态的转化序列，则称串 x 被该 FA 接收</li>
+<li>由一个有穷自动机 M 接收的所有串构成的集合称为是该<strong>FA 定义的(或接收)语言</strong>，记为 L(M)</li>
+</ul>
+<h3 id="34-最长子串匹配原则">3.4 最长子串匹配原则</h3>
+<p>最长子串匹配原则(Longest String Matching Principle)：当输入串的多个前缀与一个或多个模式匹配时们总是选择最长的进行匹配。</p>
+<p>【例】下图自动机</p>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-03-02.png" title="2024-08-28-16-03-02.png" data-thumbnail="/compiler03/images/2024-08-28-16-03-02.png" data-sub-html="<h2> </h2><p>2024-08-28-16-03-02.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-03-02.png"
+            data-srcset="/compiler03/images/2024-08-28-16-03-02.png, /compiler03/images/2024-08-28-16-03-02.png 1.5x, /compiler03/images/2024-08-28-16-03-02.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-03-02.png" width="720" height="286" />
+    </a><figcaption class="img-caption">2024-08-28-16-03-02.png</figcaption>
+</figure></p>
+<ul>
+<li>终态 1 表示匹配到<code>&lt;</code></li>
+<li>终态 2 表示匹配到<code>&lt;=</code></li>
+<li>当输入串为<code>&lt;=</code>，它的前缀与终态 1 和 2 都匹配上了，此时，选择终态 2 进行匹配</li>
+</ul>
+<h2 id="4-有穷自动机的分类">4. 有穷自动机的分类</h2>
+<ul>
+<li>确定的 FA(Deterministic finite automata,DFA)</li>
+<li>非确定的 FA(Nodeterministic finite automata,NFA)</li>
+</ul>
+<h3 id="41-确定的有穷自动机dfa">4.1 确定的有穷自动机(DFA)</h3>
+<p>$$
+M=(S，Σ，δ，s0，F)
+$$</p>
+<ul>
+<li>S：<strong>有穷状态集</strong></li>
+<li>Σ：<strong>输入字母表</strong>，即输入符号集合。假设 ε 不是 Σ 中的元素</li>
+<li>δ：将 S×Σ 映射到 S 的<strong>转换函数</strong>。 ∀s∈S, a∈Σ, δ(s,a)表示从状态 s 出发，沿着标记为 a 的边所能到达的状态</li>
+<li>s0：<strong>开始状态(或初识状态)</strong>，s0 ∈ S</li>
+<li>F：<strong>接收状态集(或终止状态集)</strong>，F⊆ S</li>
+</ul>
+<p>【例】DFA</p>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-18-34.png" title="2024-08-28-16-18-34.png" data-thumbnail="/compiler03/images/2024-08-28-16-18-34.png" data-sub-html="<h2> </h2><p>2024-08-28-16-18-34.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-18-34.png"
+            data-srcset="/compiler03/images/2024-08-28-16-18-34.png, /compiler03/images/2024-08-28-16-18-34.png 1.5x, /compiler03/images/2024-08-28-16-18-34.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-18-34.png" width="1127" height="485" />
+    </a><figcaption class="img-caption">2024-08-28-16-18-34.png</figcaption>
+</figure></p>
+<ul>
+<li>S：{0，1，2，3}</li>
+<li>Σ：{a，b}</li>
+<li>δ：转换函数。</li>
+</ul>
+<h3 id="42-非确定的有穷自动机nfa">4.2 非确定的有穷自动机(NFA)</h3>
+<p>于 DFA 的区别是：</p>
+<ul>
+<li>δ：将 S×Σ 映射到 2^S 的转换函数。∀s∈S, a∈Σ, δ(s,a)表示从状态 s 出发，沿着标记为 a 的边所能到达的<strong>状态集合</strong>。即从状态 s 出发，沿着标记为 a 的边所能到达的<strong>状态不唯一</strong>。</li>
+</ul>
+<p>【例】NFA</p>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-23-49.png" title="2024-08-28-16-23-49.png" data-thumbnail="/compiler03/images/2024-08-28-16-23-49.png" data-sub-html="<h2> </h2><p>2024-08-28-16-23-49.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-23-49.png"
+            data-srcset="/compiler03/images/2024-08-28-16-23-49.png, /compiler03/images/2024-08-28-16-23-49.png 1.5x, /compiler03/images/2024-08-28-16-23-49.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-23-49.png" width="990" height="474" />
+    </a><figcaption class="img-caption">2024-08-28-16-23-49.png</figcaption>
+</figure></p>
+<p>当初始状态 0 遇到符号 a，它所能到到达的状态集合包括状态 0 和状态 1 两个元素</p>
+<h3 id="43-dfa-和-nfa-的等价性">4.3 DFA 和 NFA 的等价性</h3>
+<ul>
+<li>对于任何 NFA，存在定义同一语言的 DFA</li>
+<li>对于任何 DFA，存在定义同一语言的 NFA</li>
+</ul>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-36-42.png" title="2024-08-28-16-36-42.png" data-thumbnail="/compiler03/images/2024-08-28-16-36-42.png" data-sub-html="<h2> </h2><p>2024-08-28-16-36-42.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-36-42.png"
+            data-srcset="/compiler03/images/2024-08-28-16-36-42.png, /compiler03/images/2024-08-28-16-36-42.png 1.5x, /compiler03/images/2024-08-28-16-36-42.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-36-42.png" width="1101" height="493" />
+    </a><figcaption class="img-caption">2024-08-28-16-36-42.png</figcaption>
+</figure></p>
+<ul>
+<li>上图的 DFA 和 NFA 都表示以 abb 结尾的串，表示同一 RE</li>
+</ul>
+<h3 id="44-带有空边的-nfa">4.4 带有空边的 NFA</h3>
+<p>有向边上可以标记空串的 NFA，叫做带有“ε-边”的 NFA</p>
+<p>【例】带有“ε-边”的 NFA</p>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-39-37.png" title="2024-08-28-16-39-37.png" data-thumbnail="/compiler03/images/2024-08-28-16-39-37.png" data-sub-html="<h2> </h2><p>2024-08-28-16-39-37.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-39-37.png"
+            data-srcset="/compiler03/images/2024-08-28-16-39-37.png, /compiler03/images/2024-08-28-16-39-37.png 1.5x, /compiler03/images/2024-08-28-16-39-37.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-39-37.png" width="942" height="218" />
+    </a><figcaption class="img-caption">2024-08-28-16-39-37.png</figcaption>
+</figure></p>
+<ul>
+<li>状态 A 和状态 B 之间的有向边标记为 ε ，表示状态 A 不需要任何输入就可以直接进入状态 B</li>
+</ul>
+<h3 id="45-带有和不带有空边的-nfa-的等价性">4.5 带有和不带有空边的 NFA 的等价性</h3>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-41-36.png" title="2024-08-28-16-41-36.png" data-thumbnail="/compiler03/images/2024-08-28-16-41-36.png" data-sub-html="<h2> </h2><p>2024-08-28-16-41-36.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-41-36.png"
+            data-srcset="/compiler03/images/2024-08-28-16-41-36.png, /compiler03/images/2024-08-28-16-41-36.png 1.5x, /compiler03/images/2024-08-28-16-41-36.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-41-36.png" width="970" height="423" />
+    </a><figcaption class="img-caption">2024-08-28-16-41-36.png</figcaption>
+</figure></p>
+<h3 id="46-dfa-的算法实现">4.6 DFA 的算法实现</h3>
+<h2 id="5-从-re-到-dfa-的转换">5. 从 RE 到 DFA 的转换</h2>
+<p>
+<figure><a class="lightgallery" href="/compiler03/images/2024-08-28-16-46-33.png" title="2024-08-28-16-46-33.png" data-thumbnail="/compiler03/images/2024-08-28-16-46-33.png" data-sub-html="<h2> </h2><p>2024-08-28-16-46-33.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compiler03/images/2024-08-28-16-46-33.png"
+            data-srcset="/compiler03/images/2024-08-28-16-46-33.png, /compiler03/images/2024-08-28-16-46-33.png 1.5x, /compiler03/images/2024-08-28-16-46-33.png 2x"
+            data-sizes="auto"
+            alt="/compiler03/images/2024-08-28-16-46-33.png" width="726" height="196" />
+    </a><figcaption class="img-caption">2024-08-28-16-46-33.png</figcaption>
+</figure></p>
+<h3 id="51-从-re-到-nfa-的转换">5.1 从 RE 到 NFA 的转换</h3>
+<h3 id="52-从-nfa-到-dfa-的转换">5.2 从 NFA 到 DFA 的转换</h3>
+<h3 id="53-nfa-到-dfa-的算法实现">5.3 NFA 到 DFA 的算法实现</h3>
+<h2 id="6-识别单词的-dfa">6. 识别单词的 DFA</h2>
+<h3 id="61-识别标识符的-dfa">6.1 识别标识符的 DFA</h3>
+<h3 id="62-识别无符号数的-dfa">6.2 识别无符号数的 DFA</h3>
+<h3 id="63-识别各进制无符号整数的-dfa">6.3 识别各进制无符号整数的 DFA</h3>
+<h3 id="64-识别多行注释的-dfa">6.4 识别多行注释的 DFA</h3>
+<h3 id="65-识别单词的-dfa">6.5 识别单词的 DFA</h3>
+<h2 id="7词法分析器的错误处理">7.词法分析器的错误处理</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-08-27</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compiler03/" data-title="编译原理笔记03-词法分析" data-hashtags="note"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compiler03/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compiler03/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compiler03/" data-title="编译原理笔记03-词法分析"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compiler03/" data-title="编译原理笔记03-词法分析"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/note/">Note</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/compiler_02/" class="prev" rel="prev" title="编译原理笔记02-程序设计语言及其文法"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>编译原理笔记02-程序设计语言及其文法</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+
+
+<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+
+
+
+
+<section>
+    
+    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+        
+        <span id="busuanzi_value_site_pv"></span>
+    </span>
+    
+
+    
+    &nbsp;|&nbsp;
+    
+
+    
+    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+        
+        <span id="busuanzi_value_site_uv"></span>
+    </span>
+    
+</section>
+
+
+
+
+
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
