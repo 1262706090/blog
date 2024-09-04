@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Reading - 标签 - ykzzo&#39;s Blog</title>
+        <link>http://localhost:1313/tags/reading/</link>
+        <description>Reading - 标签 - ykzzo&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>your_email (YKZZO)</managingEditor>
+            <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Sun, 01 Sep 2024 21:34:31 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/tags/reading/" rel="self" type="application/rss+xml" /><item>
+    <title>Non-alcoholic drinks: the sober truth</title>
+    <link>http://localhost:1313/non-alcoholic_drinks/</link>
+    <pubDate>Sun, 01 Sep 2024 21:34:31 &#43;0800</pubDate>
+    <author>YK</author>
+    <guid>http://localhost:1313/non-alcoholic_drinks/</guid>
+    <description><![CDATA[Non-alcoholic drinks: the sober truth]]></description>
+</item>
+</channel>
+</rss>

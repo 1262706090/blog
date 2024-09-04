@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>编译原理笔记02-程序设计语言及其文法 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compiler_02/">
+        <title>编译原理笔记02-程序设计语言及其文法 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compiler02/">
   <meta property="og:site_name" content="ykzzo&#39;s Blog">
   <meta property="og:title" content="编译原理笔记02-程序设计语言及其文法">
   <meta property="og:description" content="编译原理笔记02-程序设计语言及其文法">
@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="编译原理笔记02-程序设计语言及其文法">
   <meta name="twitter:description" content="编译原理笔记02-程序设计语言及其文法">
 <meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compiler_02/" /><link rel="prev" href="http://localhost:1313/compiler_01/" /><link rel="next" href="http://localhost:1313/compiler03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compiler02/" /><link rel="prev" href="http://localhost:1313/compiler01/" /><link rel="next" href="http://localhost:1313/compiler03/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
     {
@@ -31,9 +31,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/compiler_02\/"
+            "@id": "http:\/\/localhost:1313\/compiler02\/"
         },"genre": "posts","keywords": "note","wordcount":  3434 ,
-        "url": "http:\/\/localhost:1313\/compiler_02\/","datePublished": "2024-08-23T16:39:14+08:00","dateModified": "2024-08-28T16:39:14+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/compiler02\/","datePublished": "2024-08-23T16:39:14+08:00","dateModified": "2024-08-28T16:39:14+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -231,14 +231,14 @@
 <h3 id="21-什么是文法">2.1 什么是文法</h3>
 <p><strong>文法就是一套语言规则</strong></p>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-23-18-35-57.png" title="2024-08-23-18-35-57.png" data-thumbnail="/compiler_02/images/2024-08-23-18-35-57.png" data-sub-html="<h2> </h2><p>2024-08-23-18-35-57.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-23-18-35-57.png" title="2024-08-23-18-35-57.png" data-thumbnail="/compiler02/images/2024-08-23-18-35-57.png" data-sub-html="<h2> </h2><p>2024-08-23-18-35-57.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-23-18-35-57.png"
-            data-srcset="/compiler_02/images/2024-08-23-18-35-57.png, /compiler_02/images/2024-08-23-18-35-57.png 1.5x, /compiler_02/images/2024-08-23-18-35-57.png 2x"
+            data-src="/compiler02/images/2024-08-23-18-35-57.png"
+            data-srcset="/compiler02/images/2024-08-23-18-35-57.png, /compiler02/images/2024-08-23-18-35-57.png 1.5x, /compiler02/images/2024-08-23-18-35-57.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-23-18-35-57.png" width="865" height="444" />
+            alt="/compiler02/images/2024-08-23-18-35-57.png" width="865" height="444" />
     </a><figcaption class="img-caption">2024-08-23-18-35-57.png</figcaption>
 </figure></p>
 <ul>
@@ -280,26 +280,26 @@ G=（VT，VN，P，S）</p>
 </li>
 </ul>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-23-19-08-40.png" title="2024-08-23-19-08-40.png" data-thumbnail="/compiler_02/images/2024-08-23-19-08-40.png" data-sub-html="<h2> </h2><p>2024-08-23-19-08-40.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-23-19-08-40.png" title="2024-08-23-19-08-40.png" data-thumbnail="/compiler02/images/2024-08-23-19-08-40.png" data-sub-html="<h2> </h2><p>2024-08-23-19-08-40.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-23-19-08-40.png"
-            data-srcset="/compiler_02/images/2024-08-23-19-08-40.png, /compiler_02/images/2024-08-23-19-08-40.png 1.5x, /compiler_02/images/2024-08-23-19-08-40.png 2x"
+            data-src="/compiler02/images/2024-08-23-19-08-40.png"
+            data-srcset="/compiler02/images/2024-08-23-19-08-40.png, /compiler02/images/2024-08-23-19-08-40.png 1.5x, /compiler02/images/2024-08-23-19-08-40.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-23-19-08-40.png" width="863" height="234" />
+            alt="/compiler02/images/2024-08-23-19-08-40.png" width="863" height="234" />
     </a><figcaption class="img-caption">2024-08-23-19-08-40.png</figcaption>
 </figure></p>
 <h3 id="23-产生式的简写">2.3 产生式的简写</h3>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-23-19-20-23.png" title="2024-08-23-19-20-23.png" data-thumbnail="/compiler_02/images/2024-08-23-19-20-23.png" data-sub-html="<h2> </h2><p>2024-08-23-19-20-23.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-23-19-20-23.png" title="2024-08-23-19-20-23.png" data-thumbnail="/compiler02/images/2024-08-23-19-20-23.png" data-sub-html="<h2> </h2><p>2024-08-23-19-20-23.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-23-19-20-23.png"
-            data-srcset="/compiler_02/images/2024-08-23-19-20-23.png, /compiler_02/images/2024-08-23-19-20-23.png 1.5x, /compiler_02/images/2024-08-23-19-20-23.png 2x"
+            data-src="/compiler02/images/2024-08-23-19-20-23.png"
+            data-srcset="/compiler02/images/2024-08-23-19-20-23.png, /compiler02/images/2024-08-23-19-20-23.png 1.5x, /compiler02/images/2024-08-23-19-20-23.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-23-19-20-23.png" width="888" height="197" />
+            alt="/compiler02/images/2024-08-23-19-20-23.png" width="888" height="197" />
     </a><figcaption class="img-caption">2024-08-23-19-20-23.png</figcaption>
 </figure></p>
 <h3 id="24-符号约定">2.4 符号约定</h3>
@@ -350,26 +350,26 @@ G=（VT，VN，P，S）</p>
 </ul>
 <p>简而言是，就是用<strong>产生式的右部替换产生式的左部</strong>。
 
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-24-11-07-22.png" title="2024-08-24-11-07-22.png" data-thumbnail="/compiler_02/images/2024-08-24-11-07-22.png" data-sub-html="<h2> </h2><p>2024-08-24-11-07-22.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-24-11-07-22.png" title="2024-08-24-11-07-22.png" data-thumbnail="/compiler02/images/2024-08-24-11-07-22.png" data-sub-html="<h2> </h2><p>2024-08-24-11-07-22.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-24-11-07-22.png"
-            data-srcset="/compiler_02/images/2024-08-24-11-07-22.png, /compiler_02/images/2024-08-24-11-07-22.png 1.5x, /compiler_02/images/2024-08-24-11-07-22.png 2x"
+            data-src="/compiler02/images/2024-08-24-11-07-22.png"
+            data-srcset="/compiler02/images/2024-08-24-11-07-22.png, /compiler02/images/2024-08-24-11-07-22.png 1.5x, /compiler02/images/2024-08-24-11-07-22.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-24-11-07-22.png" width="889" height="341" />
+            alt="/compiler02/images/2024-08-24-11-07-22.png" width="889" height="341" />
     </a><figcaption class="img-caption">2024-08-24-11-07-22.png</figcaption>
 </figure></p>
 <p>【例】推导与归约
 
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-24-11-08-28.png" title="2024-08-24-11-08-28.png" data-thumbnail="/compiler_02/images/2024-08-24-11-08-28.png" data-sub-html="<h2> </h2><p>2024-08-24-11-08-28.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-24-11-08-28.png" title="2024-08-24-11-08-28.png" data-thumbnail="/compiler02/images/2024-08-24-11-08-28.png" data-sub-html="<h2> </h2><p>2024-08-24-11-08-28.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-24-11-08-28.png"
-            data-srcset="/compiler_02/images/2024-08-24-11-08-28.png, /compiler_02/images/2024-08-24-11-08-28.png 1.5x, /compiler_02/images/2024-08-24-11-08-28.png 2x"
+            data-src="/compiler02/images/2024-08-24-11-08-28.png"
+            data-srcset="/compiler02/images/2024-08-24-11-08-28.png, /compiler02/images/2024-08-24-11-08-28.png 1.5x, /compiler02/images/2024-08-24-11-08-28.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-24-11-08-28.png" width="876" height="384" />
+            alt="/compiler02/images/2024-08-24-11-08-28.png" width="876" height="384" />
     </a><figcaption class="img-caption">2024-08-24-11-08-28.png</figcaption>
 </figure></p>
 <ul>
@@ -462,14 +462,14 @@ G=（VT，VN，P，S）</p>
 <li><strong>逐级包含</strong></li>
 </ul>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-26-09-38-16.png" title="2024-08-26-09-38-16.png" data-thumbnail="/compiler_02/images/2024-08-26-09-38-16.png" data-sub-html="<h2> </h2><p>2024-08-26-09-38-16.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-26-09-38-16.png" title="2024-08-26-09-38-16.png" data-thumbnail="/compiler02/images/2024-08-26-09-38-16.png" data-sub-html="<h2> </h2><p>2024-08-26-09-38-16.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-26-09-38-16.png"
-            data-srcset="/compiler_02/images/2024-08-26-09-38-16.png, /compiler_02/images/2024-08-26-09-38-16.png 1.5x, /compiler_02/images/2024-08-26-09-38-16.png 2x"
+            data-src="/compiler02/images/2024-08-26-09-38-16.png"
+            data-srcset="/compiler02/images/2024-08-26-09-38-16.png, /compiler02/images/2024-08-26-09-38-16.png 1.5x, /compiler02/images/2024-08-26-09-38-16.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-26-09-38-16.png" width="651" height="294" />
+            alt="/compiler02/images/2024-08-26-09-38-16.png" width="651" height="294" />
     </a><figcaption class="img-caption">2024-08-26-09-38-16.png</figcaption>
 </figure></p>
 <h2 id="5-cfg-的分析树">5. CFG 的分析树</h2>
@@ -481,14 +481,14 @@ G=（VT，VN，P，S）</p>
 <p>【例】</p>
 <p>分析树是推导的图形化表示</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-26-09-58-35.png" title="2024-08-26-09-58-35.png" data-thumbnail="/compiler_02/images/2024-08-26-09-58-35.png" data-sub-html="<h2> </h2><p>2024-08-26-09-58-35.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-26-09-58-35.png" title="2024-08-26-09-58-35.png" data-thumbnail="/compiler02/images/2024-08-26-09-58-35.png" data-sub-html="<h2> </h2><p>2024-08-26-09-58-35.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-26-09-58-35.png"
-            data-srcset="/compiler_02/images/2024-08-26-09-58-35.png, /compiler_02/images/2024-08-26-09-58-35.png 1.5x, /compiler_02/images/2024-08-26-09-58-35.png 2x"
+            data-src="/compiler02/images/2024-08-26-09-58-35.png"
+            data-srcset="/compiler02/images/2024-08-26-09-58-35.png, /compiler02/images/2024-08-26-09-58-35.png 1.5x, /compiler02/images/2024-08-26-09-58-35.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-26-09-58-35.png" width="617" height="301" />
+            alt="/compiler02/images/2024-08-26-09-58-35.png" width="617" height="301" />
     </a><figcaption class="img-caption">2024-08-26-09-58-35.png</figcaption>
 </figure></p>
 <p>推导过程：E =&gt; -E =&gt; -(E) =&gt; -(E+E) =&gt; -(id+id)</p>
@@ -511,14 +511,14 @@ G=（VT，VN，P，S）</p>
 </ul>
 <p>【例 1.】短语与直接短语</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-26-10-07-11.png" title="2024-08-26-10-07-11.png" data-thumbnail="/compiler_02/images/2024-08-26-10-07-11.png" data-sub-html="<h2> </h2><p>2024-08-26-10-07-11.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-26-10-07-11.png" title="2024-08-26-10-07-11.png" data-thumbnail="/compiler02/images/2024-08-26-10-07-11.png" data-sub-html="<h2> </h2><p>2024-08-26-10-07-11.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-26-10-07-11.png"
-            data-srcset="/compiler_02/images/2024-08-26-10-07-11.png, /compiler_02/images/2024-08-26-10-07-11.png 1.5x, /compiler_02/images/2024-08-26-10-07-11.png 2x"
+            data-src="/compiler02/images/2024-08-26-10-07-11.png"
+            data-srcset="/compiler02/images/2024-08-26-10-07-11.png, /compiler02/images/2024-08-26-10-07-11.png 1.5x, /compiler02/images/2024-08-26-10-07-11.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-26-10-07-11.png" width="802" height="301" />
+            alt="/compiler02/images/2024-08-26-10-07-11.png" width="802" height="301" />
     </a><figcaption class="img-caption">2024-08-26-10-07-11.png</figcaption>
 </figure></p>
 <ul>
@@ -528,28 +528,28 @@ G=（VT，VN，P，S）</p>
 <p>【例 2.】</p>
 <p>产生式的右部不一定是给定句型的直接短语</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-26-10-10-01.png" title="2024-08-26-10-10-01.png" data-thumbnail="/compiler_02/images/2024-08-26-10-10-01.png" data-sub-html="<h2> </h2><p>2024-08-26-10-10-01.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-26-10-10-01.png" title="2024-08-26-10-10-01.png" data-thumbnail="/compiler02/images/2024-08-26-10-10-01.png" data-sub-html="<h2> </h2><p>2024-08-26-10-10-01.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-26-10-10-01.png"
-            data-srcset="/compiler_02/images/2024-08-26-10-10-01.png, /compiler_02/images/2024-08-26-10-10-01.png 1.5x, /compiler_02/images/2024-08-26-10-10-01.png 2x"
+            data-src="/compiler02/images/2024-08-26-10-10-01.png"
+            data-srcset="/compiler02/images/2024-08-26-10-10-01.png, /compiler02/images/2024-08-26-10-10-01.png 1.5x, /compiler02/images/2024-08-26-10-10-01.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-26-10-10-01.png" width="857" height="435" />
+            alt="/compiler02/images/2024-08-26-10-10-01.png" width="857" height="435" />
     </a><figcaption class="img-caption">2024-08-26-10-10-01.png</figcaption>
 </figure></p>
 <h3 id="52-二义性文法">5.2 二义性文法</h3>
 <p>如果一个文法可以为某个句子生成多棵分析树，则称这个文法是二义性的。</p>
 <p>【例】二义性文法</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_02/images/2024-08-26-10-20-29.png" title="2024-08-26-10-20-29.png" data-thumbnail="/compiler_02/images/2024-08-26-10-20-29.png" data-sub-html="<h2> </h2><p>2024-08-26-10-20-29.png</p>">
+<figure><a class="lightgallery" href="/compiler02/images/2024-08-26-10-20-29.png" title="2024-08-26-10-20-29.png" data-thumbnail="/compiler02/images/2024-08-26-10-20-29.png" data-sub-html="<h2> </h2><p>2024-08-26-10-20-29.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_02/images/2024-08-26-10-20-29.png"
-            data-srcset="/compiler_02/images/2024-08-26-10-20-29.png, /compiler_02/images/2024-08-26-10-20-29.png 1.5x, /compiler_02/images/2024-08-26-10-20-29.png 2x"
+            data-src="/compiler02/images/2024-08-26-10-20-29.png"
+            data-srcset="/compiler02/images/2024-08-26-10-20-29.png, /compiler02/images/2024-08-26-10-20-29.png 1.5x, /compiler02/images/2024-08-26-10-20-29.png 2x"
             data-sizes="auto"
-            alt="/compiler_02/images/2024-08-26-10-20-29.png" width="835" height="447" />
+            alt="/compiler02/images/2024-08-26-10-20-29.png" width="835" height="447" />
     </a><figcaption class="img-caption">2024-08-26-10-20-29.png</figcaption>
 </figure></p>
 <h3 id="53-二义性文法的判定">5.3 二义性文法的判定</h3>
@@ -567,7 +567,7 @@ G=（VT，VN，P，S）</p>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compiler_02/" data-title="编译原理笔记02-程序设计语言及其文法" data-hashtags="note"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compiler_02/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compiler_02/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compiler_02/" data-title="编译原理笔记02-程序设计语言及其文法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compiler_02/" data-title="编译原理笔记02-程序设计语言及其文法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compiler02/" data-title="编译原理笔记02-程序设计语言及其文法" data-hashtags="note"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compiler02/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compiler02/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compiler02/" data-title="编译原理笔记02-程序设计语言及其文法"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compiler02/" data-title="编译原理笔记02-程序设计语言及其文法"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -579,7 +579,7 @@ G=（VT，VN，P，S）</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/compiler_01/" class="prev" rel="prev" title="编译原理笔记01-绪论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>编译原理笔记01-绪论</a>
+    <div class="post-nav"><a href="/compiler01/" class="prev" rel="prev" title="编译原理笔记01-绪论"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>编译原理笔记01-绪论</a>
             <a href="/compiler03/" class="next" rel="next" title="编译原理笔记03-词法分析">编译原理笔记03-词法分析<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

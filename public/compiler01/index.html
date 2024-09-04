@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>编译原理笔记01-绪论 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compiler_01/">
+        <title>编译原理笔记01-绪论 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compiler01/">
   <meta property="og:site_name" content="ykzzo&#39;s Blog">
   <meta property="og:title" content="编译原理笔记01-绪论">
   <meta property="og:description" content="编译原理笔记01-绪论">
@@ -21,7 +21,7 @@
   <meta name="twitter:title" content="编译原理笔记01-绪论">
   <meta name="twitter:description" content="编译原理笔记01-绪论">
 <meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compiler_01/" /><link rel="prev" href="http://localhost:1313/compilerconstruction/" /><link rel="next" href="http://localhost:1313/compiler_02/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compiler01/" /><link rel="prev" href="http://localhost:1313/compilerconstruction/" /><link rel="next" href="http://localhost:1313/compiler02/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
     {
@@ -31,9 +31,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/compiler_01\/"
+            "@id": "http:\/\/localhost:1313\/compiler01\/"
         },"genre": "posts","keywords": "note","wordcount":  1582 ,
-        "url": "http:\/\/localhost:1313\/compiler_01\/","datePublished": "2024-08-23T14:02:28+08:00","dateModified": "2024-08-23T14:02:28+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/compiler01\/","datePublished": "2024-08-23T14:02:28+08:00","dateModified": "2024-08-23T14:02:28+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -153,14 +153,14 @@
             </div><div class="content" id="content"><h2 id="1-什么是编译">1. 什么是编译</h2>
 <p>编译就是将<strong>高级语言</strong>(源语言)翻译成<strong>汇编语言或机器语言</strong>(目标语言)的过程</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-08-09.png" title="2024-08-23-14-08-09.png" data-thumbnail="/compiler_01/images/2024-08-23-14-08-09.png" data-sub-html="<h2> </h2><p>2024-08-23-14-08-09.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-08-09.png" title="2024-08-23-14-08-09.png" data-thumbnail="/compiler01/images/2024-08-23-14-08-09.png" data-sub-html="<h2> </h2><p>2024-08-23-14-08-09.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-08-09.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-08-09.png, /compiler_01/images/2024-08-23-14-08-09.png 1.5x, /compiler_01/images/2024-08-23-14-08-09.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-08-09.png"
+            data-srcset="/compiler01/images/2024-08-23-14-08-09.png, /compiler01/images/2024-08-23-14-08-09.png 1.5x, /compiler01/images/2024-08-23-14-08-09.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-08-09.png" width="870" height="470" />
+            alt="/compiler01/images/2024-08-23-14-08-09.png" width="870" height="470" />
     </a><figcaption class="img-caption">2024-08-23-14-08-09.png</figcaption>
 </figure></p>
 <h2 id="2-编译系统的结构">2. 编译系统的结构</h2>
@@ -168,28 +168,28 @@
 <li>
 <p>编译系统：
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-11-38.png" title="2024-08-23-14-11-38.png" data-thumbnail="/compiler_01/images/2024-08-23-14-11-38.png" data-sub-html="<h2> </h2><p>2024-08-23-14-11-38.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-11-38.png" title="2024-08-23-14-11-38.png" data-thumbnail="/compiler01/images/2024-08-23-14-11-38.png" data-sub-html="<h2> </h2><p>2024-08-23-14-11-38.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-11-38.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-11-38.png, /compiler_01/images/2024-08-23-14-11-38.png 1.5x, /compiler_01/images/2024-08-23-14-11-38.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-11-38.png"
+            data-srcset="/compiler01/images/2024-08-23-14-11-38.png, /compiler01/images/2024-08-23-14-11-38.png 1.5x, /compiler01/images/2024-08-23-14-11-38.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-11-38.png" width="870" height="274" />
+            alt="/compiler01/images/2024-08-23-14-11-38.png" width="870" height="274" />
     </a><figcaption class="img-caption">2024-08-23-14-11-38.png</figcaption>
 </figure></p>
 </li>
 <li>
 <p>编译器：
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-14-33.png" title="2024-08-23-14-14-33.png" data-thumbnail="/compiler_01/images/2024-08-23-14-14-33.png" data-sub-html="<h2> </h2><p>2024-08-23-14-14-33.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-14-33.png" title="2024-08-23-14-14-33.png" data-thumbnail="/compiler01/images/2024-08-23-14-14-33.png" data-sub-html="<h2> </h2><p>2024-08-23-14-14-33.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-14-33.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-14-33.png, /compiler_01/images/2024-08-23-14-14-33.png 1.5x, /compiler_01/images/2024-08-23-14-14-33.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-14-33.png"
+            data-srcset="/compiler01/images/2024-08-23-14-14-33.png, /compiler01/images/2024-08-23-14-14-33.png 1.5x, /compiler01/images/2024-08-23-14-14-33.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-14-33.png" width="865" height="540" />
+            alt="/compiler01/images/2024-08-23-14-14-33.png" width="865" height="540" />
     </a><figcaption class="img-caption">2024-08-23-14-14-33.png</figcaption>
 </figure></p>
 </li>
@@ -220,14 +220,14 @@
 <li><strong>&quot;;&quot;</strong>：种别码是 <strong>SEMICOLON</strong>，属性值是 <strong>&quot;;&quot;</strong>。</li>
 </ul>
 <p>
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-44-45.png" title="2024-08-23-14-44-45.png" data-thumbnail="/compiler_01/images/2024-08-23-14-44-45.png" data-sub-html="<h2> </h2><p>2024-08-23-14-44-45.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-44-45.png" title="2024-08-23-14-44-45.png" data-thumbnail="/compiler01/images/2024-08-23-14-44-45.png" data-sub-html="<h2> </h2><p>2024-08-23-14-44-45.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-44-45.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-44-45.png, /compiler_01/images/2024-08-23-14-44-45.png 1.5x, /compiler_01/images/2024-08-23-14-44-45.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-44-45.png"
+            data-srcset="/compiler01/images/2024-08-23-14-44-45.png, /compiler01/images/2024-08-23-14-44-45.png 1.5x, /compiler01/images/2024-08-23-14-44-45.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-44-45.png" width="889" height="379" />
+            alt="/compiler01/images/2024-08-23-14-44-45.png" width="889" height="379" />
     </a><figcaption class="img-caption">2024-08-23-14-44-45.png</figcaption>
 </figure></p>
 <h2 id="4-语法分析概述">4. 语法分析概述</h2>
@@ -239,26 +239,26 @@
 <ul>
 <li>赋值语句的语法分析树
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-58-19.png" title="2024-08-23-14-58-19.png" data-thumbnail="/compiler_01/images/2024-08-23-14-58-19.png" data-sub-html="<h2> </h2><p>2024-08-23-14-58-19.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-58-19.png" title="2024-08-23-14-58-19.png" data-thumbnail="/compiler01/images/2024-08-23-14-58-19.png" data-sub-html="<h2> </h2><p>2024-08-23-14-58-19.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-58-19.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-58-19.png, /compiler_01/images/2024-08-23-14-58-19.png 1.5x, /compiler_01/images/2024-08-23-14-58-19.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-58-19.png"
+            data-srcset="/compiler01/images/2024-08-23-14-58-19.png, /compiler01/images/2024-08-23-14-58-19.png 1.5x, /compiler01/images/2024-08-23-14-58-19.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-58-19.png" width="808" height="488" />
+            alt="/compiler01/images/2024-08-23-14-58-19.png" width="808" height="488" />
     </a><figcaption class="img-caption">2024-08-23-14-58-19.png</figcaption>
 </figure></li>
 <li>变量声明语句的分析树
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-14-59-10.png" title="2024-08-23-14-59-10.png" data-thumbnail="/compiler_01/images/2024-08-23-14-59-10.png" data-sub-html="<h2> </h2><p>2024-08-23-14-59-10.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-14-59-10.png" title="2024-08-23-14-59-10.png" data-thumbnail="/compiler01/images/2024-08-23-14-59-10.png" data-sub-html="<h2> </h2><p>2024-08-23-14-59-10.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-14-59-10.png"
-            data-srcset="/compiler_01/images/2024-08-23-14-59-10.png, /compiler_01/images/2024-08-23-14-59-10.png 1.5x, /compiler_01/images/2024-08-23-14-59-10.png 2x"
+            data-src="/compiler01/images/2024-08-23-14-59-10.png"
+            data-srcset="/compiler01/images/2024-08-23-14-59-10.png, /compiler01/images/2024-08-23-14-59-10.png 1.5x, /compiler01/images/2024-08-23-14-59-10.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-14-59-10.png" width="864" height="422" />
+            alt="/compiler01/images/2024-08-23-14-59-10.png" width="864" height="422" />
     </a><figcaption class="img-caption">2024-08-23-14-59-10.png</figcaption>
 </figure></li>
 </ul>
@@ -281,14 +281,14 @@
 </ul>
 <p>标识符的属性信息有：
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-15-34-05.png" title="2024-08-23-15-34-05.png" data-thumbnail="/compiler_01/images/2024-08-23-15-34-05.png" data-sub-html="<h2> </h2><p>2024-08-23-15-34-05.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-15-34-05.png" title="2024-08-23-15-34-05.png" data-thumbnail="/compiler01/images/2024-08-23-15-34-05.png" data-sub-html="<h2> </h2><p>2024-08-23-15-34-05.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-15-34-05.png"
-            data-srcset="/compiler_01/images/2024-08-23-15-34-05.png, /compiler_01/images/2024-08-23-15-34-05.png 1.5x, /compiler_01/images/2024-08-23-15-34-05.png 2x"
+            data-src="/compiler01/images/2024-08-23-15-34-05.png"
+            data-srcset="/compiler01/images/2024-08-23-15-34-05.png, /compiler01/images/2024-08-23-15-34-05.png 1.5x, /compiler01/images/2024-08-23-15-34-05.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-15-34-05.png" width="895" height="370" />
+            alt="/compiler01/images/2024-08-23-15-34-05.png" width="895" height="370" />
     </a><figcaption class="img-caption">2024-08-23-15-34-05.png</figcaption>
 </figure></p>
 <p><strong>符号表</strong></p>
@@ -311,14 +311,14 @@
 <h3 id="52-语义检查">5.2 语义检查</h3>
 <p><strong>常见语义错误：</strong>
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-15-47-58.png" title="2024-08-23-15-47-58.png" data-thumbnail="/compiler_01/images/2024-08-23-15-47-58.png" data-sub-html="<h2> </h2><p>2024-08-23-15-47-58.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-15-47-58.png" title="2024-08-23-15-47-58.png" data-thumbnail="/compiler01/images/2024-08-23-15-47-58.png" data-sub-html="<h2> </h2><p>2024-08-23-15-47-58.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-15-47-58.png"
-            data-srcset="/compiler_01/images/2024-08-23-15-47-58.png, /compiler_01/images/2024-08-23-15-47-58.png 1.5x, /compiler_01/images/2024-08-23-15-47-58.png 2x"
+            data-src="/compiler01/images/2024-08-23-15-47-58.png"
+            data-srcset="/compiler01/images/2024-08-23-15-47-58.png, /compiler01/images/2024-08-23-15-47-58.png 1.5x, /compiler01/images/2024-08-23-15-47-58.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-15-47-58.png" width="849" height="430" />
+            alt="/compiler01/images/2024-08-23-15-47-58.png" width="849" height="430" />
     </a><figcaption class="img-caption">2024-08-23-15-47-58.png</figcaption>
 </figure></p>
 <h2 id="6-中间代码生成">6. 中间代码生成</h2>
@@ -337,40 +337,40 @@
     </div>
 <p><strong>常用的三地址指令：</strong>
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-16-04-22.png" title="2024-08-23-16-04-22.png" data-thumbnail="/compiler_01/images/2024-08-23-16-04-22.png" data-sub-html="<h2> </h2><p>2024-08-23-16-04-22.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-16-04-22.png" title="2024-08-23-16-04-22.png" data-thumbnail="/compiler01/images/2024-08-23-16-04-22.png" data-sub-html="<h2> </h2><p>2024-08-23-16-04-22.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-16-04-22.png"
-            data-srcset="/compiler_01/images/2024-08-23-16-04-22.png, /compiler_01/images/2024-08-23-16-04-22.png 1.5x, /compiler_01/images/2024-08-23-16-04-22.png 2x"
+            data-src="/compiler01/images/2024-08-23-16-04-22.png"
+            data-srcset="/compiler01/images/2024-08-23-16-04-22.png, /compiler01/images/2024-08-23-16-04-22.png 1.5x, /compiler01/images/2024-08-23-16-04-22.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-16-04-22.png" width="892" height="456" />
+            alt="/compiler01/images/2024-08-23-16-04-22.png" width="892" height="456" />
     </a><figcaption class="img-caption">2024-08-23-16-04-22.png</figcaption>
 </figure></p>
 <h3 id="62-三地址指令的表示">6.2 三地址指令的表示</h3>
 <p>四元式、三元式、间接三元式</p>
 <p><strong>三地址指令的四元式表示：</strong>
 
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-16-06-04.png" title="2024-08-23-16-06-04.png" data-thumbnail="/compiler_01/images/2024-08-23-16-06-04.png" data-sub-html="<h2> </h2><p>2024-08-23-16-06-04.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-16-06-04.png" title="2024-08-23-16-06-04.png" data-thumbnail="/compiler01/images/2024-08-23-16-06-04.png" data-sub-html="<h2> </h2><p>2024-08-23-16-06-04.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-16-06-04.png"
-            data-srcset="/compiler_01/images/2024-08-23-16-06-04.png, /compiler_01/images/2024-08-23-16-06-04.png 1.5x, /compiler_01/images/2024-08-23-16-06-04.png 2x"
+            data-src="/compiler01/images/2024-08-23-16-06-04.png"
+            data-srcset="/compiler01/images/2024-08-23-16-06-04.png, /compiler01/images/2024-08-23-16-06-04.png 1.5x, /compiler01/images/2024-08-23-16-06-04.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-16-06-04.png" width="862" height="515" />
+            alt="/compiler01/images/2024-08-23-16-06-04.png" width="862" height="515" />
     </a><figcaption class="img-caption">2024-08-23-16-06-04.png</figcaption>
 </figure></p>
 <p>四元式形式中的第一个分量为操作符，第二个和第三个分类为源操作数，第四个分量为目标操作数。</p>
 <p>
-<figure><a class="lightgallery" href="/compiler_01/images/2024-08-23-16-08-37.png" title="2024-08-23-16-08-37.png" data-thumbnail="/compiler_01/images/2024-08-23-16-08-37.png" data-sub-html="<h2> </h2><p>2024-08-23-16-08-37.png</p>">
+<figure><a class="lightgallery" href="/compiler01/images/2024-08-23-16-08-37.png" title="2024-08-23-16-08-37.png" data-thumbnail="/compiler01/images/2024-08-23-16-08-37.png" data-sub-html="<h2> </h2><p>2024-08-23-16-08-37.png</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/compiler_01/images/2024-08-23-16-08-37.png"
-            data-srcset="/compiler_01/images/2024-08-23-16-08-37.png, /compiler_01/images/2024-08-23-16-08-37.png 1.5x, /compiler_01/images/2024-08-23-16-08-37.png 2x"
+            data-src="/compiler01/images/2024-08-23-16-08-37.png"
+            data-srcset="/compiler01/images/2024-08-23-16-08-37.png, /compiler01/images/2024-08-23-16-08-37.png 1.5x, /compiler01/images/2024-08-23-16-08-37.png 2x"
             data-sizes="auto"
-            alt="/compiler_01/images/2024-08-23-16-08-37.png" width="864" height="608" />
+            alt="/compiler01/images/2024-08-23-16-08-37.png" width="864" height="608" />
     </a><figcaption class="img-caption">2024-08-23-16-08-37.png</figcaption>
 </figure></p>
 <h2 id="7-目标代码生成">7. 目标代码生成</h2>
@@ -395,7 +395,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compiler_01/" data-title="编译原理笔记01-绪论" data-hashtags="note"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compiler_01/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compiler_01/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compiler_01/" data-title="编译原理笔记01-绪论"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compiler_01/" data-title="编译原理笔记01-绪论"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compiler01/" data-title="编译原理笔记01-绪论" data-hashtags="note"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compiler01/" data-hashtag="note"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compiler01/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compiler01/" data-title="编译原理笔记01-绪论"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compiler01/" data-title="编译原理笔记01-绪论"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -408,7 +408,7 @@
     </div>
 
     <div class="post-nav"><a href="/compilerconstruction/" class="prev" rel="prev" title="编译原理"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>编译原理</a>
-            <a href="/compiler_02/" class="next" rel="next" title="编译原理笔记02-程序设计语言及其文法">编译原理笔记02-程序设计语言及其文法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/compiler02/" class="next" rel="next" title="编译原理笔记02-程序设计语言及其文法">编译原理笔记02-程序设计语言及其文法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">
