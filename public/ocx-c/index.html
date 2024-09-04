@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>C#制作ActiveX浏览器插件&amp;OCX - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/">
+        <title>C#制作ActiveX浏览器插件&amp;OCX - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/ocx-c/">
   <meta property="og:site_name" content="ykzzo&#39;s Blog">
   <meta property="og:title" content="C#制作ActiveX浏览器插件&OCX">
   <meta property="og:description" content="win11-VS2024封装“win应用程序”浏览器插件">
@@ -26,7 +26,7 @@
   <meta name="twitter:title" content="C#制作ActiveX浏览器插件&OCX">
   <meta name="twitter:description" content="win11-VS2024封装“win应用程序”浏览器插件">
 <meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/" /><link rel="prev" href="http://localhost:1313/markdown_syntax_and_shortcuts/" /><link rel="next" href="http://localhost:1313/introductiontoalgorithms/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ocx-c/" /><link rel="next" href="http://localhost:1313/introductiontoalgorithms/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
     {
@@ -36,9 +36,9 @@
         "inLanguage": "zh-CN",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/creating_activex_browser_plugins_and_ocx_controls_in_c\/"
+            "@id": "http:\/\/localhost:1313\/ocx-c\/"
         },"genre": "posts","keywords": "C#, ActiveX, OCX, 浏览器插件, COM 编程, Windows 编程","wordcount":  2334 ,
-        "url": "http:\/\/localhost:1313\/creating_activex_browser_plugins_and_ocx_controls_in_c\/","datePublished": "2024-07-07T15:54:36+08:00","dateModified": "2024-07-10T15:54:36+08:00","publisher": {
+        "url": "http:\/\/localhost:1313\/ocx-c\/","datePublished": "2024-07-07T15:54:36+08:00","dateModified": "2024-07-10T15:54:36+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -161,62 +161,62 @@
 <h3 id="创建项目">创建项目</h3>
 <p>vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。在 UserControl1.cs 中将之前的项目移过来。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20160457.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20160457.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png 2x"
+            data-src="/ocx-c/images/2024-07-07%20160457.png"
+            data-srcset="/ocx-c/images/2024-07-07%20160457.png, /ocx-c/images/2024-07-07%20160457.png 1.5x, /ocx-c/images/2024-07-07%20160457.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20160457.png" width="1241" height="253" />
+            alt="/ocx-c/images/2024-07-07%20160457.png" width="1241" height="253" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure>
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20162818.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20162818.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png 2x"
+            data-src="/ocx-c/images/2024-07-07%20162818.png"
+            data-srcset="/ocx-c/images/2024-07-07%20162818.png, /ocx-c/images/2024-07-07%20162818.png 1.5x, /ocx-c/images/2024-07-07%20162818.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20162818.png" width="482" height="605" />
+            alt="/ocx-c/images/2024-07-07%20162818.png" width="482" height="605" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></p>
 <h3 id="设置项目属性">设置项目属性</h3>
 <ol>
 <li>右键项目-&gt;属性-&gt;应用程序-&gt;程序信息-&gt;勾选“使程序集 COM 可见”-&gt;点击“确定”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20171904.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20171904.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png 2x"
+            data-src="/ocx-c/images/2024-07-07%20171904.png"
+            data-srcset="/ocx-c/images/2024-07-07%20171904.png, /ocx-c/images/2024-07-07%20171904.png 1.5x, /ocx-c/images/2024-07-07%20171904.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20171904.png" width="551" height="807" />
+            alt="/ocx-c/images/2024-07-07%20171904.png" width="551" height="807" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure>
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20172417.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20172417.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png 2x"
+            data-src="/ocx-c/images/2024-07-07%20172417.png"
+            data-srcset="/ocx-c/images/2024-07-07%20172417.png, /ocx-c/images/2024-07-07%20172417.png 1.5x, /ocx-c/images/2024-07-07%20172417.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172417.png" width="1025" height="893" />
+            alt="/ocx-c/images/2024-07-07%20172417.png" width="1025" height="893" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>选择“生成”，拉倒最底部，-&gt;勾选“为 COM 互操作注册”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20172747.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20172747.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png 2x"
+            data-src="/ocx-c/images/2024-07-07%20172747.png"
+            data-srcset="/ocx-c/images/2024-07-07%20172747.png, /ocx-c/images/2024-07-07%20172747.png 1.5x, /ocx-c/images/2024-07-07%20172747.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-07%20172747.png" width="1078" height="787" />
+            alt="/ocx-c/images/2024-07-07%20172747.png" width="1078" height="787" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>最后保存，重新编译。</li>
@@ -228,14 +228,14 @@
 <li>
 <p>顶部菜单栏“工具”-&gt;“外部工具”
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20142043.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20142043.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png 2x"
+            data-src="/ocx-c/images/2024-07-08%20142043.png"
+            data-srcset="/ocx-c/images/2024-07-08%20142043.png, /ocx-c/images/2024-07-08%20142043.png 1.5x, /ocx-c/images/2024-07-08%20142043.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20142043.png" width="337" height="456" />
+            alt="/ocx-c/images/2024-07-08%20142043.png" width="337" height="456" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></p>
 </li>
@@ -243,14 +243,14 @@
 <p>然后，添加一个“OLE/COM 对象查看器”，对应的命令程序一般放在 <code>C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin\OleView.Exe</code> 或 <code>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\OleView.Exe</code>。</p>
 <p>如果都没有可以尝试查找和下载旧版本的 Windows SDK。访问 Microsoft 下载中心：<a href="https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/" target="_blank" rel="noopener noreffer ">https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/</a></p>
 <p>
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20183951.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20183951.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png 2x"
+            data-src="/ocx-c/images/2024-07-08%20183951.png"
+            data-srcset="/ocx-c/images/2024-07-08%20183951.png, /ocx-c/images/2024-07-08%20183951.png 1.5x, /ocx-c/images/2024-07-08%20183951.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20183951.png" width="445" height="505" />
+            alt="/ocx-c/images/2024-07-08%20183951.png" width="445" height="505" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></p>
 </li>
@@ -260,25 +260,25 @@
 <li>
 <p>点击新创建的“OLM/COM 对象查看器”，展开左侧的“.NET Category”，就可以找到刚刚创建的 ActiveX 控件。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20184947.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20184947.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png 2x"
+            data-src="/ocx-c/images/2024-07-08%20184947.png"
+            data-srcset="/ocx-c/images/2024-07-08%20184947.png, /ocx-c/images/2024-07-08%20184947.png 1.5x, /ocx-c/images/2024-07-08%20184947.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08%20184947.png" width="296" height="472" />
+            alt="/ocx-c/images/2024-07-08%20184947.png" width="296" height="472" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure>
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08-194947.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08-194947.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png 2x"
+            data-src="/ocx-c/images/2024-07-08-194947.png"
+            data-srcset="/ocx-c/images/2024-07-08-194947.png, /ocx-c/images/2024-07-08-194947.png 1.5x, /ocx-c/images/2024-07-08-194947.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-08-194947.png" width="1025" height="533" />
+            alt="/ocx-c/images/2024-07-08-194947.png" width="1025" height="533" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></p>
 </li>
@@ -550,26 +550,26 @@
 <li>打开你的解决方案。</li>
 <li>在“解决方案资源管理器”中右键点击解决方案，选择“添加” -&gt; “新建项目”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20162748.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20162748.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20162748.png"
+            data-srcset="/ocx-c/images/2024-07-09%20162748.png, /ocx-c/images/2024-07-09%20162748.png 1.5x, /ocx-c/images/2024-07-09%20162748.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162748.png" width="678" height="603" />
+            alt="/ocx-c/images/2024-07-09%20162748.png" width="678" height="603" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>在“新建项目”对话框中，搜索并选择“安装项目(Setup Project)”，然后点击“下一步”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20162939.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20162939.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20162939.png"
+            data-srcset="/ocx-c/images/2024-07-09%20162939.png, /ocx-c/images/2024-07-09%20162939.png 1.5x, /ocx-c/images/2024-07-09%20162939.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20162939.png" width="1035" height="672" />
+            alt="/ocx-c/images/2024-07-09%20162939.png" width="1035" height="672" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>给你的安装项目命名并点击“创建”。</li>
@@ -580,26 +580,26 @@
 <ul>
 <li>在“解决方案资源管理器”中，右键点击安装项目，选择“添加(add)” -&gt; “项目输出”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20164821.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20164821.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20164821.png"
+            data-srcset="/ocx-c/images/2024-07-09%20164821.png, /ocx-c/images/2024-07-09%20164821.png 1.5x, /ocx-c/images/2024-07-09%20164821.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20164821.png" width="547" height="302" />
+            alt="/ocx-c/images/2024-07-09%20164821.png" width="547" height="302" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>选择你的主项目（例如 ActiveXDemo），然后选择“主输出”，点击“确定”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20165000.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20165000.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20165000.png"
+            data-srcset="/ocx-c/images/2024-07-09%20165000.png, /ocx-c/images/2024-07-09%20165000.png 1.5x, /ocx-c/images/2024-07-09%20165000.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165000.png" width="377" height="491" />
+            alt="/ocx-c/images/2024-07-09%20165000.png" width="377" height="491" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 </ul>
@@ -609,26 +609,26 @@
 <ul>
 <li>右键点击“主输出文件”，选择“属性”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20165752.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20165752.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20165752.png"
+            data-srcset="/ocx-c/images/2024-07-09%20165752.png, /ocx-c/images/2024-07-09%20165752.png 1.5x, /ocx-c/images/2024-07-09%20165752.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20165752.png" width="552" height="265" />
+            alt="/ocx-c/images/2024-07-09%20165752.png" width="552" height="265" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 <li>在属性窗口中，将“Register”属性设为“vsdrpCOM”。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20170259.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20170259.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20170259.png"
+            data-srcset="/ocx-c/images/2024-07-09%20170259.png, /ocx-c/images/2024-07-09%20170259.png 1.5x, /ocx-c/images/2024-07-09%20170259.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20170259.png" width="297" height="421" />
+            alt="/ocx-c/images/2024-07-09%20170259.png" width="297" height="421" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></li>
 </ul>
@@ -652,25 +652,25 @@
 </ol>
 <p>如果报错<code>ERROR: The target of shortcut 'Shortcut to %sApplication Folder' is invalid.  The 'AlwaysCreate' property of folder 'Application Folder' must be set to 'True'</code>,右键“主输出文件”-&gt;右键&rsquo;Application Folder&rsquo;-&gt;属性-&gt;将 &lsquo;AlwaysCreate&rsquo; 属性设置为 &lsquo;True&rsquo;。
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20172654.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20172654.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20172654.png"
+            data-srcset="/ocx-c/images/2024-07-09%20172654.png, /ocx-c/images/2024-07-09%20172654.png 1.5x, /ocx-c/images/2024-07-09%20172654.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172654.png" width="891" height="262" />
+            alt="/ocx-c/images/2024-07-09%20172654.png" width="891" height="262" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure>
 
-<figure><a class="lightgallery" href="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png" title="alt text" data-thumbnail="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png" data-sub-html="<h2> </h2><p>alt text</p>">
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20172703.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20172703.png" data-sub-html="<h2> </h2><p>alt text</p>">
         <img
             class="lazyload"
             src="/svg/loading.min.svg"
-            data-src="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png"
-            data-srcset="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png 1.5x, /creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png 2x"
+            data-src="/ocx-c/images/2024-07-09%20172703.png"
+            data-srcset="/ocx-c/images/2024-07-09%20172703.png, /ocx-c/images/2024-07-09%20172703.png 1.5x, /ocx-c/images/2024-07-09%20172703.png 2x"
             data-sizes="auto"
-            alt="/creating_activex_browser_plugins_and_ocx_controls_in_c/images/2024-07-09%20172703.png" width="335" height="237" />
+            alt="/ocx-c/images/2024-07-09%20172703.png" width="335" height="237" />
     </a><figcaption class="img-caption">alt text</figcaption>
 </figure></p>
 <h3 id="使用-activex-插件">使用 ActiveX 插件</h3>
@@ -747,7 +747,7 @@
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/" data-title="C#制作ActiveX浏览器插件&amp;OCX" data-hashtags="C#,ActiveX,OCX,浏览器插件,COM 编程,Windows 编程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/" data-hashtag="C#"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX" data-hashtags="C#,ActiveX,OCX,浏览器插件,COM 编程,Windows 编程"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/ocx-c/" data-hashtag="C#"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ocx-c/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
@@ -759,7 +759,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/markdown_syntax_and_shortcuts/" class="prev" rel="prev" title="markdown语法及快捷键"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>markdown语法及快捷键</a>
+    <div class="post-nav">
             <a href="/introductiontoalgorithms/" class="next" rel="next" title="初识算法">初识算法<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>

@@ -2,12 +2,12 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/posts/</loc><lastmod>2024-09-01T21:34:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://localhost:1313/</loc><lastmod>2024-09-01T21:34:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/categories/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/tags/note/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/posts/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/categories/python/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/tags/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://localhost:1313/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/fluent-python/</loc><lastmod>2024-09-01T15:23:29&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/categories/compiler/</loc><lastmod>2024-08-28T16:39:14&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>http://localhost:1313/compiler03/</loc><lastmod>2024-08-27T14:12:43&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
@@ -16,18 +16,14 @@
             <loc>http://localhost:1313/about/</loc><lastmod>2024-08-12T09:08:31&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url><url>
             <loc>http://localhost:1313/tags/learn/</loc><lastmod>2024-08-16T19:25:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
             <loc>http://localhost:1313/compilerconstruction/</loc><lastmod>2024-08-16T19:25:34&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
-            <loc>http://localhost:1313/complexity_analysis/</loc><lastmod>2024-07-23T18:56:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/tags/algorithm/</loc><lastmod>2024-07-23T16:19:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/categories/algorithm/</loc><lastmod>2024-07-23T16:19:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://localhost:1313/categories/algorithm/</loc><lastmod>2024-07-23T18:56:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://localhost:1313/complexity-analysis/</loc><lastmod>2024-07-23T18:56:48&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/introductiontoalgorithms/</loc><lastmod>2024-07-23T16:19:04&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/tags/activex/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/categories/browser-extensions/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/tags/c%23/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://localhost:1313/ocx-c/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/tags/com-%E7%BC%96%E7%A8%8B/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/tags/ocx/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>http://localhost:1313/tags/windows-%E7%BC%96%E7%A8%8B/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/tags/markdown/</loc><lastmod>2024-06-24T20:13:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/categories/markdown/</loc><lastmod>2024-06-24T20:13:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>http://localhost:1313/markdown_syntax_and_shortcuts/</loc><lastmod>2024-06-24T20:13:23&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>http://localhost:1313/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6/</loc><lastmod>2024-07-10T15:54:36&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

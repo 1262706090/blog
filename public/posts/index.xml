@@ -4,7 +4,7 @@
         <link>http://localhost:1313/posts/</link>
         <description>所有文章 | ykzzo&#39;s Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>your_email (YKZZO)</managingEditor>
-            <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Sun, 01 Sep 2024 21:34:31 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>your_email (YKZZO)</webMaster><lastBuildDate>Sun, 01 Sep 2024 15:23:29 &#43;0800</lastBuildDate><atom:link href="http://localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
     <title>流畅的Python(Fluent-Python)</title>
     <link>http://localhost:1313/fluent-python/</link>
     <pubDate>Sun, 01 Sep 2024 15:23:29 &#43;0800</pubDate>
@@ -46,10 +46,10 @@
 </item>
 <item>
     <title>复杂度分析</title>
-    <link>http://localhost:1313/complexity_analysis/</link>
+    <link>http://localhost:1313/complexity-analysis/</link>
     <pubDate>Tue, 23 Jul 2024 18:56:48 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:1313/complexity_analysis/</guid>
+    <guid>http://localhost:1313/complexity-analysis/</guid>
     <description><![CDATA[复杂度分析]]></description>
 </item>
 <item>
@@ -62,19 +62,11 @@
 </item>
 <item>
     <title>C#制作ActiveX浏览器插件&amp;OCX</title>
-    <link>http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/</link>
+    <link>http://localhost:1313/ocx-c/</link>
     <pubDate>Sun, 07 Jul 2024 15:54:36 &#43;0800</pubDate>
     <author>YK</author>
-    <guid>http://localhost:1313/creating_activex_browser_plugins_and_ocx_controls_in_c/</guid>
+    <guid>http://localhost:1313/ocx-c/</guid>
     <description><![CDATA[win11-VS2024封装“win应用程序”浏览器插件]]></description>
-</item>
-<item>
-    <title>markdown语法及快捷键</title>
-    <link>http://localhost:1313/markdown_syntax_and_shortcuts/</link>
-    <pubDate>Mon, 24 Jun 2024 20:13:23 &#43;0800</pubDate>
-    <author>YK</author>
-    <guid>http://localhost:1313/markdown_syntax_and_shortcuts/</guid>
-    <description><![CDATA[markdown语法及快捷键]]></description>
 </item>
 </channel>
 </rss>
