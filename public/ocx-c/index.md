@@ -241,7 +241,11 @@ namespace ActiveXDemo
 
         <form id="form1" runat="server">
             <div>
-                <input type="button" onclick="csharpActiveX.Test()" value="我是按钮" />
+                <input
+                    type="button"
+                    onclick="csharpActiveX.Test()"
+                    value="我是按钮"
+                />
             </div>
         </form>
     </body>
