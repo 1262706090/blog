@@ -1,294 +1,823 @@
-<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>C#制作ActiveX浏览器插件&amp;OCX - ykzzo's Blog</title><meta name=Description content="ykzzo的博客"><meta property="og:url" content="https://www.ykzzo.com/ocx-c/">
-<meta property="og:site_name" content="ykzzo's Blog"><meta property="og:title" content="C#制作ActiveX浏览器插件&OCX"><meta property="og:description" content="win11-VS2024封装“win应用程序”浏览器插件"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-07-07T15:54:36+08:00"><meta property="article:modified_time" content="2024-07-10T15:54:36+08:00"><meta property="og:image" content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:title content="C#制作ActiveX浏览器插件&OCX"><meta name=twitter:description content="win11-VS2024封装“win应用程序”浏览器插件"><meta name=application-name content="ykzzo's Blog"><meta name=apple-mobile-web-app-title content="ykzzo's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=20240812085355.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.ykzzo.com/ocx-c/><link rel=next href=https://www.ykzzo.com/compilerconstruction/><link rel=stylesheet href=/css/style.min.cd96673f15d9819570886f6856268bf35511dde6823267c73fc8e28dbe1cccce.css integrity="sha256-zZZnPxXZgZVwiG9oViaL81UR3eaCMmfHP8jijb4czM4="><link rel=preload href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA="></noscript><link rel=preload href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc="></noscript><meta name=baidu-site-verification content="codeva-rd9ZCXPdEK"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"C#制作ActiveX浏览器插件\u0026OCX","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.ykzzo.com\/ocx-c\/"},"genre":"posts","keywords":"ActiveX, 浏览器插件","wordcount":2338,"url":"https:\/\/www.ykzzo.com\/ocx-c\/","datePublished":"2024-07-07T15:54:36+08:00","dateModified":"2024-07-10T15:54:36+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"YK"},"description":""}</script></head><body data-header-desktop=normal data-header-mobile=normal><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"light"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"light"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
-</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C#制作ActiveX浏览器插件&OCX</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>YK</a></span>&nbsp;<span class=post-category>收录于 <a href><i class="far fa-folder fa-fw" aria-hidden=true></i></a></span></div><div class=post-meta-line><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime=2024-07-07>2024-07-07</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime=2024-07-10>2024-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 2338 字&nbsp;
-<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 5 分钟&nbsp;
-<span id=busuanzi_container_value_page_pv><i class="far fa-eye fa-fw"></i>
-<span id=busuanzi_value_page_pv></span>&nbsp;次阅读</span></div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
-<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><ul><li><a href=#创建项目>创建项目</a></li><li><a href=#设置项目属性>设置项目属性</a></li><li><a href=#安装外部软件>安装外部软件</a><ul><li><a href=#olecom-对象查看器>OLE/COM 对象查看器</a></li><li><a href=#创建-guid>创建 GUID</a></li></ul></li><li><a href=#提高-activex-插件的安全等级>提高 ActiveX 插件的安全等级</a></li><li><a href=#制作成安装文件>制作成安装文件</a><ul><li><a href=#安装扩展>安装扩展</a></li><li><a href=#创建安装项目>创建安装项目</a></li><li><a href=#编译和生成-setup-project>编译和生成 Setup Project</a></li></ul></li><li><a href=#使用-activex-插件>使用 ActiveX 插件</a></li></ul></li></ul></nav></div></div><div class=content id=content><p><em>win11-VS2024 封装“win 应用程序”浏览器插件</em></p><h3 id=创建项目>创建项目</h3><p>vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。在 UserControl1.cs 中将之前的项目移过来。<figure><a class=lightgallery href=/ocx-c/images/2024-07-07%20160457.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-07%20160457.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-07%20160457.png data-srcset="/ocx-c/images/2024-07-07%20160457.png, /ocx-c/images/2024-07-07%20160457.png 1.5x, /ocx-c/images/2024-07-07%20160457.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-07%20160457.png width=1241 height=253></a><figcaption class=img-caption>alt text</figcaption></figure><figure><a class=lightgallery href=/ocx-c/images/2024-07-07%20162818.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-07%20162818.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-07%20162818.png data-srcset="/ocx-c/images/2024-07-07%20162818.png, /ocx-c/images/2024-07-07%20162818.png 1.5x, /ocx-c/images/2024-07-07%20162818.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-07%20162818.png width=482 height=605></a><figcaption class=img-caption>alt text</figcaption></figure></p><h3 id=设置项目属性>设置项目属性</h3><ol><li>右键项目->属性->应用程序->程序信息->勾选“使程序集 COM 可见”->点击“确定”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-07%20171904.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-07%20171904.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-07%20171904.png data-srcset="/ocx-c/images/2024-07-07%20171904.png, /ocx-c/images/2024-07-07%20171904.png 1.5x, /ocx-c/images/2024-07-07%20171904.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-07%20171904.png width=551 height=807></a><figcaption class=img-caption>alt text</figcaption></figure><figure><a class=lightgallery href=/ocx-c/images/2024-07-07%20172417.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-07%20172417.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-07%20172417.png data-srcset="/ocx-c/images/2024-07-07%20172417.png, /ocx-c/images/2024-07-07%20172417.png 1.5x, /ocx-c/images/2024-07-07%20172417.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-07%20172417.png width=1025 height=893></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>选择“生成”，拉倒最底部，->勾选“为 COM 互操作注册”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-07%20172747.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-07%20172747.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-07%20172747.png data-srcset="/ocx-c/images/2024-07-07%20172747.png, /ocx-c/images/2024-07-07%20172747.png 1.5x, /ocx-c/images/2024-07-07%20172747.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-07%20172747.png width=1078 height=787></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>最后保存，重新编译。</li></ol><h3 id=安装外部软件>安装外部软件</h3><h4 id=olecom-对象查看器>OLE/COM 对象查看器</h4><p>这款工具用于验证项目成为是否成为一个 ActiveX 控件。</p><ol><li><p>顶部菜单栏“工具”->“外部工具”<figure><a class=lightgallery href=/ocx-c/images/2024-07-08%20142043.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-08%20142043.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-08%20142043.png data-srcset="/ocx-c/images/2024-07-08%20142043.png, /ocx-c/images/2024-07-08%20142043.png 1.5x, /ocx-c/images/2024-07-08%20142043.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-08%20142043.png width=337 height=456></a><figcaption class=img-caption>alt text</figcaption></figure></p></li><li><p>然后，添加一个“OLE/COM 对象查看器”，对应的命令程序一般放在 <code>C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin\OleView.Exe</code> 或 <code>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\OleView.Exe</code>。</p><p>如果都没有可以尝试查找和下载旧版本的 Windows SDK。访问 Microsoft 下载中心：<a href=https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/ target=_blank rel="noopener noreffer">https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/</a></p><p><figure><a class=lightgallery href=/ocx-c/images/2024-07-08%20183951.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-08%20183951.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-08%20183951.png data-srcset="/ocx-c/images/2024-07-08%20183951.png, /ocx-c/images/2024-07-08%20183951.png 1.5x, /ocx-c/images/2024-07-08%20183951.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-08%20183951.png width=445 height=505></a><figcaption class=img-caption>alt text</figcaption></figure></p></li><li><p>“应用”->“确认”。</p></li><li><p>点击新创建的“OLM/COM 对象查看器”，展开左侧的“.NET Category”，就可以找到刚刚创建的 ActiveX 控件。<figure><a class=lightgallery href=/ocx-c/images/2024-07-08%20184947.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-08%20184947.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-08%20184947.png data-srcset="/ocx-c/images/2024-07-08%20184947.png, /ocx-c/images/2024-07-08%20184947.png 1.5x, /ocx-c/images/2024-07-08%20184947.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-08%20184947.png width=296 height=472></a><figcaption class=img-caption>alt text</figcaption></figure><figure><a class=lightgallery href=/ocx-c/images/2024-07-08-194947.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-08-194947.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-08-194947.png data-srcset="/ocx-c/images/2024-07-08-194947.png, /ocx-c/images/2024-07-08-194947.png 1.5x, /ocx-c/images/2024-07-08-194947.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-08-194947.png width=1025 height=533></a><figcaption class=img-caption>alt text</figcaption></figure></p></li></ol><h4 id=创建-guid>创建 GUID</h4><p>方法同上，地址一般是<code>C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\guidgen.exe</code>或者<code>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\guidgen.exe</code>。</p><h3 id=提高-activex-插件的安全等级>提高 ActiveX 插件的安全等级</h3><p><strong>IE 通过两个方法判断脚本是否安全：</strong></p><ol><li>询 ActiveX 组件是否实现了<code>IObjectSafety</code>接口，并且返回脚本安全；</li><li>查询 ActiveX 组件是否在注册表的 Component Category Manager 里表明自己实现了 CATID_SafeForInitializing 和 CATID_SafeForScripting。</li></ol><p>第一种方法：实现<code>IObjectSafety</code>接口</p><ul><li>首先，为控件类<code>UserControl1</code>添加一个 GUID，这个编号将用于 B/S 系统的客户端调用时使用（可以使用"工具"->&ldquo;创建 GUID 菜单"创建一个 GUID），注意<code>ActiveXDemo.UserControl1</code>换成自己的命名。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>using</span> <span class=nn>System</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Collections.Generic</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Text</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Windows.Forms</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Runtime.InteropServices</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nn>ActiveXDemo</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=na>    [Guid(&#34;BB725724-65D6-4e71-AA11-DEDFAFE9248F&#34;), ProgId(&#34;ActiveXDemo.UserControl1&#34;), ComVisible(true)]</span>
-</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kd>partial</span> <span class=k>class</span> <span class=nc>UserControl1</span> <span class=p>:</span> <span class=n>UserControl</span><span class=p>,</span><span class=n>IObjectSafety</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span></code></pre></td></tr></table></div></div><ul><li>其次，为了让 ActiveX 控件获得客户端的信任，控件类还需要实现一个名为<code>IObjectSafety</code>的接口，因此在项目中添加一个接口类<code>IObjectSafety</code>
-直接将下列代码复制粘贴，不要作任何改动，尤其是 GUID，都是固定的，不能改。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=k>using</span> <span class=nn>System</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Collections.Generic</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Linq</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Text</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=k>using</span> <span class=nn>System.Runtime.InteropServices</span><span class=p>;</span> <span class=c1>//同样，需要引入System.Runtime.InteropServices;命名空间</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=k>namespace</span> <span class=nn>ActiveXDemo</span>
-</span></span><span class=line><span class=cl><span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=na>    [ComImport, GuidAttribute(&#34;CB5BDC81-93C1-11CF-8F20-00805F2CD064&#34;)]</span>
-</span></span><span class=line><span class=cl><span class=na>    [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]</span>
-</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=k>interface</span> <span class=nc>IObjectSafety</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=na>        [PreserveSig]</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>GetInterfaceSafetyOptions</span><span class=p>(</span><span class=k>ref</span> <span class=n>Guid</span> <span class=n>riid</span><span class=p>,</span> <span class=p>[</span><span class=n>MarshalAs</span><span class=p>(</span><span class=n>UnmanagedType</span><span class=p>.</span><span class=n>U4</span><span class=p>)]</span> <span class=k>ref</span> <span class=kt>int</span> <span class=n>pdwSupportedOptions</span><span class=p>,</span> <span class=p>[</span><span class=n>MarshalAs</span><span class=p>(</span><span class=n>UnmanagedType</span><span class=p>.</span><span class=n>U4</span><span class=p>)]</span> <span class=k>ref</span> <span class=kt>int</span> <span class=n>pdwEnabledOptions</span><span class=p>);</span>
-</span></span><span class=line><span class=cl><span class=na>
-</span></span></span><span class=line><span class=cl><span class=na>        [PreserveSig()]</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>SetInterfaceSafetyOptions</span><span class=p>(</span><span class=k>ref</span> <span class=n>Guid</span> <span class=n>riid</span><span class=p>,</span> <span class=p>[</span><span class=n>MarshalAs</span><span class=p>(</span><span class=n>UnmanagedType</span><span class=p>.</span><span class=n>U4</span><span class=p>)]</span> <span class=kt>int</span> <span class=n>dwOptionSetMask</span><span class=p>,</span> <span class=p>[</span><span class=n>MarshalAs</span><span class=p>(</span><span class=n>UnmanagedType</span><span class=p>.</span><span class=n>U4</span><span class=p>)]</span> <span class=kt>int</span> <span class=n>dwEnabledOptions</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><ul><li>接着，在控件类<code>UserControl1</code>中实现<code>IObjectSafety</code>的接口</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span><span class=lnt>50
-</span><span class=lnt>51
-</span><span class=lnt>52
-</span><span class=lnt>53
-</span><span class=lnt>54
-</span><span class=lnt>55
-</span><span class=lnt>56
-</span><span class=lnt>57
-</span><span class=lnt>58
-</span><span class=lnt>59
-</span><span class=lnt>60
-</span><span class=lnt>61
-</span><span class=lnt>62
-</span><span class=lnt>63
-</span><span class=lnt>64
-</span><span class=lnt>65
-</span><span class=lnt>66
-</span><span class=lnt>67
-</span><span class=lnt>68
-</span><span class=lnt>69
-</span><span class=lnt>70
-</span><span class=lnt>71
-</span><span class=lnt>72
-</span><span class=lnt>73
-</span><span class=lnt>74
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-c# data-lang=c#><span class=line><span class=cl><span class=cp>#region</span> <span class=n>IObjectSafety</span> <span class=err>成员</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>string</span> <span class=n>_IID_IDispatch</span> <span class=p>=</span> <span class=s>&#34;{00020400-0000-0000-C000-000000000046}&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>string</span> <span class=n>_IID_IDispatchEx</span> <span class=p>=</span> <span class=s>&#34;{a6ef9860-c720-11d0-9337-00a0c90dcaa9}&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>string</span> <span class=n>_IID_IPersistStorage</span> <span class=p>=</span> <span class=s>&#34;{0000010A-0000-0000-C000-000000000046}&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>string</span> <span class=n>_IID_IPersistStream</span> <span class=p>=</span> <span class=s>&#34;{00000109-0000-0000-C000-000000000046}&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>string</span> <span class=n>_IID_IPersistPropertyBag</span> <span class=p>=</span> <span class=s>&#34;{37D84F60-42CB-11CE-8135-00AA004BB851}&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>int</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_CALLER</span> <span class=p>=</span> <span class=m>0x00000001</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>int</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_DATA</span> <span class=p>=</span> <span class=m>0x00000002</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>int</span> <span class=n>S_OK</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>int</span> <span class=n>E_FAIL</span> <span class=p>=</span> <span class=k>unchecked</span><span class=p>((</span><span class=kt>int</span><span class=p>)</span><span class=m>0x80004005</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kd>const</span> <span class=kt>int</span> <span class=n>E_NOINTERFACE</span> <span class=p>=</span> <span class=k>unchecked</span><span class=p>((</span><span class=kt>int</span><span class=p>)</span><span class=m>0x80004002</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kt>bool</span> <span class=n>_fSafeForScripting</span> <span class=p>=</span> <span class=kc>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>private</span> <span class=kt>bool</span> <span class=n>_fSafeForInitializing</span> <span class=p>=</span> <span class=kc>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=kt>int</span> <span class=n>GetInterfaceSafetyOptions</span><span class=p>(</span><span class=k>ref</span> <span class=n>Guid</span> <span class=n>riid</span><span class=p>,</span> <span class=k>ref</span> <span class=kt>int</span> <span class=n>pdwSupportedOptions</span><span class=p>,</span> <span class=k>ref</span> <span class=kt>int</span> <span class=n>pdwEnabledOptions</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>Rslt</span> <span class=p>=</span> <span class=n>E_FAIL</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>            <span class=kt>string</span> <span class=n>strGUID</span> <span class=p>=</span> <span class=n>riid</span><span class=p>.</span><span class=n>ToString</span><span class=p>(</span><span class=s>&#34;B&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>            <span class=n>pdwSupportedOptions</span> <span class=p>=</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_CALLER</span> <span class=p>|</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>            <span class=k>switch</span> <span class=p>(</span><span class=n>strGUID</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>            <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IDispatch</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IDispatchEx</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=n>Rslt</span> <span class=p>=</span> <span class=n>S_OK</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=n>pdwEnabledOptions</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(</span><span class=n>_fSafeForScripting</span> <span class=p>==</span> <span class=kc>true</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>                        <span class=n>pdwEnabledOptions</span> <span class=p>=</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_CALLER</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistStorage</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistStream</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistPropertyBag</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=n>Rslt</span> <span class=p>=</span> <span class=n>S_OK</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=n>pdwEnabledOptions</span> <span class=p>=</span> <span class=m>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(</span><span class=n>_fSafeForInitializing</span> <span class=p>==</span> <span class=kc>true</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>                        <span class=n>pdwEnabledOptions</span> <span class=p>=</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                <span class=k>default</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=n>Rslt</span> <span class=p>=</span> <span class=n>E_NOINTERFACE</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>Rslt</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=kd>public</span> <span class=kt>int</span> <span class=n>SetInterfaceSafetyOptions</span><span class=p>(</span><span class=k>ref</span> <span class=n>Guid</span> <span class=n>riid</span><span class=p>,</span> <span class=kt>int</span> <span class=n>dwOptionSetMask</span><span class=p>,</span> <span class=kt>int</span> <span class=n>dwEnabledOptions</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>        <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>Rslt</span> <span class=p>=</span> <span class=n>E_FAIL</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>            <span class=kt>string</span> <span class=n>strGUID</span> <span class=p>=</span> <span class=n>riid</span><span class=p>.</span><span class=n>ToString</span><span class=p>(</span><span class=s>&#34;B&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>            <span class=k>switch</span> <span class=p>(</span><span class=n>strGUID</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>            <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IDispatch</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IDispatchEx</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(((</span><span class=n>dwEnabledOptions</span> <span class=p>&amp;</span> <span class=n>dwOptionSetMask</span><span class=p>)</span> <span class=p>==</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_CALLER</span><span class=p>)</span> <span class=p>&amp;&amp;</span> <span class=p>(</span><span class=n>_fSafeForScripting</span> <span class=p>==</span> <span class=kc>true</span><span class=p>))</span>
-</span></span><span class=line><span class=cl>                        <span class=n>Rslt</span> <span class=p>=</span> <span class=n>S_OK</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistStorage</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistStream</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                <span class=k>case</span> <span class=n>_IID_IPersistPropertyBag</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(((</span><span class=n>dwEnabledOptions</span> <span class=p>&amp;</span> <span class=n>dwOptionSetMask</span><span class=p>)</span> <span class=p>==</span> <span class=n>INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class=p>)</span> <span class=p>&amp;&amp;</span> <span class=p>(</span><span class=n>_fSafeForInitializing</span> <span class=p>==</span> <span class=kc>true</span><span class=p>))</span>
-</span></span><span class=line><span class=cl>                        <span class=n>Rslt</span> <span class=p>=</span> <span class=n>S_OK</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                <span class=k>default</span><span class=p>:</span>
-</span></span><span class=line><span class=cl>                    <span class=n>Rslt</span> <span class=p>=</span> <span class=n>E_NOINTERFACE</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                    <span class=k>break</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>Rslt</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=cp>#endregion</span>
-</span></span></code></pre></td></tr></table></div></div><h3 id=制作成安装文件>制作成安装文件</h3><h4 id=安装扩展>安装扩展</h4><ol><li><p><strong>安装 Microsoft Visual Studio Installer Projects 扩展：</strong></p><ul><li>打开 Visual Studio 2022。</li><li>转到“扩展”菜单，然后选择“管理扩展”。</li><li>在“联机”选项卡中搜索“Microsoft Visual Studio Installer Projects”。</li><li>点击“安装”将安装扩展。</li><li>重新启动 Visual Studio 以完成安装。</li></ul></li></ol><h4 id=创建安装项目>创建安装项目</h4><ol><li><p><strong>创建新的安装项目：</strong></p><ul><li>打开你的解决方案。</li><li>在“解决方案资源管理器”中右键点击解决方案，选择“添加” -> “新建项目”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20162748.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20162748.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20162748.png data-srcset="/ocx-c/images/2024-07-09%20162748.png, /ocx-c/images/2024-07-09%20162748.png 1.5x, /ocx-c/images/2024-07-09%20162748.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20162748.png width=678 height=603></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>在“新建项目”对话框中，搜索并选择“安装项目(Setup Project)”，然后点击“下一步”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20162939.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20162939.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20162939.png data-srcset="/ocx-c/images/2024-07-09%20162939.png, /ocx-c/images/2024-07-09%20162939.png 1.5x, /ocx-c/images/2024-07-09%20162939.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20162939.png width=1035 height=672></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>给你的安装项目命名并点击“创建”。</li></ul></li><li><p><strong>添加项目输出：</strong></p><ul><li>在“解决方案资源管理器”中，右键点击安装项目，选择“添加(add)” -> “项目输出”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20164821.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20164821.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20164821.png data-srcset="/ocx-c/images/2024-07-09%20164821.png, /ocx-c/images/2024-07-09%20164821.png 1.5x, /ocx-c/images/2024-07-09%20164821.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20164821.png width=547 height=302></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>选择你的主项目（例如 ActiveXDemo），然后选择“主输出”，点击“确定”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20165000.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20165000.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20165000.png data-srcset="/ocx-c/images/2024-07-09%20165000.png, /ocx-c/images/2024-07-09%20165000.png 1.5x, /ocx-c/images/2024-07-09%20165000.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20165000.png width=377 height=491></a><figcaption class=img-caption>alt text</figcaption></figure></li></ul></li><li><p><strong>设置 COM 注册：</strong></p><ul><li>右键点击“主输出文件”，选择“属性”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20165752.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20165752.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20165752.png data-srcset="/ocx-c/images/2024-07-09%20165752.png, /ocx-c/images/2024-07-09%20165752.png 1.5x, /ocx-c/images/2024-07-09%20165752.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20165752.png width=552 height=265></a><figcaption class=img-caption>alt text</figcaption></figure></li><li>在属性窗口中，将“Register”属性设为“vsdrpCOM”。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20170259.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20170259.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20170259.png data-srcset="/ocx-c/images/2024-07-09%20170259.png, /ocx-c/images/2024-07-09%20170259.png 1.5x, /ocx-c/images/2024-07-09%20170259.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20170259.png width=297 height=421></a><figcaption class=img-caption>alt text</figcaption></figure></li></ul></li></ol><h4 id=编译和生成-setup-project>编译和生成 Setup Project</h4><ol><li><p><strong>编译安装项目：</strong></p><ul><li>在“解决方案资源管理器”中，右键点击安装项目，选择“生成”。</li></ul></li><li><p><strong>运行安装程序</strong>：</p><ul><li>在生成完成后，导航到输出目录（通常在解决方案的 Debug 或 Release 文件夹中）。
-找到生成的安装程序文件（例如 .msi/.exe 文件），运行它以安装你的 ActiveX 控件。</li></ul></li></ol><p>如果报错<code>ERROR: The target of shortcut 'Shortcut to %sApplication Folder' is invalid. The 'AlwaysCreate' property of folder 'Application Folder' must be set to 'True'</code>,右键“主输出文件”->右键&rsquo;Application Folder&rsquo;->属性->将 &lsquo;AlwaysCreate&rsquo; 属性设置为 &lsquo;True&rsquo;。<figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20172654.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20172654.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20172654.png data-srcset="/ocx-c/images/2024-07-09%20172654.png, /ocx-c/images/2024-07-09%20172654.png 1.5x, /ocx-c/images/2024-07-09%20172654.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20172654.png width=891 height=262></a><figcaption class=img-caption>alt text</figcaption></figure><figure><a class=lightgallery href=/ocx-c/images/2024-07-09%20172703.png title="alt text" data-thumbnail=/ocx-c/images/2024-07-09%20172703.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/ocx-c/images/2024-07-09%20172703.png data-srcset="/ocx-c/images/2024-07-09%20172703.png, /ocx-c/images/2024-07-09%20172703.png 1.5x, /ocx-c/images/2024-07-09%20172703.png 2x" data-sizes=auto alt=/ocx-c/images/2024-07-09%20172703.png width=335 height=237></a><figcaption class=img-caption>alt text</figcaption></figure></p><h3 id=使用-activex-插件>使用 ActiveX 插件</h3><p>新建一个 Web 项目或者一个 Html 文件，在需要使用浏览器插件的页面上加入以下代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-html data-lang=html><span class=line><span class=cl><span class=p>&lt;</span><span class=nt>html</span> <span class=na>xmlns</span><span class=o>=</span><span class=s>&#34;http://www.w3.org/1999/xhtml&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>head</span> <span class=na>runat</span><span class=o>=</span><span class=s>&#34;server&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>title</span><span class=p>&gt;</span>无标题页<span class=p>&lt;/</span><span class=nt>title</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>head</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>body</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>object</span>
-</span></span><span class=line><span class=cl>            <span class=na>id</span><span class=o>=</span><span class=s>&#34;csharpActiveX&#34;</span>
-</span></span><span class=line><span class=cl>            <span class=na>classid</span><span class=o>=</span><span class=s>&#34;clsid:BB725724-65D6-4e71-AA11-DEDFAFE9248F&#34;</span>
-</span></span><span class=line><span class=cl>            <span class=na>width</span><span class=o>=</span><span class=s>&#34;100%&#34;</span>
-</span></span><span class=line><span class=cl>            <span class=na>height</span><span class=o>=</span><span class=s>&#34;150&#34;</span>
-</span></span><span class=line><span class=cl>        <span class=p>&gt;&lt;/</span><span class=nt>object</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=p>&lt;</span><span class=nt>form</span> <span class=na>id</span><span class=o>=</span><span class=s>&#34;form1&#34;</span> <span class=na>runat</span><span class=o>=</span><span class=s>&#34;server&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=p>&lt;</span><span class=nt>div</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=p>&lt;</span><span class=nt>input</span>
-</span></span><span class=line><span class=cl>                    <span class=na>type</span><span class=o>=</span><span class=s>&#34;button&#34;</span>
-</span></span><span class=line><span class=cl>                    <span class=na>onclick</span><span class=o>=</span><span class=s>&#34;csharpActiveX.Test()&#34;</span>
-</span></span><span class=line><span class=cl>                    <span class=na>value</span><span class=o>=</span><span class=s>&#34;我是按钮&#34;</span>
-</span></span><span class=line><span class=cl>                <span class=p>/&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=p>&lt;/</span><span class=nt>div</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=p>&lt;/</span><span class=nt>form</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>body</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;</span><span class=nt>script</span> <span class=na>type</span><span class=o>=</span><span class=s>&#34;text/javascript&#34;</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=kd>var</span> <span class=nx>objCard</span> <span class=o>=</span> <span class=nb>document</span><span class=p>.</span><span class=nx>getElementById</span><span class=p>(</span><span class=s2>&#34;csharpActiveX&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=nx>objCard</span><span class=p>.</span><span class=nx>object</span> <span class=o>==</span> <span class=kc>null</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nx>alert</span><span class=p>(</span><span class=s2>&#34;csharpActiveX插件未安装！&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nx>alert</span><span class=p>(</span><span class=s2>&#34;已检测到csharpActiveX插件！&#34;</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>&lt;/</span><span class=nt>script</span><span class=p>&gt;</span>
-</span></span><span class=line><span class=cl><span class=p>&lt;/</span><span class=nt>html</span><span class=p>&gt;</span>
-</span></span></code></pre></td></tr></table></div></div><p>在 IE 浏览器中打开这个页面，查看效果</p><div class="details admonition question open"><div class="details-summary admonition-title"><i class="icon fas fa-exclamation-triangle fa-fwquestion"></i>问题<i class="details-icon fas fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content>本文最后更新于 <span class=timeago datetime=2024-07-10T15:54:36 title=" July 10, 2024">July 10, 2024</span>，文中内容可能已过时，请谨慎使用。</div></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2024-07-10</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://www.ykzzo.com/ocx-c/ data-title=C#制作ActiveX浏览器插件&amp;OCX data-hashtags=ActiveX,浏览器插件><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://www.ykzzo.com/ocx-c/ data-hashtag=ActiveX><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Linkedin" data-sharer=linkedin data-url=https://www.ykzzo.com/ocx-c/><i class="fab fa-linkedin fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://www.ykzzo.com/ocx-c/ data-title=C#制作ActiveX浏览器插件&amp;OCX><i data-svg-src=/lib/simple-icons/icons/line.min.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://www.ykzzo.com/ocx-c/ data-title=C#制作ActiveX浏览器插件&amp;OCX><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href></a>,&nbsp;<a href></a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/compilerconstruction/ class=next rel=next title=编译原理>编译原理<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=giscus class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app>Giscus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=run-time></span></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><section><span id=busuanzi_container_value_site_pv><i class="far fa-eye fa-fw"></i>
-<span id=busuanzi_value_site_pv></span>
-</span>&nbsp;|&nbsp;
-<span id=busuanzi_container_value_site_uv><i class="fa fa-user"></i>
-<span id=busuanzi_value_site_uv></span></span></section></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/lightgallery/css/lightgallery-bundle.min.cb289e50cc9ac33906b9be77654f1340844150a9150a1b4be88cab7b044c4e95.css integrity="sha256-yyieUMyawzkGub53ZU8TQIRBUKkVChtL6IyrewRMTpU="><link rel=stylesheet href=/lib/katex/katex.min.76e39bd605d45b2d1944123c66608b0c8bb9baeb70720b212571531c7cf9bc2a.css integrity="sha256-duOb1gXUWy0ZRBI8ZmCLDIu5uutwcgshJXFTHHz5vCo="><script type=text/javascript src=/lib/autocomplete/autocomplete.min.efcd9994416f8ef0e9904c0ebc34d39ab92f5fe72a60224553434d3a818b25e5.js integrity="sha256-782ZlEFvjvDpkEwOvDTTmrkvX+cqYCJFU0NNOoGLJeU="></script><script type=text/javascript src=/lib/algoliasearch/algoliasearch-lite.umd.min.bcee652c2a6d52152e89870be6fa7a3a76ca9ed62e0eea513b6f4f55f232613d.js integrity="sha256-vO5lLCptUhUuiYcL5vp6OnbKntYuDupRO29PVfIyYT0="></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.e76fb8d9f216898822b92b5be7fc0b3085b9a3685b14089d64a10935e83a08c5.js integrity="sha256-52+42fIWiYgiuStb5/wLMIW5o2hbFAidZKEJNeg6CMU="></script><script type=text/javascript src=/lib/lightgallery/lightgallery.min.715d25cf5a06cfcc60d28bd6b1478efb6a2c9bf28928999d7f1c517823df58bc.js integrity="sha256-cV0lz1oGz8xg0ovWsUeO+2osm/KJKJmdfxxReCPfWLw="></script><script type=text/javascript src=/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.c5b7c8ff4db1970dcec1614282b61f421ecf148ce44488247553b75ad442c79a.js integrity="sha256-xbfI/02xlw3OwWFCgrYfQh7PFIzkRIgkdVO3WtRCx5o="></script><script type=text/javascript src=/lib/lightgallery/plugins/zoom/lg-zoom.min.b11a55fa9ecf3559314c8095e293ba438a04c91624bf7a420e092a2930a07956.js integrity="sha256-sRpV+p7PNVkxTICV4pO6Q4oEyRYkv3pCDgkqKTCgeVY="></script><script type=text/javascript src=/lib/clipboard/clipboard.min.21708db6d7f8e20387183d7358648065dc45f7d635370fedb24df591f68f1e6b.js integrity="sha256-IXCNttf44gOHGD1zWGSAZdxF99Y1Nw/tsk31kfaPHms="></script><script type=text/javascript src=/lib/sharer/sharer.min.cc31d902aa4f3fcc8bb8c81aa534a4e2103e9b11f65b9fbd5b7156e089889ceb.js integrity="sha256-zDHZAqpPP8yLuMgapTSk4hA+mxH2W5+9W3FW4ImInOs="></script><script type=text/javascript src=/lib/katex/katex.min.eb18207487161674e717087c317db14ac1a62dadaecccb802499ce173bfeb739.js integrity="sha256-6xggdIcWFnTnFwh8MX2xSsGmLa2uzMuAJJnOFzv+tzk="></script><script type=text/javascript src=/lib/katex/contrib/auto-render.min.cb7f4ca60ed5dc3e258415f8c7a3b46d4a93578a52adf83011f18a7f190e7602.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="></script><script type=text/javascript src=/lib/katex/contrib/copy-tex.min.52ce78fab4860d24ef22128a52ce24ca01368a9034457a565a1d3fccbab0ddbb.js integrity="sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="></script><script type=text/javascript src=/lib/katex/contrib/mhchem.min.5c0a121a8b490afc85860a522347aeb34fb508c6b23044e5d29f6b2194227b51.js integrity="sha256-XAoSGotJCvyFhgpSI0eus0+1CMayMETl0p9rIZQie1E="></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{giscus:{category:"Announcements",categoryId:"DIC_kwDOMiVsFc4ChjcH",darkTheme:"dark",emitMetadata:"0",inputPosition:"bottom",lang:"zh-CN",lazyLoading:!1,lightTheme:"light",mapping:"pathname",reactionsEnabled:"1",repo:"1262706090/Giscus",repoId:"R_kgDOMiVsFQ"}},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"FKTW1AAMOA",algoliaIndex:"ykzzo",algoliaSearchKey:"48bbf64c00ada38e233bf8f046654419",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script><script type=text/javascript src=/js/custom.js></script></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>C#制作ActiveX浏览器插件&amp;OCX - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/ocx-c/">
+  <meta property="og:site_name" content="ykzzo&#39;s Blog">
+  <meta property="og:title" content="C#制作ActiveX浏览器插件&OCX">
+  <meta property="og:description" content="win11-VS2024封装“win应用程序”浏览器插件">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-07T15:54:36+08:00">
+    <meta property="article:modified_time" content="2024-07-10T15:54:36+08:00">
+    <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+  <meta name="twitter:title" content="C#制作ActiveX浏览器插件&OCX">
+  <meta name="twitter:description" content="win11-VS2024封装“win应用程序”浏览器插件">
+<meta name="application-name" content="ykzzo&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ocx-c/" /><link rel="next" href="http://localhost:1313/compilerconstruction/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "C#制作ActiveX浏览器插件\u0026OCX",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/ocx-c\/"
+        },"genre": "posts","keywords": "ActiveX, 浏览器插件","wordcount":  2338 ,
+        "url": "http:\/\/localhost:1313\/ocx-c\/","datePublished": "2024-07-07T15:54:36+08:00","dateModified": "2024-07-10T15:54:36+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "YK"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">C#制作ActiveX浏览器插件&OCX</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href=""><i class="far fa-folder fa-fw" aria-hidden="true"></i></a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-07-07">2024-07-07</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-07-10">2024-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2338 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;
+
+
+
+
+
+
+
+<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+    
+    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+
+
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#创建项目">创建项目</a></li>
+        <li><a href="#设置项目属性">设置项目属性</a></li>
+        <li><a href="#安装外部软件">安装外部软件</a>
+          <ul>
+            <li><a href="#olecom-对象查看器">OLE/COM 对象查看器</a></li>
+            <li><a href="#创建-guid">创建 GUID</a></li>
+          </ul>
+        </li>
+        <li><a href="#提高-activex-插件的安全等级">提高 ActiveX 插件的安全等级</a></li>
+        <li><a href="#制作成安装文件">制作成安装文件</a>
+          <ul>
+            <li><a href="#安装扩展">安装扩展</a></li>
+            <li><a href="#创建安装项目">创建安装项目</a></li>
+            <li><a href="#编译和生成-setup-project">编译和生成 Setup Project</a></li>
+          </ul>
+        </li>
+        <li><a href="#使用-activex-插件">使用 ActiveX 插件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><em>win11-VS2024 封装“win 应用程序”浏览器插件</em></p>
+<h3 id="创建项目">创建项目</h3>
+<p>vs 新建项目“Windows 窗体控件库”，注意项目名不要用中文。在 UserControl1.cs 中将之前的项目移过来。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20160457.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20160457.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-07%20160457.png"
+            data-srcset="/ocx-c/images/2024-07-07%20160457.png, /ocx-c/images/2024-07-07%20160457.png 1.5x, /ocx-c/images/2024-07-07%20160457.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-07%20160457.png" width="1241" height="253" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure>
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20162818.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20162818.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-07%20162818.png"
+            data-srcset="/ocx-c/images/2024-07-07%20162818.png, /ocx-c/images/2024-07-07%20162818.png 1.5x, /ocx-c/images/2024-07-07%20162818.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-07%20162818.png" width="482" height="605" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<h3 id="设置项目属性">设置项目属性</h3>
+<ol>
+<li>右键项目-&gt;属性-&gt;应用程序-&gt;程序信息-&gt;勾选“使程序集 COM 可见”-&gt;点击“确定”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20171904.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20171904.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-07%20171904.png"
+            data-srcset="/ocx-c/images/2024-07-07%20171904.png, /ocx-c/images/2024-07-07%20171904.png 1.5x, /ocx-c/images/2024-07-07%20171904.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-07%20171904.png" width="551" height="807" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure>
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20172417.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20172417.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-07%20172417.png"
+            data-srcset="/ocx-c/images/2024-07-07%20172417.png, /ocx-c/images/2024-07-07%20172417.png 1.5x, /ocx-c/images/2024-07-07%20172417.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-07%20172417.png" width="1025" height="893" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>选择“生成”，拉倒最底部，-&gt;勾选“为 COM 互操作注册”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-07%20172747.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-07%20172747.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-07%20172747.png"
+            data-srcset="/ocx-c/images/2024-07-07%20172747.png, /ocx-c/images/2024-07-07%20172747.png 1.5x, /ocx-c/images/2024-07-07%20172747.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-07%20172747.png" width="1078" height="787" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>最后保存，重新编译。</li>
+</ol>
+<h3 id="安装外部软件">安装外部软件</h3>
+<h4 id="olecom-对象查看器">OLE/COM 对象查看器</h4>
+<p>这款工具用于验证项目成为是否成为一个 ActiveX 控件。</p>
+<ol>
+<li>
+<p>顶部菜单栏“工具”-&gt;“外部工具”
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20142043.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20142043.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-08%20142043.png"
+            data-srcset="/ocx-c/images/2024-07-08%20142043.png, /ocx-c/images/2024-07-08%20142043.png 1.5x, /ocx-c/images/2024-07-08%20142043.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-08%20142043.png" width="337" height="456" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+</li>
+<li>
+<p>然后，添加一个“OLE/COM 对象查看器”，对应的命令程序一般放在 <code>C:\Program Files\Microsoft SDKs\Windows\v6.0A\Bin\OleView.Exe</code> 或 <code>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\OleView.Exe</code>。</p>
+<p>如果都没有可以尝试查找和下载旧版本的 Windows SDK。访问 Microsoft 下载中心：<a href="https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/" target="_blank" rel="noopener noreffer ">https://developer.microsoft.com/zh-cn/windows/downloads/sdk-archive/</a></p>
+<p>
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20183951.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20183951.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-08%20183951.png"
+            data-srcset="/ocx-c/images/2024-07-08%20183951.png, /ocx-c/images/2024-07-08%20183951.png 1.5x, /ocx-c/images/2024-07-08%20183951.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-08%20183951.png" width="445" height="505" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+</li>
+<li>
+<p>“应用”-&gt;“确认”。</p>
+</li>
+<li>
+<p>点击新创建的“OLM/COM 对象查看器”，展开左侧的“.NET Category”，就可以找到刚刚创建的 ActiveX 控件。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08%20184947.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08%20184947.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-08%20184947.png"
+            data-srcset="/ocx-c/images/2024-07-08%20184947.png, /ocx-c/images/2024-07-08%20184947.png 1.5x, /ocx-c/images/2024-07-08%20184947.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-08%20184947.png" width="296" height="472" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure>
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-08-194947.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-08-194947.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-08-194947.png"
+            data-srcset="/ocx-c/images/2024-07-08-194947.png, /ocx-c/images/2024-07-08-194947.png 1.5x, /ocx-c/images/2024-07-08-194947.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-08-194947.png" width="1025" height="533" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+</li>
+</ol>
+<h4 id="创建-guid">创建 GUID</h4>
+<p>方法同上，地址一般是<code>C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\Tools\guidgen.exe</code>或者<code>C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\guidgen.exe</code>。</p>
+<h3 id="提高-activex-插件的安全等级">提高 ActiveX 插件的安全等级</h3>
+<p><strong>IE 通过两个方法判断脚本是否安全：</strong></p>
+<ol>
+<li>询 ActiveX 组件是否实现了<code>IObjectSafety</code>接口，并且返回脚本安全；</li>
+<li>查询 ActiveX 组件是否在注册表的 Component Category Manager 里表明自己实现了 CATID_SafeForInitializing 和 CATID_SafeForScripting。</li>
+</ol>
+<p>第一种方法：实现<code>IObjectSafety</code>接口</p>
+<ul>
+<li>首先，为控件类<code>UserControl1</code>添加一个 GUID，这个编号将用于 B/S 系统的客户端调用时使用（可以使用&quot;工具&quot;-&gt;&ldquo;创建 GUID 菜单&quot;创建一个 GUID），注意<code>ActiveXDemo.UserControl1</code>换成自己的命名。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Windows.Forms</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">ActiveXDemo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [Guid(&#34;BB725724-65D6-4e71-AA11-DEDFAFE9248F&#34;), ProgId(&#34;ActiveXDemo.UserControl1&#34;), ComVisible(true)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kd">partial</span> <span class="k">class</span> <span class="nc">UserControl1</span> <span class="p">:</span> <span class="n">UserControl</span><span class="p">,</span><span class="n">IObjectSafety</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>其次，为了让 ActiveX 控件获得客户端的信任，控件类还需要实现一个名为<code>IObjectSafety</code>的接口，因此在项目中添加一个接口类<code>IObjectSafety</code>
+直接将下列代码复制粘贴，不要作任何改动，尤其是 GUID，都是固定的，不能改。</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="nn">System.Runtime.InteropServices</span><span class="p">;</span> <span class="c1">//同样，需要引入System.Runtime.InteropServices;命名空间</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="nn">ActiveXDemo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [ComImport, GuidAttribute(&#34;CB5BDC81-93C1-11CF-8F20-00805F2CD064&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="k">interface</span> <span class="nc">IObjectSafety</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">        [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">GetInterfaceSafetyOptions</span><span class="p">(</span><span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span> <span class="p">[</span><span class="n">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">U4</span><span class="p">)]</span> <span class="k">ref</span> <span class="kt">int</span> <span class="n">pdwSupportedOptions</span><span class="p">,</span> <span class="p">[</span><span class="n">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">U4</span><span class="p">)]</span> <span class="k">ref</span> <span class="kt">int</span> <span class="n">pdwEnabledOptions</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">        [PreserveSig()]</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">SetInterfaceSafetyOptions</span><span class="p">(</span><span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span> <span class="p">[</span><span class="n">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">U4</span><span class="p">)]</span> <span class="kt">int</span> <span class="n">dwOptionSetMask</span><span class="p">,</span> <span class="p">[</span><span class="n">MarshalAs</span><span class="p">(</span><span class="n">UnmanagedType</span><span class="p">.</span><span class="n">U4</span><span class="p">)]</span> <span class="kt">int</span> <span class="n">dwEnabledOptions</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>接着，在控件类<code>UserControl1</code>中实现<code>IObjectSafety</code>的接口</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c#" data-lang="c#"><span class="line"><span class="cl"><span class="cp">#region</span> <span class="n">IObjectSafety</span> <span class="err">成员</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">string</span> <span class="n">_IID_IDispatch</span> <span class="p">=</span> <span class="s">&#34;{00020400-0000-0000-C000-000000000046}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">string</span> <span class="n">_IID_IDispatchEx</span> <span class="p">=</span> <span class="s">&#34;{a6ef9860-c720-11d0-9337-00a0c90dcaa9}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">string</span> <span class="n">_IID_IPersistStorage</span> <span class="p">=</span> <span class="s">&#34;{0000010A-0000-0000-C000-000000000046}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">string</span> <span class="n">_IID_IPersistStream</span> <span class="p">=</span> <span class="s">&#34;{00000109-0000-0000-C000-000000000046}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">string</span> <span class="n">_IID_IPersistPropertyBag</span> <span class="p">=</span> <span class="s">&#34;{37D84F60-42CB-11CE-8135-00AA004BB851}&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_CALLER</span> <span class="p">=</span> <span class="m">0x00000001</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_DATA</span> <span class="p">=</span> <span class="m">0x00000002</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">S_OK</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">E_FAIL</span> <span class="p">=</span> <span class="k">unchecked</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="m">0x80004005</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kd">const</span> <span class="kt">int</span> <span class="n">E_NOINTERFACE</span> <span class="p">=</span> <span class="k">unchecked</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="m">0x80004002</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">bool</span> <span class="n">_fSafeForScripting</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">private</span> <span class="kt">bool</span> <span class="n">_fSafeForInitializing</span> <span class="p">=</span> <span class="kc">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">GetInterfaceSafetyOptions</span><span class="p">(</span><span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">int</span> <span class="n">pdwSupportedOptions</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">int</span> <span class="n">pdwEnabledOptions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">Rslt</span> <span class="p">=</span> <span class="n">E_FAIL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">strGUID</span> <span class="p">=</span> <span class="n">riid</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;B&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">pdwSupportedOptions</span> <span class="p">=</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_CALLER</span> <span class="p">|</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="k">switch</span> <span class="p">(</span><span class="n">strGUID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IDispatch</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IDispatchEx</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Rslt</span> <span class="p">=</span> <span class="n">S_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">pdwEnabledOptions</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">_fSafeForScripting</span> <span class="p">==</span> <span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">pdwEnabledOptions</span> <span class="p">=</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_CALLER</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistStorage</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistStream</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistPropertyBag</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Rslt</span> <span class="p">=</span> <span class="n">S_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">pdwEnabledOptions</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(</span><span class="n">_fSafeForInitializing</span> <span class="p">==</span> <span class="kc">true</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">pdwEnabledOptions</span> <span class="p">=</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Rslt</span> <span class="p">=</span> <span class="n">E_NOINTERFACE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Rslt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="kd">public</span> <span class="kt">int</span> <span class="n">SetInterfaceSafetyOptions</span><span class="p">(</span><span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dwOptionSetMask</span><span class="p">,</span> <span class="kt">int</span> <span class="n">dwEnabledOptions</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">Rslt</span> <span class="p">=</span> <span class="n">E_FAIL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">string</span> <span class="n">strGUID</span> <span class="p">=</span> <span class="n">riid</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;B&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">switch</span> <span class="p">(</span><span class="n">strGUID</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IDispatch</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IDispatchEx</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(((</span><span class="n">dwEnabledOptions</span> <span class="p">&amp;</span> <span class="n">dwOptionSetMask</span><span class="p">)</span> <span class="p">==</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_CALLER</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">_fSafeForScripting</span> <span class="p">==</span> <span class="kc">true</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Rslt</span> <span class="p">=</span> <span class="n">S_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistStorage</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistStream</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                <span class="k">case</span> <span class="n">_IID_IPersistPropertyBag</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">if</span> <span class="p">(((</span><span class="n">dwEnabledOptions</span> <span class="p">&amp;</span> <span class="n">dwOptionSetMask</span><span class="p">)</span> <span class="p">==</span> <span class="n">INTERFACESAFE_FOR_UNTRUSTED_DATA</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="p">(</span><span class="n">_fSafeForInitializing</span> <span class="p">==</span> <span class="kc">true</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Rslt</span> <span class="p">=</span> <span class="n">S_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="k">default</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Rslt</span> <span class="p">=</span> <span class="n">E_NOINTERFACE</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                    <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">Rslt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="cp">#endregion</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="制作成安装文件">制作成安装文件</h3>
+<h4 id="安装扩展">安装扩展</h4>
+<ol>
+<li>
+<p><strong>安装 Microsoft Visual Studio Installer Projects 扩展：</strong></p>
+<ul>
+<li>打开 Visual Studio 2022。</li>
+<li>转到“扩展”菜单，然后选择“管理扩展”。</li>
+<li>在“联机”选项卡中搜索“Microsoft Visual Studio Installer Projects”。</li>
+<li>点击“安装”将安装扩展。</li>
+<li>重新启动 Visual Studio 以完成安装。</li>
+</ul>
+</li>
+</ol>
+<h4 id="创建安装项目">创建安装项目</h4>
+<ol>
+<li>
+<p><strong>创建新的安装项目：</strong></p>
+<ul>
+<li>打开你的解决方案。</li>
+<li>在“解决方案资源管理器”中右键点击解决方案，选择“添加” -&gt; “新建项目”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20162748.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20162748.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20162748.png"
+            data-srcset="/ocx-c/images/2024-07-09%20162748.png, /ocx-c/images/2024-07-09%20162748.png 1.5x, /ocx-c/images/2024-07-09%20162748.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20162748.png" width="678" height="603" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>在“新建项目”对话框中，搜索并选择“安装项目(Setup Project)”，然后点击“下一步”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20162939.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20162939.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20162939.png"
+            data-srcset="/ocx-c/images/2024-07-09%20162939.png, /ocx-c/images/2024-07-09%20162939.png 1.5x, /ocx-c/images/2024-07-09%20162939.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20162939.png" width="1035" height="672" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>给你的安装项目命名并点击“创建”。</li>
+</ul>
+</li>
+<li>
+<p><strong>添加项目输出：</strong></p>
+<ul>
+<li>在“解决方案资源管理器”中，右键点击安装项目，选择“添加(add)” -&gt; “项目输出”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20164821.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20164821.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20164821.png"
+            data-srcset="/ocx-c/images/2024-07-09%20164821.png, /ocx-c/images/2024-07-09%20164821.png 1.5x, /ocx-c/images/2024-07-09%20164821.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20164821.png" width="547" height="302" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>选择你的主项目（例如 ActiveXDemo），然后选择“主输出”，点击“确定”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20165000.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20165000.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20165000.png"
+            data-srcset="/ocx-c/images/2024-07-09%20165000.png, /ocx-c/images/2024-07-09%20165000.png 1.5x, /ocx-c/images/2024-07-09%20165000.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20165000.png" width="377" height="491" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+</ul>
+</li>
+<li>
+<p><strong>设置 COM 注册：</strong></p>
+<ul>
+<li>右键点击“主输出文件”，选择“属性”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20165752.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20165752.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20165752.png"
+            data-srcset="/ocx-c/images/2024-07-09%20165752.png, /ocx-c/images/2024-07-09%20165752.png 1.5x, /ocx-c/images/2024-07-09%20165752.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20165752.png" width="552" height="265" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+<li>在属性窗口中，将“Register”属性设为“vsdrpCOM”。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20170259.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20170259.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20170259.png"
+            data-srcset="/ocx-c/images/2024-07-09%20170259.png, /ocx-c/images/2024-07-09%20170259.png 1.5x, /ocx-c/images/2024-07-09%20170259.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20170259.png" width="297" height="421" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></li>
+</ul>
+</li>
+</ol>
+<h4 id="编译和生成-setup-project">编译和生成 Setup Project</h4>
+<ol>
+<li>
+<p><strong>编译安装项目：</strong></p>
+<ul>
+<li>在“解决方案资源管理器”中，右键点击安装项目，选择“生成”。</li>
+</ul>
+</li>
+<li>
+<p><strong>运行安装程序</strong>：</p>
+<ul>
+<li>在生成完成后，导航到输出目录（通常在解决方案的 Debug 或 Release 文件夹中）。
+找到生成的安装程序文件（例如 .msi/.exe 文件），运行它以安装你的 ActiveX 控件。</li>
+</ul>
+</li>
+</ol>
+<p>如果报错<code>ERROR: The target of shortcut 'Shortcut to %sApplication Folder' is invalid.  The 'AlwaysCreate' property of folder 'Application Folder' must be set to 'True'</code>,右键“主输出文件”-&gt;右键&rsquo;Application Folder&rsquo;-&gt;属性-&gt;将 &lsquo;AlwaysCreate&rsquo; 属性设置为 &lsquo;True&rsquo;。
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20172654.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20172654.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20172654.png"
+            data-srcset="/ocx-c/images/2024-07-09%20172654.png, /ocx-c/images/2024-07-09%20172654.png 1.5x, /ocx-c/images/2024-07-09%20172654.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20172654.png" width="891" height="262" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure>
+
+<figure><a class="lightgallery" href="/ocx-c/images/2024-07-09%20172703.png" title="alt text" data-thumbnail="/ocx-c/images/2024-07-09%20172703.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/ocx-c/images/2024-07-09%20172703.png"
+            data-srcset="/ocx-c/images/2024-07-09%20172703.png, /ocx-c/images/2024-07-09%20172703.png 1.5x, /ocx-c/images/2024-07-09%20172703.png 2x"
+            data-sizes="auto"
+            alt="/ocx-c/images/2024-07-09%20172703.png" width="335" height="237" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<h3 id="使用-activex-插件">使用 ActiveX 插件</h3>
+<p>新建一个 Web 项目或者一个 Html 文件，在需要使用浏览器插件的页面上加入以下代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&#34;http://www.w3.org/1999/xhtml&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">head</span> <span class="na">runat</span><span class="o">=</span><span class="s">&#34;server&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>无标题页<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">object</span>
+</span></span><span class="line"><span class="cl">            <span class="na">id</span><span class="o">=</span><span class="s">&#34;csharpActiveX&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">classid</span><span class="o">=</span><span class="s">&#34;clsid:BB725724-65D6-4e71-AA11-DEDFAFE9248F&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">width</span><span class="o">=</span><span class="s">&#34;100%&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="na">height</span><span class="o">=</span><span class="s">&#34;150&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&gt;&lt;/</span><span class="nt">object</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;form1&#34;</span> <span class="na">runat</span><span class="o">=</span><span class="s">&#34;server&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="nt">input</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">type</span><span class="o">=</span><span class="s">&#34;button&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;csharpActiveX.Test()&#34;</span>
+</span></span><span class="line"><span class="cl">                    <span class="na">value</span><span class="o">=</span><span class="s">&#34;我是按钮&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/javascript&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">objCard</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;csharpActiveX&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">objCard</span><span class="p">.</span><span class="nx">object</span> <span class="o">==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;csharpActiveX插件未安装！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">alert</span><span class="p">(</span><span class="s2">&#34;已检测到csharpActiveX插件！&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在 IE 浏览器中打开这个页面，查看效果</p>
+<div class="details admonition question open">
+            <div class="details-summary admonition-title">
+                <i class="icon fas fa-exclamation-triangle fa-fwquestion"></i>问题<i class="details-icon fas fa-angle-right fa-fw"></i>
+            </div>
+            <div class="details-content">
+                <div class="admonition-content">
+                    本文最后更新于 <span class="timeago" datetime=" 2024-07-10T15:54:36"
+                        title=" July 10, 2024">July 10, 2024</span>，文中内容可能已过时，请谨慎使用。</div>
+            </div>
+        </div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-07-10</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX" data-hashtags="ActiveX,浏览器插件"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/ocx-c/" data-hashtag="ActiveX"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ocx-c/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/ocx-c/" data-title="C#制作ActiveX浏览器插件&amp;OCX"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href=""></a>,&nbsp;<a href=""></a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/compilerconstruction/" class="next" rel="next" title="编译原理">编译原理<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+
+
+<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+
+
+
+
+<section>
+    
+    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+        
+        <span id="busuanzi_value_site_pv"></span>
+    </span>
+    
+
+    
+    &nbsp;|&nbsp;
+    
+
+    
+    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+        
+        <span id="busuanzi_value_site_uv"></span>
+    </span>
+    
+</section>
+
+
+
+
+
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>

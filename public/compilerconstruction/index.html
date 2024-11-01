@@ -1,201 +1,872 @@
-<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>编译原理 - ykzzo's Blog</title><meta name=Description content="ykzzo的博客"><meta property="og:url" content="https://www.ykzzo.com/compilerconstruction/">
-<meta property="og:site_name" content="ykzzo's Blog"><meta property="og:title" content="编译原理"><meta property="og:description" content="编译原理"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-08-02T19:25:34+08:00"><meta property="article:modified_time" content="2024-08-16T19:25:34+08:00"><meta property="og:image" content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:title content="编译原理"><meta name=twitter:description content="编译原理"><meta name=application-name content="ykzzo's Blog"><meta name=apple-mobile-web-app-title content="ykzzo's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=20240812085355.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.ykzzo.com/compilerconstruction/><link rel=prev href=https://www.ykzzo.com/ocx-c/><link rel=next href=https://www.ykzzo.com/compiler01/><link rel=stylesheet href=/css/style.min.cd96673f15d9819570886f6856268bf35511dde6823267c73fc8e28dbe1cccce.css integrity="sha256-zZZnPxXZgZVwiG9oViaL81UR3eaCMmfHP8jijb4czM4="><link rel=preload href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA="></noscript><link rel=preload href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc="></noscript><meta name=baidu-site-verification content="codeva-rd9ZCXPdEK"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"编译原理","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.ykzzo.com\/compilerconstruction\/"},"genre":"posts","keywords":"Compiler","wordcount":1148,"url":"https:\/\/www.ykzzo.com\/compilerconstruction\/","datePublished":"2024-08-02T19:25:34+08:00","dateModified":"2024-08-16T19:25:34+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"YK"},"description":""}</script></head><body data-header-desktop=normal data-header-mobile=normal><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"light"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"light"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
-<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
-</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
-<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
-</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
-</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
-<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编译原理</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>YK</a></span>&nbsp;<span class=post-category>收录于 <a href><i class="far fa-folder fa-fw" aria-hidden=true></i></a></span></div><div class=post-meta-line><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime=2024-08-02>2024-08-02</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime=2024-08-16>2024-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 1148 字&nbsp;
-<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 3 分钟&nbsp;
-<span id=busuanzi_container_value_page_pv><i class="far fa-eye fa-fw"></i>
-<span id=busuanzi_value_page_pv></span>&nbsp;次阅读</span></div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
-<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#21-使用-antlr-4>2.1 使用 ANTLR 4</a><ul><li><a href=#211-安装-antlr-4-插件>2.1.1 安装 ANTLR 4 插件</a></li><li><a href=#212-编写-antlr-4-文件>2.1.2 编写 ANTLR 4 文件</a></li></ul></li><li><a href=#22-词法分析>2.2 词法分析</a></li></ul><ul><li><a href=#31-语言>3.1 语言</a></li><li><a href=#32-正则表达式>3.2 正则表达式</a></li><li><a href=#33-自动机>3.3 自动机</a></li><li><a href=#34-它们之间关系>3.4 它们之间关系</a><ul><li><a href=#341-re--nfa>3.4.1 RE ==> NFA</a><ul><li><a href=#3411-thompsons-构造法>3.4.1.1 Thompsons 构造法</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><h1 id=1-概述>1. 概述</h1><p><strong>作用：</strong>：从一种语言到另一种语言</p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20101608.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20101608.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20101608.png data-srcset="/compilerconstruction/images/2024-08-03%20101608.png, /compilerconstruction/images/2024-08-03%20101608.png 1.5x, /compilerconstruction/images/2024-08-03%20101608.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20101608.png width=997 height=467></a><figcaption class=img-caption>alt text</figcaption></figure></p><p>过程：</p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20102043.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20102043.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20102043.png data-srcset="/compilerconstruction/images/2024-08-03%20102043.png, /compilerconstruction/images/2024-08-03%20102043.png 1.5x, /compilerconstruction/images/2024-08-03%20102043.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20102043.png width=1165 height=732></a><figcaption class=img-caption>alt text</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20102252.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20102252.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20102252.png data-srcset="/compilerconstruction/images/2024-08-03%20102252.png, /compilerconstruction/images/2024-08-03%20102252.png 1.5x, /compilerconstruction/images/2024-08-03%20102252.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20102252.png width=1090 height=423></a><figcaption class=img-caption>alt text</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20102349.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20102349.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20102349.png data-srcset="/compilerconstruction/images/2024-08-03%20102349.png, /compilerconstruction/images/2024-08-03%20102349.png 1.5x, /compilerconstruction/images/2024-08-03%20102349.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20102349.png width=1206 height=678></a><figcaption class=img-caption>alt text</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20103207.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20103207.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20103207.png data-srcset="/compilerconstruction/images/2024-08-03%20103207.png, /compilerconstruction/images/2024-08-03%20103207.png 1.5x, /compilerconstruction/images/2024-08-03%20103207.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20103207.png width=1265 height=755></a><figcaption class=img-caption>alt text</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03%20103422.png title="alt text" data-thumbnail=/compilerconstruction/images/2024-08-03%20103422.png data-sub-html="<h2> </h2><p>alt text</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03%20103422.png data-srcset="/compilerconstruction/images/2024-08-03%20103422.png, /compilerconstruction/images/2024-08-03%20103422.png 1.5x, /compilerconstruction/images/2024-08-03%20103422.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03%20103422.png width=1271 height=691></a><figcaption class=img-caption>alt text</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03-11-09-59.png title=2024-08-03-11-09-59.png data-thumbnail=/compilerconstruction/images/2024-08-03-11-09-59.png data-sub-html="<h2> </h2><p>2024-08-03-11-09-59.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03-11-09-59.png data-srcset="/compilerconstruction/images/2024-08-03-11-09-59.png, /compilerconstruction/images/2024-08-03-11-09-59.png 1.5x, /compilerconstruction/images/2024-08-03-11-09-59.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03-11-09-59.png width=1259 height=743></a><figcaption class=img-caption>2024-08-03-11-09-59.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03-11-11-00.png title=2024-08-03-11-11-00.png data-thumbnail=/compilerconstruction/images/2024-08-03-11-11-00.png data-sub-html="<h2> </h2><p>2024-08-03-11-11-00.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03-11-11-00.png data-srcset="/compilerconstruction/images/2024-08-03-11-11-00.png, /compilerconstruction/images/2024-08-03-11-11-00.png 1.5x, /compilerconstruction/images/2024-08-03-11-11-00.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03-11-11-00.png width=1260 height=734></a><figcaption class=img-caption>2024-08-03-11-11-00.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03-11-12-00.png title=2024-08-03-11-12-00.png data-thumbnail=/compilerconstruction/images/2024-08-03-11-12-00.png data-sub-html="<h2> </h2><p>2024-08-03-11-12-00.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03-11-12-00.png data-srcset="/compilerconstruction/images/2024-08-03-11-12-00.png, /compilerconstruction/images/2024-08-03-11-12-00.png 1.5x, /compilerconstruction/images/2024-08-03-11-12-00.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03-11-12-00.png width=1270 height=749></a><figcaption class=img-caption>2024-08-03-11-12-00.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03-11-13-17.png title=2024-08-03-11-13-17.png data-thumbnail=/compilerconstruction/images/2024-08-03-11-13-17.png data-sub-html="<h2> </h2><p>2024-08-03-11-13-17.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03-11-13-17.png data-srcset="/compilerconstruction/images/2024-08-03-11-13-17.png, /compilerconstruction/images/2024-08-03-11-13-17.png 1.5x, /compilerconstruction/images/2024-08-03-11-13-17.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03-11-13-17.png width=1266 height=732></a><figcaption class=img-caption>2024-08-03-11-13-17.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-03-11-13-36.png title=2024-08-03-11-13-36.png data-thumbnail=/compilerconstruction/images/2024-08-03-11-13-36.png data-sub-html="<h2> </h2><p>2024-08-03-11-13-36.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-03-11-13-36.png data-srcset="/compilerconstruction/images/2024-08-03-11-13-36.png, /compilerconstruction/images/2024-08-03-11-13-36.png 1.5x, /compilerconstruction/images/2024-08-03-11-13-36.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-03-11-13-36.png width=1273 height=872></a><figcaption class=img-caption>2024-08-03-11-13-36.png</figcaption></figure></p><h1 id=2-antlr-4-词法分析器>2. ANTLR 4 词法分析器</h1><p>环境：win11 + IDEA + ANTLR 插件</p><h2 id=21-使用-antlr-4>2.1 使用 ANTLR 4</h2><h3 id=211-安装-antlr-4-插件>2.1.1 安装 ANTLR 4 插件</h3><p>IDEA->Settings->Plugins-><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-16-49-43.png title=2024-08-04-16-49-43.png data-thumbnail=/compilerconstruction/images/2024-08-04-16-49-43.png data-sub-html="<h2> </h2><p>2024-08-04-16-49-43.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-16-49-43.png data-srcset="/compilerconstruction/images/2024-08-04-16-49-43.png, /compilerconstruction/images/2024-08-04-16-49-43.png 1.5x, /compilerconstruction/images/2024-08-04-16-49-43.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-16-49-43.png width=922 height=505></a><figcaption class=img-caption>2024-08-04-16-49-43.png</figcaption></figure></p><h3 id=212-编写-antlr-4-文件>2.1.2 编写 ANTLR 4 文件</h3><ol><li>新建 Maven 项目<figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-16-52-55.png title=2024-08-04-16-52-55.png data-thumbnail=/compilerconstruction/images/2024-08-04-16-52-55.png data-sub-html="<h2> </h2><p>2024-08-04-16-52-55.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-16-52-55.png data-srcset="/compilerconstruction/images/2024-08-04-16-52-55.png, /compilerconstruction/images/2024-08-04-16-52-55.png 1.5x, /compilerconstruction/images/2024-08-04-16-52-55.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-16-52-55.png width=982 height=603></a><figcaption class=img-caption>2024-08-04-16-52-55.png</figcaption></figure></li><li>在<code>pom.xml</code>里中添加 antlr 的依赖项，注意修改自己的 antlr 版本</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span><span class=lnt>41
-</span><span class=lnt>42
-</span><span class=lnt>43
-</span><span class=lnt>44
-</span><span class=lnt>45
-</span><span class=lnt>46
-</span><span class=lnt>47
-</span><span class=lnt>48
-</span><span class=lnt>49
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-xml data-lang=xml><span class=line><span class=cl><span class=cp>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
-</span></span><span class=line><span class=cl><span class=nt>&lt;project</span> <span class=na>xmlns=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
-</span></span><span class=line><span class=cl>         <span class=na>xmlns:xsi=</span><span class=s>&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
-</span></span><span class=line><span class=cl>         <span class=na>xsi:schemaLocation=</span><span class=s>&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class=nt>&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;modelVersion&gt;</span>4.0.0<span class=nt>&lt;/modelVersion&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;groupId&gt;</span>org.example<span class=nt>&lt;/groupId&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;artifactId&gt;</span>untitled1<span class=nt>&lt;/artifactId&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;version&gt;</span>1.0-SNAPSHOT<span class=nt>&lt;/version&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;properties&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;maven.compiler.source&gt;</span>13<span class=nt>&lt;/maven.compiler.source&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;maven.compiler.target&gt;</span>13<span class=nt>&lt;/maven.compiler.target&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;/properties&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    // 配置位置
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;dependencies&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;dependency&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=nt>&lt;groupId&gt;</span>org.antlr<span class=nt>&lt;/groupId&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=nt>&lt;artifactId&gt;</span>antlr4-runtime<span class=nt>&lt;/artifactId&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=nt>&lt;version&gt;</span>4.10.1<span class=nt>&lt;/version&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;/dependency&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;/dependencies&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;build&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;plugins&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=nt>&lt;plugin&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;groupId&gt;</span>org.antlr<span class=nt>&lt;/groupId&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;artifactId&gt;</span>antlr4-maven-plugin<span class=nt>&lt;/artifactId&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;version&gt;</span>4.10.1<span class=nt>&lt;/version&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;executions&gt;</span>
-</span></span><span class=line><span class=cl>                    <span class=nt>&lt;execution&gt;</span>
-</span></span><span class=line><span class=cl>                        <span class=nt>&lt;id&gt;</span>antlr<span class=nt>&lt;/id&gt;</span>
-</span></span><span class=line><span class=cl>                        <span class=nt>&lt;goals&gt;</span>
-</span></span><span class=line><span class=cl>                            <span class=nt>&lt;goal&gt;</span>antlr4<span class=nt>&lt;/goal&gt;</span>
-</span></span><span class=line><span class=cl>                        <span class=nt>&lt;/goals&gt;</span>
-</span></span><span class=line><span class=cl>                        <span class=nt>&lt;phase&gt;</span>none<span class=nt>&lt;/phase&gt;</span>
-</span></span><span class=line><span class=cl>                    <span class=nt>&lt;/execution&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;/executions&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;configuration&gt;</span>
-</span></span><span class=line><span class=cl>                    <span class=nt>&lt;outputDirectory&gt;</span>src/test/java<span class=nt>&lt;/outputDirectory&gt;</span>
-</span></span><span class=line><span class=cl>                    <span class=nt>&lt;listener&gt;</span>true<span class=nt>&lt;/listener&gt;</span>
-</span></span><span class=line><span class=cl>                    <span class=nt>&lt;treatWarningsAsErrors&gt;</span>true<span class=nt>&lt;/treatWarningsAsErrors&gt;</span>
-</span></span><span class=line><span class=cl>                <span class=nt>&lt;/configuration&gt;</span>
-</span></span><span class=line><span class=cl>            <span class=nt>&lt;/plugin&gt;</span>
-</span></span><span class=line><span class=cl>        <span class=nt>&lt;/plugins&gt;</span>
-</span></span><span class=line><span class=cl>    <span class=nt>&lt;/build&gt;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=nt>&lt;/project&gt;</span>
-</span></span></code></pre></td></tr></table></div></div><ol><li>在 <code>src/main/java</code> 新建 <code>xxxx.g4</code> 文件，注意要以".g4"结尾</li><li>编写代码</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span><span class=lnt>32
-</span><span class=lnt>33
-</span><span class=lnt>34
-</span><span class=lnt>35
-</span><span class=lnt>36
-</span><span class=lnt>37
-</span><span class=lnt>38
-</span><span class=lnt>39
-</span><span class=lnt>40
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-antlr data-lang=antlr><span class=line><span class=cl><span class=c>// 声明语法名称 simpleexpr。语法名称应该与文件名</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=k>grammar</span><span class=w> </span><span class=nc>SimpleExpr</span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=c>// 在生成的代码文件的开头插入一些代码</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>@header</span><span class=w> </span><span class=p>{</span><span class=x>
-</span></span></span><span class=line><span class=cl><span class=x>package simpleexpr;
-</span></span></span><span class=line><span class=cl><span class=x></span><span class=p>}</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>prog</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=nv>stat</span><span class=o>*</span><span class=w> </span><span class=no>EOF</span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>stat</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=nv>expr</span><span class=w> </span><span class=s>&#39;;&#39;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=o>|</span><span class=w> </span><span class=no>ID</span><span class=w> </span><span class=s>&#39;=&#39;</span><span class=w> </span><span class=nv>expr</span><span class=w> </span><span class=s>&#39;;&#39;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=o>|</span><span class=w> </span><span class=s>&#39;if&#39;</span><span class=w> </span><span class=nv>expr</span><span class=w> </span><span class=s>&#39;;&#39;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>expr</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=nv>expr</span><span class=w> </span><span class=o>(</span><span class=s>&#39;*&#39;</span><span class=o>|</span><span class=s>&#39;/&#39;</span><span class=o>)</span><span class=w> </span><span class=nv>expr</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=o>|</span><span class=w> </span><span class=nv>expr</span><span class=w> </span><span class=o>(</span><span class=s>&#39;+&#39;</span><span class=o>|</span><span class=s>&#39;-&#39;</span><span class=o>)</span><span class=w> </span><span class=nv>expr</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=o>|</span><span class=w> </span><span class=no>ID</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=o>|</span><span class=w> </span><span class=no>INT</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>     </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>SEMI</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;;&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>ASSIGN</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;=&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>IF</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;if&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>MUL</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;*&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>DIV</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;/&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>ADD</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;+&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>SUB</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;-&#39;</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>ID</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=o>(</span><span class=no>LETTER</span><span class=w> </span><span class=o>|</span><span class=w> </span><span class=s>&#39;_&#39;</span><span class=o>)</span><span class=w> </span><span class=o>(</span><span class=no>LETTER</span><span class=w> </span><span class=o>|</span><span class=w> </span><span class=no>DIGIT</span><span class=w> </span><span class=o>|</span><span class=w> </span><span class=s>&#39;_&#39;</span><span class=o>)*</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>INT</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;0&#39;</span><span class=w> </span><span class=o>|</span><span class=w> </span><span class=p>[</span><span class=x>1-9</span><span class=p>]</span><span class=w> </span><span class=p>[</span><span class=x>0-9</span><span class=p>]</span><span class=o>*</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>WS</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=x> \t\r\n</span><span class=p>]</span><span class=o>+</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=nv>skip</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>SL_COMMENT</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;//&#39;</span><span class=w> </span><span class=o>.*?</span><span class=w> </span><span class=s>&#39;\n&#39;</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=nv>skip</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=nl>ML_COMMENT</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=s>&#39;/*&#39;</span><span class=w> </span><span class=o>.*?</span><span class=w> </span><span class=s>&#39;*/&#39;</span><span class=w> </span><span class=o>-&gt;</span><span class=w> </span><span class=nv>skip</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=k>fragment</span><span class=w> </span><span class=nl>LETTER</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=x>a-zA-Z</span><span class=p>]</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span><span class=line><span class=cl><span class=w></span><span class=k>fragment</span><span class=w> </span><span class=nl>DIGIT</span><span class=w> </span><span class=p>:</span><span class=w> </span><span class=p>[</span><span class=x>0-9</span><span class=p>]</span><span class=w> </span><span class=p>;</span><span class=w>
-</span></span></span></code></pre></td></tr></table></div></div><ol start=5><li>测试代码</li></ol><p>光标放到<code>prog : stat* EOF;</code>一行，右键测试</p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-07-37.png title=2024-08-04-17-07-37.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-07-37.png data-sub-html="<h2> </h2><p>2024-08-04-17-07-37.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-07-37.png data-srcset="/compilerconstruction/images/2024-08-04-17-07-37.png, /compilerconstruction/images/2024-08-04-17-07-37.png 1.5x, /compilerconstruction/images/2024-08-04-17-07-37.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-07-37.png width=460 height=200></a><figcaption class=img-caption>2024-08-04-17-07-37.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-10-24.png title=2024-08-04-17-10-24.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-10-24.png data-sub-html="<h2> </h2><p>2024-08-04-17-10-24.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-10-24.png data-srcset="/compilerconstruction/images/2024-08-04-17-10-24.png, /compilerconstruction/images/2024-08-04-17-10-24.png 1.5x, /compilerconstruction/images/2024-08-04-17-10-24.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-10-24.png width=1911 height=423></a><figcaption class=img-caption>2024-08-04-17-10-24.png</figcaption></figure></p><ol start=6><li>配置输出路径</li></ol><p>右键 xxx.g4 文件，选择 Configure ANTLR…</p><h2 id=22-词法分析>2.2 词法分析</h2><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-23-02.png title=2024-08-04-17-23-02.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-23-02.png data-sub-html="<h2> </h2><p>2024-08-04-17-23-02.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-23-02.png data-srcset="/compilerconstruction/images/2024-08-04-17-23-02.png, /compilerconstruction/images/2024-08-04-17-23-02.png 1.5x, /compilerconstruction/images/2024-08-04-17-23-02.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-23-02.png width=1136 height=707></a><figcaption class=img-caption>2024-08-04-17-23-02.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-24-42.png title=2024-08-04-17-24-42.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-24-42.png data-sub-html="<h2> </h2><p>2024-08-04-17-24-42.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-24-42.png data-srcset="/compilerconstruction/images/2024-08-04-17-24-42.png, /compilerconstruction/images/2024-08-04-17-24-42.png 1.5x, /compilerconstruction/images/2024-08-04-17-24-42.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-24-42.png width=1128 height=727></a><figcaption class=img-caption>2024-08-04-17-24-42.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-24-55.png title=2024-08-04-17-24-55.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-24-55.png data-sub-html="<h2> </h2><p>2024-08-04-17-24-55.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-24-55.png data-srcset="/compilerconstruction/images/2024-08-04-17-24-55.png, /compilerconstruction/images/2024-08-04-17-24-55.png 1.5x, /compilerconstruction/images/2024-08-04-17-24-55.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-24-55.png width=1130 height=619></a><figcaption class=img-caption>2024-08-04-17-24-55.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-26-28.png title=2024-08-04-17-26-28.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-26-28.png data-sub-html="<h2> </h2><p>2024-08-04-17-26-28.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-26-28.png data-srcset="/compilerconstruction/images/2024-08-04-17-26-28.png, /compilerconstruction/images/2024-08-04-17-26-28.png 1.5x, /compilerconstruction/images/2024-08-04-17-26-28.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-26-28.png width=1125 height=631></a><figcaption class=img-caption>2024-08-04-17-26-28.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-28-04.png title=2024-08-04-17-28-04.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-28-04.png data-sub-html="<h2> </h2><p>2024-08-04-17-28-04.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-28-04.png data-srcset="/compilerconstruction/images/2024-08-04-17-28-04.png, /compilerconstruction/images/2024-08-04-17-28-04.png 1.5x, /compilerconstruction/images/2024-08-04-17-28-04.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-28-04.png width=1133 height=674></a><figcaption class=img-caption>2024-08-04-17-28-04.png</figcaption></figure></p><p><strong>语言是串的集合</strong></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-29-30.png title=2024-08-04-17-29-30.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-29-30.png data-sub-html="<h2> </h2><p>2024-08-04-17-29-30.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-29-30.png data-srcset="/compilerconstruction/images/2024-08-04-17-29-30.png, /compilerconstruction/images/2024-08-04-17-29-30.png 1.5x, /compilerconstruction/images/2024-08-04-17-29-30.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-29-30.png width=1130 height=590></a><figcaption class=img-caption>2024-08-04-17-29-30.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-04-17-31-36.png title=2024-08-04-17-31-36.png data-thumbnail=/compilerconstruction/images/2024-08-04-17-31-36.png data-sub-html="<h2> </h2><p>2024-08-04-17-31-36.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-04-17-31-36.png data-srcset="/compilerconstruction/images/2024-08-04-17-31-36.png, /compilerconstruction/images/2024-08-04-17-31-36.png 1.5x, /compilerconstruction/images/2024-08-04-17-31-36.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-04-17-31-36.png width=1127 height=625></a><figcaption class=img-caption>2024-08-04-17-31-36.png</figcaption></figure></p><h1 id=3-lexer-re-automata>3. lexer-re-automata</h1><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-20-56-52.png title=2024-08-07-20-56-52.png data-thumbnail=/compilerconstruction/images/2024-08-07-20-56-52.png data-sub-html="<h2> </h2><p>2024-08-07-20-56-52.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-20-56-52.png data-srcset="/compilerconstruction/images/2024-08-07-20-56-52.png, /compilerconstruction/images/2024-08-07-20-56-52.png 1.5x, /compilerconstruction/images/2024-08-07-20-56-52.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-20-56-52.png width=1138 height=622></a><figcaption class=img-caption>2024-08-07-20-56-52.png</figcaption></figure></p><p><em>RE、NFA、DFA 三者是可以相互转化的，从某种意义上讲，三者是等价的。</em></p><h2 id=31-语言>3.1 语言</h2><p><strong>语言</strong>：语言是字符串构成的集合。</p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-49-50.png title=2024-08-07-21-49-50.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-49-50.png data-sub-html="<h2> </h2><p>2024-08-07-21-49-50.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-49-50.png data-srcset="/compilerconstruction/images/2024-08-07-21-49-50.png, /compilerconstruction/images/2024-08-07-21-49-50.png 1.5x, /compilerconstruction/images/2024-08-07-21-49-50.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-49-50.png width=1136 height=761></a><figcaption class=img-caption>2024-08-07-21-49-50.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-50-04.png title=2024-08-07-21-50-04.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-50-04.png data-sub-html="<h2> </h2><p>2024-08-07-21-50-04.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-50-04.png data-srcset="/compilerconstruction/images/2024-08-07-21-50-04.png, /compilerconstruction/images/2024-08-07-21-50-04.png 1.5x, /compilerconstruction/images/2024-08-07-21-50-04.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-50-04.png width=1129 height=542></a><figcaption class=img-caption>2024-08-07-21-50-04.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-51-32.png title=2024-08-07-21-51-32.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-51-32.png data-sub-html="<h2> </h2><p>2024-08-07-21-51-32.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-51-32.png data-srcset="/compilerconstruction/images/2024-08-07-21-51-32.png, /compilerconstruction/images/2024-08-07-21-51-32.png 1.5x, /compilerconstruction/images/2024-08-07-21-51-32.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-51-32.png width=1141 height=664></a><figcaption class=img-caption>2024-08-07-21-51-32.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-53-43.png title=2024-08-07-21-53-43.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-53-43.png data-sub-html="<h2> </h2><p>2024-08-07-21-53-43.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-53-43.png data-srcset="/compilerconstruction/images/2024-08-07-21-53-43.png, /compilerconstruction/images/2024-08-07-21-53-43.png 1.5x, /compilerconstruction/images/2024-08-07-21-53-43.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-53-43.png width=1125 height=514></a><figcaption class=img-caption>2024-08-07-21-53-43.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-55-02.png title=2024-08-07-21-55-02.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-55-02.png data-sub-html="<h2> </h2><p>2024-08-07-21-55-02.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-55-02.png data-srcset="/compilerconstruction/images/2024-08-07-21-55-02.png, /compilerconstruction/images/2024-08-07-21-55-02.png 1.5x, /compilerconstruction/images/2024-08-07-21-55-02.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-55-02.png width=1137 height=554></a><figcaption class=img-caption>2024-08-07-21-55-02.png</figcaption></figure></p><h2 id=32-正则表达式>3.2 正则表达式</h2><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-58-37.png title=2024-08-07-21-58-37.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-58-37.png data-sub-html="<h2> </h2><p>2024-08-07-21-58-37.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-58-37.png data-srcset="/compilerconstruction/images/2024-08-07-21-58-37.png, /compilerconstruction/images/2024-08-07-21-58-37.png 1.5x, /compilerconstruction/images/2024-08-07-21-58-37.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-58-37.png width=1129 height=537></a><figcaption class=img-caption>2024-08-07-21-58-37.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-21-59-00.png title=2024-08-07-21-59-00.png data-thumbnail=/compilerconstruction/images/2024-08-07-21-59-00.png data-sub-html="<h2> </h2><p>2024-08-07-21-59-00.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-21-59-00.png data-srcset="/compilerconstruction/images/2024-08-07-21-59-00.png, /compilerconstruction/images/2024-08-07-21-59-00.png 1.5x, /compilerconstruction/images/2024-08-07-21-59-00.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-21-59-00.png width=1131 height=575></a><figcaption class=img-caption>2024-08-07-21-59-00.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-22-02-50.png title=2024-08-07-22-02-50.png data-thumbnail=/compilerconstruction/images/2024-08-07-22-02-50.png data-sub-html="<h2> </h2><p>2024-08-07-22-02-50.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-22-02-50.png data-srcset="/compilerconstruction/images/2024-08-07-22-02-50.png, /compilerconstruction/images/2024-08-07-22-02-50.png 1.5x, /compilerconstruction/images/2024-08-07-22-02-50.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-22-02-50.png width=1125 height=522></a><figcaption class=img-caption>2024-08-07-22-02-50.png</figcaption></figure></p><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-22-03-17.png title=2024-08-07-22-03-17.png data-thumbnail=/compilerconstruction/images/2024-08-07-22-03-17.png data-sub-html="<h2> </h2><p>2024-08-07-22-03-17.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-22-03-17.png data-srcset="/compilerconstruction/images/2024-08-07-22-03-17.png, /compilerconstruction/images/2024-08-07-22-03-17.png 1.5x, /compilerconstruction/images/2024-08-07-22-03-17.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-22-03-17.png width=800 height=691></a><figcaption class=img-caption>2024-08-07-22-03-17.png</figcaption></figure></p><h2 id=33-自动机>3.3 自动机</h2><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-07-22-04-51.png title=2024-08-07-22-04-51.png data-thumbnail=/compilerconstruction/images/2024-08-07-22-04-51.png data-sub-html="<h2> </h2><p>2024-08-07-22-04-51.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-07-22-04-51.png data-srcset="/compilerconstruction/images/2024-08-07-22-04-51.png, /compilerconstruction/images/2024-08-07-22-04-51.png 1.5x, /compilerconstruction/images/2024-08-07-22-04-51.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-07-22-04-51.png width=1139 height=724></a><figcaption class=img-caption>2024-08-07-22-04-51.png</figcaption></figure></p><p><em>约定：所有没有对应出边的字符默认指向“空状态”</em></p><p>（非确定性）有穷自动机是一类极其简单的<strong>计算</strong>装置，他可以<strong>识别</strong>（接受/拒绝）$\Sigma$ 上的字符串。</p><p><strong>Definition(接受(Accept))：</strong><br>（非确定性）有穷自动机 $A$ 接受字符串 $x$ ，当且仅当<strong>存在</strong>一条从开始状态 $s_0$ 到<strong>某个</strong>接受状态 $f \in F$ ，标号为 $x$ 的路径。</p><p>因此，$A$ 定义了一种语言 $L(A)$ ：它能接受的所有字符串构成的集合。</p><p><strong>Definition(DFA(Deterministic Finite Automaton))</strong><br>确定性有穷自动机 $A$ 是一个五元组 <strong>$A=(\Sigma,S,s_0,\delta,F)$</strong> ：<br>(1) 字母表 $\Sigma (\epsilon \notin \Sigma)$<br>(2) 有穷的<strong>状态集合</strong> $S$<br>(3) <strong>唯一</strong>的初始集合 $S$<br>(4) ** 状态转移函数** $\delta$</p><p>$$
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>编译原理 - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/compilerconstruction/">
+  <meta property="og:site_name" content="ykzzo&#39;s Blog">
+  <meta property="og:title" content="编译原理">
+  <meta property="og:description" content="编译原理">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-02T19:25:34+08:00">
+    <meta property="article:modified_time" content="2024-08-16T19:25:34+08:00">
+    <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
+  <meta name="twitter:title" content="编译原理">
+  <meta name="twitter:description" content="编译原理">
+<meta name="application-name" content="ykzzo&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/compilerconstruction/" /><link rel="prev" href="http://localhost:1313/ocx-c/" /><link rel="next" href="http://localhost:1313/compiler01/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "编译原理",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/compilerconstruction\/"
+        },"genre": "posts","keywords": "Compiler","wordcount":  1148 ,
+        "url": "http:\/\/localhost:1313\/compilerconstruction\/","datePublished": "2024-08-02T19:25:34+08:00","dateModified": "2024-08-16T19:25:34+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "YK"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">编译原理</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href=""><i class="far fa-folder fa-fw" aria-hidden="true"></i></a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-08-02">2024-08-02</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-08-16">2024-08-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1148 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;
+
+
+
+
+
+
+
+<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+    
+    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+
+
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#21-使用-antlr-4">2.1 使用 ANTLR 4</a>
+      <ul>
+        <li><a href="#211-安装-antlr-4-插件">2.1.1 安装 ANTLR 4 插件</a></li>
+        <li><a href="#212-编写-antlr-4-文件">2.1.2 编写 ANTLR 4 文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#22-词法分析">2.2 词法分析</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#31-语言">3.1 语言</a></li>
+    <li><a href="#32-正则表达式">3.2 正则表达式</a></li>
+    <li><a href="#33-自动机">3.3 自动机</a></li>
+    <li><a href="#34-它们之间关系">3.4 它们之间关系</a>
+      <ul>
+        <li><a href="#341-re--nfa">3.4.1 RE ==&gt; NFA</a>
+          <ul>
+            <li><a href="#3411-thompsons-构造法">3.4.1.1 Thompsons 构造法</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="1-概述">1. 概述</h1>
+<p><strong>作用：</strong>：从一种语言到另一种语言</p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20101608.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20101608.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20101608.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20101608.png, /compilerconstruction/images/2024-08-03%20101608.png 1.5x, /compilerconstruction/images/2024-08-03%20101608.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20101608.png" width="997" height="467" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>过程：</p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20102043.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20102043.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20102043.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20102043.png, /compilerconstruction/images/2024-08-03%20102043.png 1.5x, /compilerconstruction/images/2024-08-03%20102043.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20102043.png" width="1165" height="732" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20102252.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20102252.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20102252.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20102252.png, /compilerconstruction/images/2024-08-03%20102252.png 1.5x, /compilerconstruction/images/2024-08-03%20102252.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20102252.png" width="1090" height="423" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20102349.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20102349.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20102349.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20102349.png, /compilerconstruction/images/2024-08-03%20102349.png 1.5x, /compilerconstruction/images/2024-08-03%20102349.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20102349.png" width="1206" height="678" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20103207.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20103207.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20103207.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20103207.png, /compilerconstruction/images/2024-08-03%20103207.png 1.5x, /compilerconstruction/images/2024-08-03%20103207.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20103207.png" width="1265" height="755" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03%20103422.png" title="alt text" data-thumbnail="/compilerconstruction/images/2024-08-03%20103422.png" data-sub-html="<h2> </h2><p>alt text</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03%20103422.png"
+            data-srcset="/compilerconstruction/images/2024-08-03%20103422.png, /compilerconstruction/images/2024-08-03%20103422.png 1.5x, /compilerconstruction/images/2024-08-03%20103422.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03%20103422.png" width="1271" height="691" />
+    </a><figcaption class="img-caption">alt text</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03-11-09-59.png" title="2024-08-03-11-09-59.png" data-thumbnail="/compilerconstruction/images/2024-08-03-11-09-59.png" data-sub-html="<h2> </h2><p>2024-08-03-11-09-59.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03-11-09-59.png"
+            data-srcset="/compilerconstruction/images/2024-08-03-11-09-59.png, /compilerconstruction/images/2024-08-03-11-09-59.png 1.5x, /compilerconstruction/images/2024-08-03-11-09-59.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03-11-09-59.png" width="1259" height="743" />
+    </a><figcaption class="img-caption">2024-08-03-11-09-59.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03-11-11-00.png" title="2024-08-03-11-11-00.png" data-thumbnail="/compilerconstruction/images/2024-08-03-11-11-00.png" data-sub-html="<h2> </h2><p>2024-08-03-11-11-00.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03-11-11-00.png"
+            data-srcset="/compilerconstruction/images/2024-08-03-11-11-00.png, /compilerconstruction/images/2024-08-03-11-11-00.png 1.5x, /compilerconstruction/images/2024-08-03-11-11-00.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03-11-11-00.png" width="1260" height="734" />
+    </a><figcaption class="img-caption">2024-08-03-11-11-00.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03-11-12-00.png" title="2024-08-03-11-12-00.png" data-thumbnail="/compilerconstruction/images/2024-08-03-11-12-00.png" data-sub-html="<h2> </h2><p>2024-08-03-11-12-00.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03-11-12-00.png"
+            data-srcset="/compilerconstruction/images/2024-08-03-11-12-00.png, /compilerconstruction/images/2024-08-03-11-12-00.png 1.5x, /compilerconstruction/images/2024-08-03-11-12-00.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03-11-12-00.png" width="1270" height="749" />
+    </a><figcaption class="img-caption">2024-08-03-11-12-00.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03-11-13-17.png" title="2024-08-03-11-13-17.png" data-thumbnail="/compilerconstruction/images/2024-08-03-11-13-17.png" data-sub-html="<h2> </h2><p>2024-08-03-11-13-17.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03-11-13-17.png"
+            data-srcset="/compilerconstruction/images/2024-08-03-11-13-17.png, /compilerconstruction/images/2024-08-03-11-13-17.png 1.5x, /compilerconstruction/images/2024-08-03-11-13-17.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03-11-13-17.png" width="1266" height="732" />
+    </a><figcaption class="img-caption">2024-08-03-11-13-17.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-03-11-13-36.png" title="2024-08-03-11-13-36.png" data-thumbnail="/compilerconstruction/images/2024-08-03-11-13-36.png" data-sub-html="<h2> </h2><p>2024-08-03-11-13-36.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-03-11-13-36.png"
+            data-srcset="/compilerconstruction/images/2024-08-03-11-13-36.png, /compilerconstruction/images/2024-08-03-11-13-36.png 1.5x, /compilerconstruction/images/2024-08-03-11-13-36.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-03-11-13-36.png" width="1273" height="872" />
+    </a><figcaption class="img-caption">2024-08-03-11-13-36.png</figcaption>
+</figure></p>
+<h1 id="2-antlr-4-词法分析器">2. ANTLR 4 词法分析器</h1>
+<p>环境：win11 + IDEA + ANTLR 插件</p>
+<h2 id="21-使用-antlr-4">2.1 使用 ANTLR 4</h2>
+<h3 id="211-安装-antlr-4-插件">2.1.1 安装 ANTLR 4 插件</h3>
+<p>IDEA-&gt;Settings-&gt;Plugins-&gt;
+
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-16-49-43.png" title="2024-08-04-16-49-43.png" data-thumbnail="/compilerconstruction/images/2024-08-04-16-49-43.png" data-sub-html="<h2> </h2><p>2024-08-04-16-49-43.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-16-49-43.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-16-49-43.png, /compilerconstruction/images/2024-08-04-16-49-43.png 1.5x, /compilerconstruction/images/2024-08-04-16-49-43.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-16-49-43.png" width="922" height="505" />
+    </a><figcaption class="img-caption">2024-08-04-16-49-43.png</figcaption>
+</figure></p>
+<h3 id="212-编写-antlr-4-文件">2.1.2 编写 ANTLR 4 文件</h3>
+<ol>
+<li>新建 Maven 项目
+
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-16-52-55.png" title="2024-08-04-16-52-55.png" data-thumbnail="/compilerconstruction/images/2024-08-04-16-52-55.png" data-sub-html="<h2> </h2><p>2024-08-04-16-52-55.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-16-52-55.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-16-52-55.png, /compilerconstruction/images/2024-08-04-16-52-55.png 1.5x, /compilerconstruction/images/2024-08-04-16-52-55.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-16-52-55.png" width="982" height="603" />
+    </a><figcaption class="img-caption">2024-08-04-16-52-55.png</figcaption>
+</figure></li>
+<li>在<code>pom.xml</code>里中添加 antlr 的依赖项，注意修改自己的 antlr 版本</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="cp">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">xmlns:xsi=</span><span class="s">&#34;http://www.w3.org/2001/XMLSchema-instance&#34;</span>
+</span></span><span class="line"><span class="cl">         <span class="na">xsi:schemaLocation=</span><span class="s">&#34;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.example<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>untitled1<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;version&gt;</span>1.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;properties&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;maven.compiler.source&gt;</span>13<span class="nt">&lt;/maven.compiler.source&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;maven.compiler.target&gt;</span>13<span class="nt">&lt;/maven.compiler.target&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/properties&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    // 配置位置
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;groupId&gt;</span>org.antlr<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;artifactId&gt;</span>antlr4-runtime<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;version&gt;</span>4.10.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/dependencies&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;build&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;plugins&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;plugin&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;groupId&gt;</span>org.antlr<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;artifactId&gt;</span>antlr4-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;version&gt;</span>4.10.1<span class="nt">&lt;/version&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;executions&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;execution&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;id&gt;</span>antlr<span class="nt">&lt;/id&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;goals&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="nt">&lt;goal&gt;</span>antlr4<span class="nt">&lt;/goal&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;/goals&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="nt">&lt;phase&gt;</span>none<span class="nt">&lt;/phase&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;/execution&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/executions&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;configuration&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;outputDirectory&gt;</span>src/test/java<span class="nt">&lt;/outputDirectory&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;listener&gt;</span>true<span class="nt">&lt;/listener&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="nt">&lt;treatWarningsAsErrors&gt;</span>true<span class="nt">&lt;/treatWarningsAsErrors&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="nt">&lt;/configuration&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&lt;/plugin&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;/plugins&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/build&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/project&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>在 <code>src/main/java</code> 新建 <code>xxxx.g4</code> 文件，注意要以&quot;.g4&quot;结尾</li>
+<li>编写代码</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-antlr" data-lang="antlr"><span class="line"><span class="cl"><span class="c">// 声明语法名称 simpleexpr。语法名称应该与文件名</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">grammar</span><span class="w"> </span><span class="nc">SimpleExpr</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">// 在生成的代码文件的开头插入一些代码</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">@header</span><span class="w"> </span><span class="p">{</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">package simpleexpr;
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">prog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">stat</span><span class="o">*</span><span class="w"> </span><span class="no">EOF</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">stat</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="s">&#39;;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="s">&#39;;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="s">&#39;;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">expr</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="o">(</span><span class="s">&#39;*&#39;</span><span class="o">|</span><span class="s">&#39;/&#39;</span><span class="o">)</span><span class="w"> </span><span class="nv">expr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="nv">expr</span><span class="w"> </span><span class="o">(</span><span class="s">&#39;+&#39;</span><span class="o">|</span><span class="s">&#39;-&#39;</span><span class="o">)</span><span class="w"> </span><span class="nv">expr</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="no">ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="no">INT</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">     </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">SEMI</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;;&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">ASSIGN</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;=&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">IF</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;if&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">MUL</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">DIV</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">ADD</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;+&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">SUB</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-&#39;</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">ID</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="o">(</span><span class="no">LETTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;_&#39;</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="no">LETTER</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="no">DIGIT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s">&#39;_&#39;</span><span class="o">)*</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">INT</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">[</span><span class="x">1-9</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="x">0-9</span><span class="p">]</span><span class="o">*</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">WS</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="x"> \t\r\n</span><span class="p">]</span><span class="o">+</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">skip</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">SL_COMMENT</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;//&#39;</span><span class="w"> </span><span class="o">.*?</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">skip</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nl">ML_COMMENT</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&#39;/*&#39;</span><span class="w"> </span><span class="o">.*?</span><span class="w"> </span><span class="s">&#39;*/&#39;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nv">skip</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">fragment</span><span class="w"> </span><span class="nl">LETTER</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="x">a-zA-Z</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">fragment</span><span class="w"> </span><span class="nl">DIGIT</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="x">0-9</span><span class="p">]</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>测试代码</li>
+</ol>
+<p>光标放到<code>prog : stat* EOF;</code>一行，右键测试</p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-07-37.png" title="2024-08-04-17-07-37.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-07-37.png" data-sub-html="<h2> </h2><p>2024-08-04-17-07-37.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-07-37.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-07-37.png, /compilerconstruction/images/2024-08-04-17-07-37.png 1.5x, /compilerconstruction/images/2024-08-04-17-07-37.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-07-37.png" width="460" height="200" />
+    </a><figcaption class="img-caption">2024-08-04-17-07-37.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-10-24.png" title="2024-08-04-17-10-24.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-10-24.png" data-sub-html="<h2> </h2><p>2024-08-04-17-10-24.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-10-24.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-10-24.png, /compilerconstruction/images/2024-08-04-17-10-24.png 1.5x, /compilerconstruction/images/2024-08-04-17-10-24.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-10-24.png" width="1911" height="423" />
+    </a><figcaption class="img-caption">2024-08-04-17-10-24.png</figcaption>
+</figure></p>
+<ol start="6">
+<li>配置输出路径</li>
+</ol>
+<p>右键 xxx.g4 文件，选择 Configure ANTLR…</p>
+<h2 id="22-词法分析">2.2 词法分析</h2>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-23-02.png" title="2024-08-04-17-23-02.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-23-02.png" data-sub-html="<h2> </h2><p>2024-08-04-17-23-02.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-23-02.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-23-02.png, /compilerconstruction/images/2024-08-04-17-23-02.png 1.5x, /compilerconstruction/images/2024-08-04-17-23-02.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-23-02.png" width="1136" height="707" />
+    </a><figcaption class="img-caption">2024-08-04-17-23-02.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-24-42.png" title="2024-08-04-17-24-42.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-24-42.png" data-sub-html="<h2> </h2><p>2024-08-04-17-24-42.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-24-42.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-24-42.png, /compilerconstruction/images/2024-08-04-17-24-42.png 1.5x, /compilerconstruction/images/2024-08-04-17-24-42.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-24-42.png" width="1128" height="727" />
+    </a><figcaption class="img-caption">2024-08-04-17-24-42.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-24-55.png" title="2024-08-04-17-24-55.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-24-55.png" data-sub-html="<h2> </h2><p>2024-08-04-17-24-55.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-24-55.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-24-55.png, /compilerconstruction/images/2024-08-04-17-24-55.png 1.5x, /compilerconstruction/images/2024-08-04-17-24-55.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-24-55.png" width="1130" height="619" />
+    </a><figcaption class="img-caption">2024-08-04-17-24-55.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-26-28.png" title="2024-08-04-17-26-28.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-26-28.png" data-sub-html="<h2> </h2><p>2024-08-04-17-26-28.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-26-28.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-26-28.png, /compilerconstruction/images/2024-08-04-17-26-28.png 1.5x, /compilerconstruction/images/2024-08-04-17-26-28.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-26-28.png" width="1125" height="631" />
+    </a><figcaption class="img-caption">2024-08-04-17-26-28.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-28-04.png" title="2024-08-04-17-28-04.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-28-04.png" data-sub-html="<h2> </h2><p>2024-08-04-17-28-04.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-28-04.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-28-04.png, /compilerconstruction/images/2024-08-04-17-28-04.png 1.5x, /compilerconstruction/images/2024-08-04-17-28-04.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-28-04.png" width="1133" height="674" />
+    </a><figcaption class="img-caption">2024-08-04-17-28-04.png</figcaption>
+</figure></p>
+<p><strong>语言是串的集合</strong></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-29-30.png" title="2024-08-04-17-29-30.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-29-30.png" data-sub-html="<h2> </h2><p>2024-08-04-17-29-30.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-29-30.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-29-30.png, /compilerconstruction/images/2024-08-04-17-29-30.png 1.5x, /compilerconstruction/images/2024-08-04-17-29-30.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-29-30.png" width="1130" height="590" />
+    </a><figcaption class="img-caption">2024-08-04-17-29-30.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-04-17-31-36.png" title="2024-08-04-17-31-36.png" data-thumbnail="/compilerconstruction/images/2024-08-04-17-31-36.png" data-sub-html="<h2> </h2><p>2024-08-04-17-31-36.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-04-17-31-36.png"
+            data-srcset="/compilerconstruction/images/2024-08-04-17-31-36.png, /compilerconstruction/images/2024-08-04-17-31-36.png 1.5x, /compilerconstruction/images/2024-08-04-17-31-36.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-04-17-31-36.png" width="1127" height="625" />
+    </a><figcaption class="img-caption">2024-08-04-17-31-36.png</figcaption>
+</figure></p>
+<h1 id="3-lexer-re-automata">3. lexer-re-automata</h1>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-20-56-52.png" title="2024-08-07-20-56-52.png" data-thumbnail="/compilerconstruction/images/2024-08-07-20-56-52.png" data-sub-html="<h2> </h2><p>2024-08-07-20-56-52.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-20-56-52.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-20-56-52.png, /compilerconstruction/images/2024-08-07-20-56-52.png 1.5x, /compilerconstruction/images/2024-08-07-20-56-52.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-20-56-52.png" width="1138" height="622" />
+    </a><figcaption class="img-caption">2024-08-07-20-56-52.png</figcaption>
+</figure></p>
+<p><em>RE、NFA、DFA 三者是可以相互转化的，从某种意义上讲，三者是等价的。</em></p>
+<h2 id="31-语言">3.1 语言</h2>
+<p><strong>语言</strong>：语言是字符串构成的集合。</p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-49-50.png" title="2024-08-07-21-49-50.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-49-50.png" data-sub-html="<h2> </h2><p>2024-08-07-21-49-50.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-49-50.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-49-50.png, /compilerconstruction/images/2024-08-07-21-49-50.png 1.5x, /compilerconstruction/images/2024-08-07-21-49-50.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-49-50.png" width="1136" height="761" />
+    </a><figcaption class="img-caption">2024-08-07-21-49-50.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-50-04.png" title="2024-08-07-21-50-04.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-50-04.png" data-sub-html="<h2> </h2><p>2024-08-07-21-50-04.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-50-04.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-50-04.png, /compilerconstruction/images/2024-08-07-21-50-04.png 1.5x, /compilerconstruction/images/2024-08-07-21-50-04.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-50-04.png" width="1129" height="542" />
+    </a><figcaption class="img-caption">2024-08-07-21-50-04.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-51-32.png" title="2024-08-07-21-51-32.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-51-32.png" data-sub-html="<h2> </h2><p>2024-08-07-21-51-32.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-51-32.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-51-32.png, /compilerconstruction/images/2024-08-07-21-51-32.png 1.5x, /compilerconstruction/images/2024-08-07-21-51-32.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-51-32.png" width="1141" height="664" />
+    </a><figcaption class="img-caption">2024-08-07-21-51-32.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-53-43.png" title="2024-08-07-21-53-43.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-53-43.png" data-sub-html="<h2> </h2><p>2024-08-07-21-53-43.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-53-43.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-53-43.png, /compilerconstruction/images/2024-08-07-21-53-43.png 1.5x, /compilerconstruction/images/2024-08-07-21-53-43.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-53-43.png" width="1125" height="514" />
+    </a><figcaption class="img-caption">2024-08-07-21-53-43.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-55-02.png" title="2024-08-07-21-55-02.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-55-02.png" data-sub-html="<h2> </h2><p>2024-08-07-21-55-02.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-55-02.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-55-02.png, /compilerconstruction/images/2024-08-07-21-55-02.png 1.5x, /compilerconstruction/images/2024-08-07-21-55-02.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-55-02.png" width="1137" height="554" />
+    </a><figcaption class="img-caption">2024-08-07-21-55-02.png</figcaption>
+</figure></p>
+<h2 id="32-正则表达式">3.2 正则表达式</h2>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-58-37.png" title="2024-08-07-21-58-37.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-58-37.png" data-sub-html="<h2> </h2><p>2024-08-07-21-58-37.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-58-37.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-58-37.png, /compilerconstruction/images/2024-08-07-21-58-37.png 1.5x, /compilerconstruction/images/2024-08-07-21-58-37.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-58-37.png" width="1129" height="537" />
+    </a><figcaption class="img-caption">2024-08-07-21-58-37.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-21-59-00.png" title="2024-08-07-21-59-00.png" data-thumbnail="/compilerconstruction/images/2024-08-07-21-59-00.png" data-sub-html="<h2> </h2><p>2024-08-07-21-59-00.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-21-59-00.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-21-59-00.png, /compilerconstruction/images/2024-08-07-21-59-00.png 1.5x, /compilerconstruction/images/2024-08-07-21-59-00.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-21-59-00.png" width="1131" height="575" />
+    </a><figcaption class="img-caption">2024-08-07-21-59-00.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-22-02-50.png" title="2024-08-07-22-02-50.png" data-thumbnail="/compilerconstruction/images/2024-08-07-22-02-50.png" data-sub-html="<h2> </h2><p>2024-08-07-22-02-50.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-22-02-50.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-22-02-50.png, /compilerconstruction/images/2024-08-07-22-02-50.png 1.5x, /compilerconstruction/images/2024-08-07-22-02-50.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-22-02-50.png" width="1125" height="522" />
+    </a><figcaption class="img-caption">2024-08-07-22-02-50.png</figcaption>
+</figure></p>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-22-03-17.png" title="2024-08-07-22-03-17.png" data-thumbnail="/compilerconstruction/images/2024-08-07-22-03-17.png" data-sub-html="<h2> </h2><p>2024-08-07-22-03-17.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-22-03-17.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-22-03-17.png, /compilerconstruction/images/2024-08-07-22-03-17.png 1.5x, /compilerconstruction/images/2024-08-07-22-03-17.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-22-03-17.png" width="800" height="691" />
+    </a><figcaption class="img-caption">2024-08-07-22-03-17.png</figcaption>
+</figure></p>
+<h2 id="33-自动机">3.3 自动机</h2>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-07-22-04-51.png" title="2024-08-07-22-04-51.png" data-thumbnail="/compilerconstruction/images/2024-08-07-22-04-51.png" data-sub-html="<h2> </h2><p>2024-08-07-22-04-51.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-07-22-04-51.png"
+            data-srcset="/compilerconstruction/images/2024-08-07-22-04-51.png, /compilerconstruction/images/2024-08-07-22-04-51.png 1.5x, /compilerconstruction/images/2024-08-07-22-04-51.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-07-22-04-51.png" width="1139" height="724" />
+    </a><figcaption class="img-caption">2024-08-07-22-04-51.png</figcaption>
+</figure></p>
+<p><em>约定：所有没有对应出边的字符默认指向“空状态”</em></p>
+<p>（非确定性）有穷自动机是一类极其简单的<strong>计算</strong>装置，他可以<strong>识别</strong>（接受/拒绝）$\Sigma$ 上的字符串。</p>
+<p><strong>Definition(接受(Accept))：</strong><br/>
+（非确定性）有穷自动机 $A$ 接受字符串 $x$ ，当且仅当<strong>存在</strong>一条从开始状态 $s_0$ 到<strong>某个</strong>接受状态 $f \in F$ ，标号为 $x$ 的路径。</p>
+<p>因此，$A$ 定义了一种语言 $L(A)$ ：它能接受的所有字符串构成的集合。</p>
+<p><strong>Definition(DFA(Deterministic Finite Automaton))</strong><br/>
+确定性有穷自动机 $A$ 是一个五元组 <strong>$A=(\Sigma,S,s_0,\delta,F)$</strong> ：<br/>
+(1) 字母表 $\Sigma (\epsilon \notin \Sigma)$<br/>
+(2) 有穷的<strong>状态集合</strong> $S$<br/>
+(3) <strong>唯一</strong>的初始集合 $S$<br/>
+(4) ** 状态转移函数** $\delta$</p>
+<p>$$
 \delta:S\times\Sigma\rightarrow S
-$$</p><br>(5) 接受状态集合 $F\subseteq S$<p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-16-16-56-12.png title=2024-08-16-16-56-12.png data-thumbnail=/compilerconstruction/images/2024-08-16-16-56-12.png data-sub-html="<h2> </h2><p>2024-08-16-16-56-12.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-16-16-56-12.png data-srcset="/compilerconstruction/images/2024-08-16-16-56-12.png, /compilerconstruction/images/2024-08-16-16-56-12.png 1.5x, /compilerconstruction/images/2024-08-16-16-56-12.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-16-16-56-12.png width=380 height=140></a><figcaption class=img-caption>2024-08-16-16-56-12.png</figcaption></figure></p><div style=text-align:center>用 NFA 描述语言，用 DFA 实现词法分析器<br><span style=color:red>RE ==> NFA ==> DFA ==>词法分析器</span></div><h2 id=34-它们之间关系>3.4 它们之间关系</h2><p><figure><a class=lightgallery href=/compilerconstruction/images/2024-08-16-17-05-50.png title=2024-08-16-17-05-50.png data-thumbnail=/compilerconstruction/images/2024-08-16-17-05-50.png data-sub-html="<h2> </h2><p>2024-08-16-17-05-50.png</p>"><img class=lazyload src=/svg/loading.min.svg data-src=/compilerconstruction/images/2024-08-16-17-05-50.png data-srcset="/compilerconstruction/images/2024-08-16-17-05-50.png, /compilerconstruction/images/2024-08-16-17-05-50.png 1.5x, /compilerconstruction/images/2024-08-16-17-05-50.png 2x" data-sizes=auto alt=/compilerconstruction/images/2024-08-16-17-05-50.png width=593 height=235></a><figcaption class=img-caption>2024-08-16-17-05-50.png</figcaption></figure></p><h3 id=341-re--nfa>3.4.1 RE ==> NFA</h3><h4 id=3411-thompsons-构造法>3.4.1.1 Thompsons 构造法</h4><p>Thompsons 构造法的基本思想：<strong>按结构归纳</strong></p><p>Definition(正则表达式)</p><p>给定字母表 Σ, Σ 上的正则表达式由且仅由以下规则定义：<br>(1) ϵ 是正则表达式;<br>(2) ∀a ∈ Σ, a 是正则表达式;<br>(3) 如果 s 是正则表达式, 则 (s) 是正则表达式;<br>(4) 如果 s 与 t 是正则表达式, 则 s|t, st, s∗ 也是正则表达式。<br></p><p>$N(r)$ 的<strong>性质</strong>以及 $Thompsons$ 构造法<strong>复杂度分析</strong>：</p><ol><li>$N(r)$ 的开始状态与接受状态均唯一。</li><li>开始状态没有入边，接受状态没有出边。</li><li>$N(r)$ 的状态数 |S| ≤ 2 × |r|。(|r| : r 中运算符与运算分量的总和)</li><li>每个状态最多有两个 ϵ-入边与两个 ϵ-出边。</li><li>∀a ∈ Σ,每个状态最多有一个 a-入边与一个 a-出边。</li></ol></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2024-08-16</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://www.ykzzo.com/compilerconstruction/ data-title=编译原理 data-hashtags=Compiler><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://www.ykzzo.com/compilerconstruction/ data-hashtag=Compiler><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Linkedin" data-sharer=linkedin data-url=https://www.ykzzo.com/compilerconstruction/><i class="fab fa-linkedin fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://www.ykzzo.com/compilerconstruction/ data-title=编译原理><i data-svg-src=/lib/simple-icons/icons/line.min.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://www.ykzzo.com/compilerconstruction/ data-title=编译原理><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href></a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/ocx-c/ class=prev rel=prev title=C#制作ActiveX浏览器插件&amp;OCX><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>C#制作ActiveX浏览器插件&OCX</a>
-<a href=/compiler01/ class=next rel=next title=编译原理笔记01-绪论>编译原理笔记01-绪论<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=giscus class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app>Giscus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=run-time></span></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><section><span id=busuanzi_container_value_site_pv><i class="far fa-eye fa-fw"></i>
-<span id=busuanzi_value_site_pv></span>
-</span>&nbsp;|&nbsp;
-<span id=busuanzi_container_value_site_uv><i class="fa fa-user"></i>
-<span id=busuanzi_value_site_uv></span></span></section></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
-</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/lightgallery/css/lightgallery-bundle.min.cb289e50cc9ac33906b9be77654f1340844150a9150a1b4be88cab7b044c4e95.css integrity="sha256-yyieUMyawzkGub53ZU8TQIRBUKkVChtL6IyrewRMTpU="><link rel=stylesheet href=/lib/katex/katex.min.76e39bd605d45b2d1944123c66608b0c8bb9baeb70720b212571531c7cf9bc2a.css integrity="sha256-duOb1gXUWy0ZRBI8ZmCLDIu5uutwcgshJXFTHHz5vCo="><script type=text/javascript src=/lib/autocomplete/autocomplete.min.efcd9994416f8ef0e9904c0ebc34d39ab92f5fe72a60224553434d3a818b25e5.js integrity="sha256-782ZlEFvjvDpkEwOvDTTmrkvX+cqYCJFU0NNOoGLJeU="></script><script type=text/javascript src=/lib/algoliasearch/algoliasearch-lite.umd.min.bcee652c2a6d52152e89870be6fa7a3a76ca9ed62e0eea513b6f4f55f232613d.js integrity="sha256-vO5lLCptUhUuiYcL5vp6OnbKntYuDupRO29PVfIyYT0="></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.e76fb8d9f216898822b92b5be7fc0b3085b9a3685b14089d64a10935e83a08c5.js integrity="sha256-52+42fIWiYgiuStb5/wLMIW5o2hbFAidZKEJNeg6CMU="></script><script type=text/javascript src=/lib/lightgallery/lightgallery.min.715d25cf5a06cfcc60d28bd6b1478efb6a2c9bf28928999d7f1c517823df58bc.js integrity="sha256-cV0lz1oGz8xg0ovWsUeO+2osm/KJKJmdfxxReCPfWLw="></script><script type=text/javascript src=/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.c5b7c8ff4db1970dcec1614282b61f421ecf148ce44488247553b75ad442c79a.js integrity="sha256-xbfI/02xlw3OwWFCgrYfQh7PFIzkRIgkdVO3WtRCx5o="></script><script type=text/javascript src=/lib/lightgallery/plugins/zoom/lg-zoom.min.b11a55fa9ecf3559314c8095e293ba438a04c91624bf7a420e092a2930a07956.js integrity="sha256-sRpV+p7PNVkxTICV4pO6Q4oEyRYkv3pCDgkqKTCgeVY="></script><script type=text/javascript src=/lib/clipboard/clipboard.min.21708db6d7f8e20387183d7358648065dc45f7d635370fedb24df591f68f1e6b.js integrity="sha256-IXCNttf44gOHGD1zWGSAZdxF99Y1Nw/tsk31kfaPHms="></script><script type=text/javascript src=/lib/sharer/sharer.min.cc31d902aa4f3fcc8bb8c81aa534a4e2103e9b11f65b9fbd5b7156e089889ceb.js integrity="sha256-zDHZAqpPP8yLuMgapTSk4hA+mxH2W5+9W3FW4ImInOs="></script><script type=text/javascript src=/lib/katex/katex.min.eb18207487161674e717087c317db14ac1a62dadaecccb802499ce173bfeb739.js integrity="sha256-6xggdIcWFnTnFwh8MX2xSsGmLa2uzMuAJJnOFzv+tzk="></script><script type=text/javascript src=/lib/katex/contrib/auto-render.min.cb7f4ca60ed5dc3e258415f8c7a3b46d4a93578a52adf83011f18a7f190e7602.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="></script><script type=text/javascript src=/lib/katex/contrib/copy-tex.min.52ce78fab4860d24ef22128a52ce24ca01368a9034457a565a1d3fccbab0ddbb.js integrity="sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="></script><script type=text/javascript src=/lib/katex/contrib/mhchem.min.5c0a121a8b490afc85860a522347aeb34fb508c6b23044e5d29f6b2194227b51.js integrity="sha256-XAoSGotJCvyFhgpSI0eus0+1CMayMETl0p9rIZQie1E="></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{giscus:{category:"Announcements",categoryId:"DIC_kwDOMiVsFc4ChjcH",darkTheme:"dark",emitMetadata:"0",inputPosition:"bottom",lang:"zh-CN",lazyLoading:!1,lightTheme:"light",mapping:"pathname",reactionsEnabled:"1",repo:"1262706090/Giscus",repoId:"R_kgDOMiVsFQ"}},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"FKTW1AAMOA",algoliaIndex:"ykzzo",algoliaSearchKey:"48bbf64c00ada38e233bf8f046654419",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script><script type=text/javascript src=/js/custom.js></script></body></html>
+$$</p>
+<br/>
+(5) 接受状态集合 $F\subseteq S$
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-16-16-56-12.png" title="2024-08-16-16-56-12.png" data-thumbnail="/compilerconstruction/images/2024-08-16-16-56-12.png" data-sub-html="<h2> </h2><p>2024-08-16-16-56-12.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-16-16-56-12.png"
+            data-srcset="/compilerconstruction/images/2024-08-16-16-56-12.png, /compilerconstruction/images/2024-08-16-16-56-12.png 1.5x, /compilerconstruction/images/2024-08-16-16-56-12.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-16-16-56-12.png" width="380" height="140" />
+    </a><figcaption class="img-caption">2024-08-16-16-56-12.png</figcaption>
+</figure></p>
+<div style="text-align: center;">
+    用 NFA 描述语言，用 DFA 实现词法分析器<br/>
+    <span style="color:red">RE ==> NFA ==> DFA ==>词法分析器</span>
+</div>
+<h2 id="34-它们之间关系">3.4 它们之间关系</h2>
+<p>
+<figure><a class="lightgallery" href="/compilerconstruction/images/2024-08-16-17-05-50.png" title="2024-08-16-17-05-50.png" data-thumbnail="/compilerconstruction/images/2024-08-16-17-05-50.png" data-sub-html="<h2> </h2><p>2024-08-16-17-05-50.png</p>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/compilerconstruction/images/2024-08-16-17-05-50.png"
+            data-srcset="/compilerconstruction/images/2024-08-16-17-05-50.png, /compilerconstruction/images/2024-08-16-17-05-50.png 1.5x, /compilerconstruction/images/2024-08-16-17-05-50.png 2x"
+            data-sizes="auto"
+            alt="/compilerconstruction/images/2024-08-16-17-05-50.png" width="593" height="235" />
+    </a><figcaption class="img-caption">2024-08-16-17-05-50.png</figcaption>
+</figure></p>
+<h3 id="341-re--nfa">3.4.1 RE ==&gt; NFA</h3>
+<h4 id="3411-thompsons-构造法">3.4.1.1 Thompsons 构造法</h4>
+<p>Thompsons 构造法的基本思想：<strong>按结构归纳</strong></p>
+<p>Definition(正则表达式)</p>
+<p>给定字母表 Σ, Σ 上的正则表达式由且仅由以下规则定义：<br/>
+(1) ϵ 是正则表达式;<br/>
+(2) ∀a ∈ Σ, a 是正则表达式;<br/>
+(3) 如果 s 是正则表达式, 则 (s) 是正则表达式;<br/>
+(4) 如果 s 与 t 是正则表达式, 则 s|t, st, s∗ 也是正则表达式。<br/></p>
+<p>$N(r)$ 的<strong>性质</strong>以及 $Thompsons$ 构造法<strong>复杂度分析</strong>：</p>
+<ol>
+<li>$N(r)$ 的开始状态与接受状态均唯一。</li>
+<li>开始状态没有入边，接受状态没有出边。</li>
+<li>$N(r)$ 的状态数 |S| ≤ 2 × |r|。(|r| : r 中运算符与运算分量的总和)</li>
+<li>每个状态最多有两个 ϵ-入边与两个 ϵ-出边。</li>
+<li>∀a ∈ Σ,每个状态最多有一个 a-入边与一个 a-出边。</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-08-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理" data-hashtags="Compiler"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/compilerconstruction/" data-hashtag="Compiler"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/compilerconstruction/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/compilerconstruction/" data-title="编译原理"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href=""></a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/ocx-c/" class="prev" rel="prev" title="C#制作ActiveX浏览器插件&amp;OCX"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>C#制作ActiveX浏览器插件&OCX</a>
+            <a href="/compiler01/" class="next" rel="next" title="编译原理笔记01-绪论">编译原理笔记01-绪论<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container">
+            <div class="footer-line">
+                <span id="run-time"></span>
+            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+
+
+<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+
+
+
+
+<section>
+    
+    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+        
+        <span id="busuanzi_value_site_pv"></span>
+    </span>
+    
+
+    
+    &nbsp;|&nbsp;
+    
+
+    
+    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+        
+        <span id="busuanzi_value_site_uv"></span>
+    </span>
+    
+</section>
+
+
+
+
+
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
+</html>
