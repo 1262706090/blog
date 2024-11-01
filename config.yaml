@@ -68,8 +68,7 @@ markup:
         endLevel: 6
 params:
     authors:
-        name: "YKZZO"
-        email: "your_email@example.com"
+        name: "ykzzo"
     busuanzi:
         enable: true
         site_uv: true
