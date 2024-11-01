@@ -38,13 +38,6 @@ menu:
           name: 分类
           url: /categories/
           title: ""
-        - weight: 4
-          identifier: about
-          pre: ""
-          post: ""
-          name: 关于
-          url: /about/
-          title: ""
 markup:
     highlight:
         codeFences: true
