@@ -8,8 +8,8 @@ author: "YK"
 authorLink: ""
 license: ""
 
-tags: ["note"]
-categories: ["Python"]
+tags: ["Python"]
+categories: ["Note"]
 
 featuredImage: ""
 featuredImagePreview: ""

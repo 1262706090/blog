@@ -8,7 +8,7 @@ author: "YK"
 authorLink: ""
 license: ""
 
-tags: ["Package Manager"]
+tags: ["Package Manager", "JavaScript"]
 categories: ["Web-Development"]
 
 featuredImage: ""

@@ -8,8 +8,8 @@ author: "YK"
 authorLink: ""
 license: ""
 
-tags: ["note"]
-categories: ["Compiler"]
+tags: ["Compiler"]
+categories: ["Note"]
 
 featuredImage: ""
 featuredImagePreview: ""

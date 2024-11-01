@@ -4,15 +4,9 @@ date: 2024-07-07T15:54:36+08:00
 lastmod: 2024-07-10T15:54:36+08:00
 author: "YK"
 
-categories:
-    - browser-extensions
-tags:
-    - C#
-    - ActiveX
-    - OCX
-    - 浏览器插件
-    - COM 编程
-    - Windows 编程
+tags: ["ActiveX", "浏览器插件"]
+categories: ["Others"]
+
 keywords:
 
 description: "" # 文章描述，与搜索优化相关
@@ -276,7 +270,11 @@ namespace ActiveXDemo
 
         <form id="form1" runat="server">
             <div>
-                <input type="button" onclick="csharpActiveX.Test()" value="我是按钮" />
+                <input
+                    type="button"
+                    onclick="csharpActiveX.Test()"
+                    value="我是按钮"
+                />
             </div>
         </form>
     </body>
