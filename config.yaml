@@ -107,13 +107,15 @@ params:
             href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC
             BY-NC 4.0</a>
     section:
-        paginate: 20
+        pagination:
+            pagerSize: 20
         dateFormat: 01-02
         rss: 10
         # 显示最近更新文章的数量
         lastUpdatedSize: 10
     list:
-        paginate: 20
+        pagination:
+            pagerSize: 20
         dateFormat: 01-02
         rss: 10
     app:
