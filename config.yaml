@@ -13,9 +13,8 @@ enableEmoji: true
 ignoreErrors:
     - error-remote-getjson
     - error-missing-instagram-accesstoken
-author:
-    name: YKZZO
-    email: your_email
+taxonomies:
+  author: "authors"
 menu:
     main:
         - weight: 1
@@ -68,6 +67,9 @@ markup:
         startLevel: 2
         endLevel: 6
 params:
+    authors:
+        name: "YKZZO"
+        email: "your_email@example.com"
     busuanzi:
         enable: true
         site_uv: true

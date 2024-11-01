@@ -1,696 +1,241 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>包管理器 Npm And Yarn - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/npm-and-yarn/">
-  <meta property="og:site_name" content="ykzzo&#39;s Blog">
-  <meta property="og:title" content="包管理器 Npm And Yarn">
-  <meta property="og:description" content="包管理器 Npm And Yarn">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-09-04T22:22:56+08:00">
-    <meta property="article:modified_time" content="2024-09-07T22:22:56+08:00">
-    <meta property="article:tag" content="Package Manager">
-    <meta property="article:tag" content="JavaScript">
-    <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
-  <meta name="twitter:title" content="包管理器 Npm And Yarn">
-  <meta name="twitter:description" content="包管理器 Npm And Yarn">
-<meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/npm-and-yarn/" /><link rel="prev" href="http://localhost:1313/fluent-python/" /><link rel="next" href="http://localhost:1313/python-documentation/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "包管理器 Npm And Yarn",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/npm-and-yarn\/"
-        },"genre": "posts","keywords": "Package Manager, JavaScript","wordcount":  2237 ,
-        "url": "http:\/\/localhost:1313\/npm-and-yarn\/","datePublished": "2024-09-04T22:22:56+08:00","dateModified": "2024-09-07T22:22:56+08:00","publisher": {
-            "@type": "Organization",
-            "name": ""},"author": {
-                "@type": "Person",
-                "name": "YK"
-            },"description": ""
-    }
-    </script></head>
-    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                        取消
-                    </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a></div>
-    </div>
-</header><div class="search-dropdown desktop">
-        <div id="search-dropdown-desktop"></div>
-    </div>
-    <div class="search-dropdown mobile">
-        <div id="search-dropdown-mobile"></div>
-    </div><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">包管理器 Npm And Yarn</h1><h2 class="single-subtitle">包管理器 Npm And Yarn</h2><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/web-development/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Web-Development</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-09-04">2024-09-04</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-09-07">2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 2237 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 5 分钟&nbsp;
-
-
-
-
-
-
-
-<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
-    
-    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
-
-
-
-</div>
-        </div><div class="details toc" id="toc-static"  data-kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#软件包管理器">软件包管理器</a></li>
-    <li><a href="#package-registry">Package Registry</a></li>
-    <li><a href="#npm-和-yarn">NPM 和 Yarn</a>
-      <ul>
-        <li><a href="#nodejs">Node.js</a></li>
-        <li><a href="#npm">NPM</a></li>
-        <li><a href="#yarn">Yarn</a></li>
-      </ul>
-    </li>
-    <li><a href="#package包">Package（包）</a>
-      <ul>
-        <li><a href="#安装包">安装包</a>
-          <ul>
-            <li><a href="#npm-安装命令">NPM 安装命令</a></li>
-            <li><a href="#yarn-安装命令">Yarn 安装命令</a></li>
-          </ul>
-        </li>
-        <li><a href="#软件包的本地安装和全局安装httpsnodejsorgenblognpmnpm-1-0-global-vs-local-installationwhen-you-can-t-choose">软件包的<a href="https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/#when-you-can-t-choose">本地安装和全局安装</a></a></li>
-      </ul>
-    </li>
-    <li><a href="#node_modules-文件夹">node_modules 文件夹</a></li>
-    <li><a href="#packagejson-文件">package.json 文件</a>
-      <ul>
-        <li><a href="#packagejson-文件-1">package.json 文件</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="软件包管理器">软件包管理器</h2>
-<p><strong>包管理器</strong>：是开发人员用来自动寻找、下载、安装、配置、升级和删除系统包的工具。</p>
-<p>软件包管理器&ndash;如 <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreffer ">NPM</a>、<a href="https://pnpm.io/" target="_blank" rel="noopener noreffer ">pNPM</a>、<a href="https://bower.io/" target="_blank" rel="noopener noreffer ">Bower</a> 和 <a href="https://yarnpkg.com/" target="_blank" rel="noopener noreffer ">Yarn</a>&ndash;有助于自动化并消除手动管理所有包的繁琐过程。</p>
-<p><strong>NPM</strong>(Node Package Manager)和 <strong>Yarn</strong>(Yet Another Resource Negotiator)是两个常用的软件包管理器。</p>
-<h2 id="package-registry">Package Registry</h2>
-<p><strong>Package Registry</strong>是一个数据库（存储），用于存储成千上万的包（库、插件、框架或工具）。</p>
-<p><a href="https://www.npmjs.com/" target="_blank" rel="noopener noreffer ">NPM Registry</a>和<a href="https://github.com/features/packages" target="_blank" rel="noopener noreffer ">GitHub Packages</a>是两个普遍使用的 package registrys;</p>
-<h2 id="npm-和-yarn">NPM 和 Yarn</h2>
-<p>NPM 会在安装<a href="https://nodejs.org/en/" target="_blank" rel="noopener noreffer ">Node.js</a>时自动安装。</p>
-<h3 id="nodejs">Node.js</h3>
-<ul>
-<li>检查已安装的 Node 版本
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">node -v
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>升级 Node
-<ol>
-<li>前往 <a href="https://nodejs.org/en" target="_blank" rel="noopener noreffer ">Node.js 官网</a> 下载最新版本，这会替换旧版本并保留全局包。</li>
-<li>使用 <a href="https://github.com/tj/n" target="_blank" rel="noopener noreffer ">n</a> 或 <a href="https://github.com/nvm-sh/nvm" target="_blank" rel="noopener noreffer ">nvm</a></li>
-</ol>
-</li>
-</ul>
-<h3 id="npm">NPM</h3>
-<ul>
-<li>
-<p>检查已安装的 NPM 版本</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># -v 是 --version 的缩写。</span>
-</span></span><span class="line"><span class="cl">npm -v
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-<li>
-<p>升级 NPM</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install npm@latest -g
-</span></span></code></pre></td></tr></table>
-</div>
-</div></li>
-</ul>
-<h3 id="yarn">Yarn</h3>
-<p>Yarn 可以通过 NPM 安装</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install -g yarn
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>升级 Yarn：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yarn <span class="nb">set</span> version latest
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="package包">Package（包）</h2>
-<p><strong>包</strong>是一个<strong>目录</strong>或<strong>项目</strong>，它有一个 <code>package.json</code> 文件用来记录它的信息。</p>
-<div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">你只能将包（由 <code>package.json</code> 文件描述的项目）发布到 NPM Registry</div>
-        </div>
-    </div>
-<h3 id="安装包">安装包</h3>
-<p>安装包有两种方法：本地、全局</p>
-<p>本地安装只能在被安装的项目中使用，安装步骤：</p>
-<ol>
-<li>进入项目根目录</li>
-<li>使用 NPM 或 Yarn 安装命令安装</li>
-</ol>
-<h4 id="npm-安装命令">NPM 安装命令</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 1. 安装单个包</span>
-</span></span><span class="line"><span class="cl">npm install &lt;package-name&gt;
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install express
-</span></span><span class="line"><span class="cl"><span class="c1"># 2. 安装指定版本的包</span>
-</span></span><span class="line"><span class="cl">npm install &lt;package-name&gt;@&lt;version&gt;
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install express@4.17.1
-</span></span><span class="line"><span class="cl"><span class="c1"># 3. 安装全局包</span>
-</span></span><span class="line"><span class="cl">npm install -g &lt;package-name&gt;
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install -g nodemon
-</span></span><span class="line"><span class="cl"><span class="c1"># 4. 安装开发依赖（Development Dependencies）</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># --save-dev 表示将该包作为开发依赖（devDependencies）添加到 package.json 中，仅在开发环境中使用，不会再生产环境中安装</span>
-</span></span><span class="line"><span class="cl">npm install &lt;package-name&gt; --save-dev
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install eslint --save-dev
-</span></span><span class="line"><span class="cl"><span class="c1"># 5. 安装生产依赖（Production Dependencies）</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 默认情况下，npm install 会把包加入到 dependencies 中，但 --save选项会明确的将包安装为生产依赖</span>
-</span></span><span class="line"><span class="cl">npm install &lt;package-name&gt; --save
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install lodash --save
-</span></span><span class="line"><span class="cl"><span class="c1"># 6. 安装 package.json 中的所有依赖</span>
-</span></span><span class="line"><span class="cl"><span class="c1"># 如果你的项目已经有 package.json ，这个命令会安装文件中所有的依赖</span>
-</span></span><span class="line"><span class="cl">npm install
-</span></span><span class="line"><span class="cl"><span class="c1"># 7. 安装并避免修改 package.json</span>
-</span></span><span class="line"><span class="cl">npm install &lt;package-name&gt; --no-save
-</span></span><span class="line"><span class="cl"><span class="c1"># 例</span>
-</span></span><span class="line"><span class="cl">npm install lodash --no-save
-</span></span><span class="line"><span class="cl"><span class="c1"># 8. 更新已安装的包</span>
-</span></span><span class="line"><span class="cl">npm update &lt;package-name&gt;
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="yarn-安装命令">Yarn 安装命令</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 安装包并添加到 dependencies。</span>
-</span></span><span class="line"><span class="cl">yarn add &lt;package-name&gt;
-</span></span><span class="line"><span class="cl"><span class="c1"># 安装包并添加到 devDependencies。</span>
-</span></span><span class="line"><span class="cl">yarn add &lt;package-name&gt; --dev
-</span></span><span class="line"><span class="cl"><span class="c1"># 全局安装包。</span>
-</span></span><span class="line"><span class="cl">yarn global add &lt;package-name&gt;
-</span></span><span class="line"><span class="cl"><span class="c1"># 安装 package.json 中的所有依赖。</span>
-</span></span><span class="line"><span class="cl">yarn install
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="软件包的本地安装和全局安装httpsnodejsorgenblognpmnpm-1-0-global-vs-local-installationwhen-you-can-t-choose">软件包的<a href="https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/#when-you-can-t-choose" target="_blank" rel="noopener noreffer ">本地安装和全局安装</a></h3>
-<p>一般来说，最好使用本地安装。</p>
-<p>区别：</p>
-<ul>
-<li>
-<p>安装位置</p>
-<ul>
-<li>本地安装会被安装在执行 <code>npm install package-name</code>（或 <code>yarn add package-name</code>）命令的目录下。</li>
-<li>全局安装会被安装在系统中的一个位置。</li>
-</ul>
-</li>
-<li>
-<p>软件包版本</p>
-<ul>
-<li>本地安装，你可以在不同项目中使用同一个包的不同版本。</li>
-<li>全局安装，所有的项目只能使用同一个版本的软件包。</li>
-</ul>
-</li>
-<li>
-<p>使用建议</p>
-<ul>
-<li>本地安装适合打算只在命令行上使用的软件包&ndash;特别是当它们提供了可在不同项目中重复使用的可执行命令，例如：<a href="https://www.npmjs.com/" target="_blank" rel="noopener noreffer ">NPM</a>、<a href="https://reactnative.dev/docs/environment-setup" target="_blank" rel="noopener noreffer ">React Native CLI</a>、<a href="https://www.gatsbyjs.com/docs/reference/gatsby-cli/" target="_blank" rel="noopener noreffer ">Gatsby CLI</a>、<a href="https://gruntjs.com/getting-started" target="_blank" rel="noopener noreffer ">Grunt CLI</a> 和 <a href="https://cli.vuejs.org/" target="_blank" rel="noopener noreffer ">Vue CLI</a></li>
-<li>全局安装适合于在程序中使用的软件包&ndash;通过 <code>import</code> 或 <code>require()</code> 函数，例如：<a href="https://webpack.js.org/" target="_blank" rel="noopener noreffer ">Webpack</a>、<a href="https://lodash.com/" target="_blank" rel="noopener noreffer ">Lodash</a>、<a href="https://jestjs.io/" target="_blank" rel="noopener noreffer ">Jest</a> 和 <a href="https://momentjs.com/" target="_blank" rel="noopener noreffer ">MomentJS</a>。</li>
-</ul>
-</li>
-</ul>
-<h2 id="node_modules-文件夹">node_modules 文件夹</h2>
-<p>node_modules 目录是 NPM 放置为你的项目下载的本地软件包的文件夹。</p>
-<h2 id="packagejson-文件">package.json 文件</h2>
-<p>package.json 文件是一个 JSON 文件，包管理器（如 NPM 和 Yarn）使用它来存储项目信息，它是一个项目的元数据文件。</p>
-<p>package.json 文件的优点：</p>
-<ul>
-<li>可以将你的项目发布到 NPM Registry</li>
-<li>使得其他人可以轻松管理和安装你的软件包</li>
-<li>帮助 NPM 轻松管理<a href="https://www.codesweetly.com/javascript-modules-tutorial/" target="_blank" rel="noopener noreffer ">模块</a>的依赖关系</li>
-<li>使得你的软件包可以重现并与其他开发者共享</li>
-</ul>
-<h3 id="packagejson-文件-1">package.json 文件</h3>
-<p>创建：进入项目根目录，初始化一个 package.json 文件</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># npm</span>
-</span></span><span class="line"><span class="cl">npm init
-</span></span><span class="line"><span class="cl"><span class="c1"># yarn</span>
-</span></span><span class="line"><span class="cl">yarn init
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>执行命令后，软件包管理器会询问你一些关于项目的信息来创建 package.json 文件，或者跳过提问：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm init -y
-</span></span><span class="line"><span class="cl"><span class="c1"># 或</span>
-</span></span><span class="line"><span class="cl">yarn init -y
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>这将使用从<a href="https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory" target="_blank" rel="noopener noreffer ">当前目录获得默认值</a>来创建 package.json</p>
-<p><strong>注意</strong>： <code>-y</code>标志是 <code>--yes</code> 的简写。</p>
-<p>当软件包管理器完成初始化过程后，package.json 将包含一个具有一系列属性的对象：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;codesweetly-project&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.0&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;index.js&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>假设你想把你的包发布到 NPM Registry，package.json 文件必须含有 <code>name</code> 和 <code>version</code> 字段，如果不发布，所有字段&ndash;包括 <code>name</code> 和 <code>version</code> 都是可选的。</p>
-<p><strong>name</strong></p>
-<p><code>name</code> 字段用于记录项目名称。
-<code>name</code>属性的值必须是：</p>
-<ul>
-<li>一个单字</li>
-<li>小写字母</li>
-<li>小于或等于 214 个字符</li>
-</ul>
-<p>可以使用连字符和下划线将单词连接起来。</p>
-<p>【例】</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;code_sweetly-project&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>description</strong></p>
-<p><code>description</code> 用于简要描述项目目的，NPM 建议有一个 <code>description</code> 属性，使你的包在 NPM 网站上更容易被找到。当人们使用 <code>npm search</code> 命令时，你的描述将被显示出来。</p>
-<p>【例】</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;A brief description about this package (project)&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>main</strong></p>
-<p><code>main</code> 字段表示项目的入口点。当运行 <code>require()</code> 函数时，Node 会把调用解析为 <code>require(&lt;package.json:main&gt;)</code>。</p>
-<p>【例】</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;main&#34;</span><span class="p">:</span> <span class="s2">&#34;./src/index.js&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>private</strong>
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>包管理器 Npm And Yarn - ykzzo's Blog</title><meta name=Description content="ykzzo的博客"><meta property="og:url" content="https://www.ykzzo.com/npm-and-yarn/">
+<meta property="og:site_name" content="ykzzo's Blog"><meta property="og:title" content="包管理器 Npm And Yarn"><meta property="og:description" content="包管理器 Npm And Yarn"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-09-04T22:22:56+08:00"><meta property="article:modified_time" content="2024-09-07T22:22:56+08:00"><meta property="og:image" content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:title content="包管理器 Npm And Yarn"><meta name=twitter:description content="包管理器 Npm And Yarn"><meta name=application-name content="ykzzo's Blog"><meta name=apple-mobile-web-app-title content="ykzzo's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=20240812085355.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.ykzzo.com/npm-and-yarn/><link rel=prev href=https://www.ykzzo.com/fluent-python/><link rel=next href=https://www.ykzzo.com/python-documentation/><link rel=stylesheet href=/css/style.min.cd96673f15d9819570886f6856268bf35511dde6823267c73fc8e28dbe1cccce.css integrity="sha256-zZZnPxXZgZVwiG9oViaL81UR3eaCMmfHP8jijb4czM4="><link rel=preload href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA="></noscript><link rel=preload href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc="></noscript><meta name=baidu-site-verification content="codeva-rd9ZCXPdEK"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"包管理器 Npm And Yarn","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.ykzzo.com\/npm-and-yarn\/"},"genre":"posts","keywords":"Package Manager, JavaScript","wordcount":2237,"url":"https:\/\/www.ykzzo.com\/npm-and-yarn\/","datePublished":"2024-09-04T22:22:56+08:00","dateModified":"2024-09-07T22:22:56+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"YK"},"description":""}</script></head><body data-header-desktop=normal data-header-mobile=normal><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"light"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"light"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/about/>关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/about/ title>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">包管理器 Npm And Yarn</h1><h2 class=single-subtitle>包管理器 Npm And Yarn</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>YK</a></span>&nbsp;<span class=post-category>收录于 <a href><i class="far fa-folder fa-fw" aria-hidden=true></i></a></span></div><div class=post-meta-line><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime=2024-09-04>2024-09-04</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime=2024-09-07>2024-09-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 2237 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 5 分钟&nbsp;
+<span id=busuanzi_container_value_page_pv><i class="far fa-eye fa-fw"></i>
+<span id=busuanzi_value_page_pv></span>&nbsp;次阅读</span></div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#软件包管理器>软件包管理器</a></li><li><a href=#package-registry>Package Registry</a></li><li><a href=#npm-和-yarn>NPM 和 Yarn</a><ul><li><a href=#nodejs>Node.js</a></li><li><a href=#npm>NPM</a></li><li><a href=#yarn>Yarn</a></li></ul></li><li><a href=#package包>Package（包）</a><ul><li><a href=#安装包>安装包</a><ul><li><a href=#npm-安装命令>NPM 安装命令</a></li><li><a href=#yarn-安装命令>Yarn 安装命令</a></li></ul></li><li><a href=#软件包的本地安装和全局安装httpsnodejsorgenblognpmnpm-1-0-global-vs-local-installationwhen-you-can-t-choose>软件包的<a href=https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/#when-you-can-t-choose>本地安装和全局安装</a></a></li></ul></li><li><a href=#node_modules-文件夹>node_modules 文件夹</a></li><li><a href=#packagejson-文件>package.json 文件</a><ul><li><a href=#packagejson-文件-1>package.json 文件</a></li></ul></li></ul></nav></div></div><div class=content id=content><h2 id=软件包管理器>软件包管理器</h2><p><strong>包管理器</strong>：是开发人员用来自动寻找、下载、安装、配置、升级和删除系统包的工具。</p><p>软件包管理器&ndash;如 <a href=https://www.npmjs.com/ target=_blank rel="noopener noreffer">NPM</a>、<a href=https://pnpm.io/ target=_blank rel="noopener noreffer">pNPM</a>、<a href=https://bower.io/ target=_blank rel="noopener noreffer">Bower</a> 和 <a href=https://yarnpkg.com/ target=_blank rel="noopener noreffer">Yarn</a>&ndash;有助于自动化并消除手动管理所有包的繁琐过程。</p><p><strong>NPM</strong>(Node Package Manager)和 <strong>Yarn</strong>(Yet Another Resource Negotiator)是两个常用的软件包管理器。</p><h2 id=package-registry>Package Registry</h2><p><strong>Package Registry</strong>是一个数据库（存储），用于存储成千上万的包（库、插件、框架或工具）。</p><p><a href=https://www.npmjs.com/ target=_blank rel="noopener noreffer">NPM Registry</a>和<a href=https://github.com/features/packages target=_blank rel="noopener noreffer">GitHub Packages</a>是两个普遍使用的 package registrys;</p><h2 id=npm-和-yarn>NPM 和 Yarn</h2><p>NPM 会在安装<a href=https://nodejs.org/en/ target=_blank rel="noopener noreffer">Node.js</a>时自动安装。</p><h3 id=nodejs>Node.js</h3><ul><li>检查已安装的 Node 版本<div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>node -v
+</span></span></code></pre></td></tr></table></div></div></li><li>升级 Node<ol><li>前往 <a href=https://nodejs.org/en target=_blank rel="noopener noreffer">Node.js 官网</a> 下载最新版本，这会替换旧版本并保留全局包。</li><li>使用 <a href=https://github.com/tj/n target=_blank rel="noopener noreffer">n</a> 或 <a href=https://github.com/nvm-sh/nvm target=_blank rel="noopener noreffer">nvm</a></li></ol></li></ul><h3 id=npm>NPM</h3><ul><li><p>检查已安装的 NPM 版本</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># -v 是 --version 的缩写。</span>
+</span></span><span class=line><span class=cl>npm -v
+</span></span></code></pre></td></tr></table></div></div></li><li><p>升级 NPM</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm install npm@latest -g
+</span></span></code></pre></td></tr></table></div></div></li></ul><h3 id=yarn>Yarn</h3><p>Yarn 可以通过 NPM 安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm install -g yarn
+</span></span></code></pre></td></tr></table></div></div><p>升级 Yarn：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>yarn <span class=nb>set</span> version latest
+</span></span></code></pre></td></tr></table></div></div><h2 id=package包>Package（包）</h2><p><strong>包</strong>是一个<strong>目录</strong>或<strong>项目</strong>，它有一个 <code>package.json</code> 文件用来记录它的信息。</p><div class="details admonition note open"><div class="details-summary admonition-title"><i class="icon fas fa-pencil-alt fa-fw" aria-hidden=true></i>注意<i class="details-icon fas fa-angle-right fa-fw" aria-hidden=true></i></div><div class=details-content><div class=admonition-content>你只能将包（由 <code>package.json</code> 文件描述的项目）发布到 NPM Registry</div></div></div><h3 id=安装包>安装包</h3><p>安装包有两种方法：本地、全局</p><p>本地安装只能在被安装的项目中使用，安装步骤：</p><ol><li>进入项目根目录</li><li>使用 NPM 或 Yarn 安装命令安装</li></ol><h4 id=npm-安装命令>NPM 安装命令</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 1. 安装单个包</span>
+</span></span><span class=line><span class=cl>npm install &lt;package-name&gt;
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install express
+</span></span><span class=line><span class=cl><span class=c1># 2. 安装指定版本的包</span>
+</span></span><span class=line><span class=cl>npm install &lt;package-name&gt;@&lt;version&gt;
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install express@4.17.1
+</span></span><span class=line><span class=cl><span class=c1># 3. 安装全局包</span>
+</span></span><span class=line><span class=cl>npm install -g &lt;package-name&gt;
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install -g nodemon
+</span></span><span class=line><span class=cl><span class=c1># 4. 安装开发依赖（Development Dependencies）</span>
+</span></span><span class=line><span class=cl><span class=c1># --save-dev 表示将该包作为开发依赖（devDependencies）添加到 package.json 中，仅在开发环境中使用，不会再生产环境中安装</span>
+</span></span><span class=line><span class=cl>npm install &lt;package-name&gt; --save-dev
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install eslint --save-dev
+</span></span><span class=line><span class=cl><span class=c1># 5. 安装生产依赖（Production Dependencies）</span>
+</span></span><span class=line><span class=cl><span class=c1># 默认情况下，npm install 会把包加入到 dependencies 中，但 --save选项会明确的将包安装为生产依赖</span>
+</span></span><span class=line><span class=cl>npm install &lt;package-name&gt; --save
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install lodash --save
+</span></span><span class=line><span class=cl><span class=c1># 6. 安装 package.json 中的所有依赖</span>
+</span></span><span class=line><span class=cl><span class=c1># 如果你的项目已经有 package.json ，这个命令会安装文件中所有的依赖</span>
+</span></span><span class=line><span class=cl>npm install
+</span></span><span class=line><span class=cl><span class=c1># 7. 安装并避免修改 package.json</span>
+</span></span><span class=line><span class=cl>npm install &lt;package-name&gt; --no-save
+</span></span><span class=line><span class=cl><span class=c1># 例</span>
+</span></span><span class=line><span class=cl>npm install lodash --no-save
+</span></span><span class=line><span class=cl><span class=c1># 8. 更新已安装的包</span>
+</span></span><span class=line><span class=cl>npm update &lt;package-name&gt;
+</span></span></code></pre></td></tr></table></div></div><h4 id=yarn-安装命令>Yarn 安装命令</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># 安装包并添加到 dependencies。</span>
+</span></span><span class=line><span class=cl>yarn add &lt;package-name&gt;
+</span></span><span class=line><span class=cl><span class=c1># 安装包并添加到 devDependencies。</span>
+</span></span><span class=line><span class=cl>yarn add &lt;package-name&gt; --dev
+</span></span><span class=line><span class=cl><span class=c1># 全局安装包。</span>
+</span></span><span class=line><span class=cl>yarn global add &lt;package-name&gt;
+</span></span><span class=line><span class=cl><span class=c1># 安装 package.json 中的所有依赖。</span>
+</span></span><span class=line><span class=cl>yarn install
+</span></span></code></pre></td></tr></table></div></div><h3 id=软件包的本地安装和全局安装httpsnodejsorgenblognpmnpm-1-0-global-vs-local-installationwhen-you-can-t-choose>软件包的<a href=https://nodejs.org/en/blog/npm/npm-1-0-global-vs-local-installation/#when-you-can-t-choose target=_blank rel="noopener noreffer">本地安装和全局安装</a></h3><p>一般来说，最好使用本地安装。</p><p>区别：</p><ul><li><p>安装位置</p><ul><li>本地安装会被安装在执行 <code>npm install package-name</code>（或 <code>yarn add package-name</code>）命令的目录下。</li><li>全局安装会被安装在系统中的一个位置。</li></ul></li><li><p>软件包版本</p><ul><li>本地安装，你可以在不同项目中使用同一个包的不同版本。</li><li>全局安装，所有的项目只能使用同一个版本的软件包。</li></ul></li><li><p>使用建议</p><ul><li>本地安装适合打算只在命令行上使用的软件包&ndash;特别是当它们提供了可在不同项目中重复使用的可执行命令，例如：<a href=https://www.npmjs.com/ target=_blank rel="noopener noreffer">NPM</a>、<a href=https://reactnative.dev/docs/environment-setup target=_blank rel="noopener noreffer">React Native CLI</a>、<a href=https://www.gatsbyjs.com/docs/reference/gatsby-cli/ target=_blank rel="noopener noreffer">Gatsby CLI</a>、<a href=https://gruntjs.com/getting-started target=_blank rel="noopener noreffer">Grunt CLI</a> 和 <a href=https://cli.vuejs.org/ target=_blank rel="noopener noreffer">Vue CLI</a></li><li>全局安装适合于在程序中使用的软件包&ndash;通过 <code>import</code> 或 <code>require()</code> 函数，例如：<a href=https://webpack.js.org/ target=_blank rel="noopener noreffer">Webpack</a>、<a href=https://lodash.com/ target=_blank rel="noopener noreffer">Lodash</a>、<a href=https://jestjs.io/ target=_blank rel="noopener noreffer">Jest</a> 和 <a href=https://momentjs.com/ target=_blank rel="noopener noreffer">MomentJS</a>。</li></ul></li></ul><h2 id=node_modules-文件夹>node_modules 文件夹</h2><p>node_modules 目录是 NPM 放置为你的项目下载的本地软件包的文件夹。</p><h2 id=packagejson-文件>package.json 文件</h2><p>package.json 文件是一个 JSON 文件，包管理器（如 NPM 和 Yarn）使用它来存储项目信息，它是一个项目的元数据文件。</p><p>package.json 文件的优点：</p><ul><li>可以将你的项目发布到 NPM Registry</li><li>使得其他人可以轻松管理和安装你的软件包</li><li>帮助 NPM 轻松管理<a href=https://www.codesweetly.com/javascript-modules-tutorial/ target=_blank rel="noopener noreffer">模块</a>的依赖关系</li><li>使得你的软件包可以重现并与其他开发者共享</li></ul><h3 id=packagejson-文件-1>package.json 文件</h3><p>创建：进入项目根目录，初始化一个 package.json 文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl><span class=c1># npm</span>
+</span></span><span class=line><span class=cl>npm init
+</span></span><span class=line><span class=cl><span class=c1># yarn</span>
+</span></span><span class=line><span class=cl>yarn init
+</span></span></code></pre></td></tr></table></div></div><p>执行命令后，软件包管理器会询问你一些关于项目的信息来创建 package.json 文件，或者跳过提问：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>npm init -y
+</span></span><span class=line><span class=cl><span class=c1># 或</span>
+</span></span><span class=line><span class=cl>yarn init -y
+</span></span></code></pre></td></tr></table></div></div><p>这将使用从<a href=https://docs.npmjs.com/creating-a-package-json-file#default-values-extracted-from-the-current-directory target=_blank rel="noopener noreffer">当前目录获得默认值</a>来创建 package.json</p><p><strong>注意</strong>： <code>-y</code>标志是 <code>--yes</code> 的简写。</p><p>当软件包管理器完成初始化过程后，package.json 将包含一个具有一系列属性的对象：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;codesweetly-project&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;version&#34;</span><span class=p>:</span> <span class=s2>&#34;1.0.0&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;main&#34;</span><span class=p>:</span> <span class=s2>&#34;index.js&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>假设你想把你的包发布到 NPM Registry，package.json 文件必须含有 <code>name</code> 和 <code>version</code> 字段，如果不发布，所有字段&ndash;包括 <code>name</code> 和 <code>version</code> 都是可选的。</p><p><strong>name</strong></p><p><code>name</code> 字段用于记录项目名称。
+<code>name</code>属性的值必须是：</p><ul><li>一个单字</li><li>小写字母</li><li>小于或等于 214 个字符</li></ul><p>可以使用连字符和下划线将单词连接起来。</p><p>【例】</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;code_sweetly-project&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>description</strong></p><p><code>description</code> 用于简要描述项目目的，NPM 建议有一个 <code>description</code> 属性，使你的包在 NPM 网站上更容易被找到。当人们使用 <code>npm search</code> 命令时，你的描述将被显示出来。</p><p>【例】</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;description&#34;</span><span class=p>:</span> <span class=s2>&#34;A brief description about this package (project)&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>main</strong></p><p><code>main</code> 字段表示项目的入口点。当运行 <code>require()</code> 函数时，Node 会把调用解析为 <code>require(&lt;package.json:main>)</code>。</p><p>【例】</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;main&#34;</span><span class=p>:</span> <span class=s2>&#34;./src/index.js&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>private</strong>
 <code>private</code>字段控制是否将项目发布到 NPM registry。
-【例】</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// 不进行发布
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;private&#34;</span><span class="p">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>scripts</strong>
-<code>scripts</code>字段定义项目在不同生命周期时运行的脚本命令</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;jest&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev&#34;</span><span class="p">:</span> <span class="s2">&#34;webpack --mode development&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;webpack --mode production&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;predeploy&#34;</span><span class="p">:</span> <span class="s2">&#34;npm run build&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;deploy&#34;</span><span class="p">:</span> <span class="s2">&#34;gh-pages -d build&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>例如，运行 <code>npm run dev</code> 时执行 <code>webpack --mode development</code></p>
-<p><strong>keywords</strong>
-<code>keywords</code>指定关键字，帮助人们搜索发现你的包</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;keywords&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;drag&#34;</span><span class="p">,</span> <span class="s2">&#34;drop&#34;</span><span class="p">,</span> <span class="s2">&#34;drag and drop&#34;</span><span class="p">,</span> <span class="s2">&#34;dragndrop&#34;</span><span class="p">,</span> <span class="s2">&#34;draggable&#34;</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>author</strong>
-<code>author</code>描述项目作者的详细资料</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="s2">&#34;Oluwatobi Sofela &lt;oluwatobiss@codesweetly.com&gt; (https://www.codesweetly.com)&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>或者</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;author&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Oluwatobi Sofela&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 可选
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;oluwatobiss@codesweetly.com&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="c1">// 可选
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nt">&#34;url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://www.codesweetly.com&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p><strong>dependencies</strong>
-<code>dependencies</code>列出了项目在生产中依赖的所有软件包</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;first-package&#34;</span><span class="p">:</span> <span class="s2">&#34;^1.0.4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;second-package&#34;</span><span class="p">:</span> <span class="s2">&#34;~2.1.3&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可以通过两种方式一个包添加到 <code>dependencies</code> 字段中：</p>
-<ul>
-<li>手动添加软件包的名称和<a href="https://docs.npmjs.com/about-semantic-versioning" target="_blank" rel="noopener noreffer ">语义版本</a></li>
-<li>运行 <code>npm install package-name --save-prod</code> 或 <code>yarn add package-name</code></li>
-</ul>
-<p><strong>devDependencies</strong>
-<code>devDependencies</code> 列出了在生产中不需要，在本地开发和测试中需要的依赖</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;devDependencies&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;first-dev-package&#34;</span><span class="p">:</span> <span class="s2">&#34;^5.8.1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;second-dev-package&#34;</span><span class="p">:</span> <span class="s2">&#34;3.2.2—4.0.0&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>即用户使用 <code>npm install</code> 或 <code>yarn add</code> 时，软件包管理器将找到并下载所有列出的 devDependencies 到项目的 node_modules 目录。</p>
-</div><div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>更新于 2024-09-07</span>
-            </div></div>
-        <div class="post-info-line">
-            <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/npm-and-yarn/" data-title="包管理器 Npm And Yarn" data-hashtags="Package Manager,JavaScript"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/npm-and-yarn/" data-hashtag="Package Manager"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/npm-and-yarn/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/npm-and-yarn/" data-title="包管理器 Npm And Yarn"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/npm-and-yarn/" data-title="包管理器 Npm And Yarn"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/package-manager/">Package Manager</a>,&nbsp;<a href="/tags/javascript/">JavaScript</a></section>
-        <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
-        </section>
-    </div>
-
-    <div class="post-nav"><a href="/fluent-python/" class="prev" rel="prev" title="流畅的Python(Fluent-Python)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>流畅的Python(Fluent-Python)</a>
-            <a href="/python-documentation/" class="next" rel="next" title="Python-Documentation">Python-Documentation<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
-</div>
-</article></div>
-            </main><footer class="footer">
-        <div class="footer-container">
-            <div class="footer-line">
-                <span id="run-time"></span>
-            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-
-
-<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
-
-
-
-
-<section>
-    
-    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
-        
-        <span id="busuanzi_value_site_pv"></span>
-    </span>
-    
-
-    
-    &nbsp;|&nbsp;
-    
-
-    
-    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
-        
-        <span id="busuanzi_value_site_uv"></span>
-    </span>
-    
-</section>
-
-
-
-
-
-
-</div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
-            </a>
-        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
-</html>
+【例】</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// 不进行发布
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nt>&#34;private&#34;</span><span class=p>:</span> <span class=kc>true</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>scripts</strong>
+<code>scripts</code>字段定义项目在不同生命周期时运行的脚本命令</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;scripts&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;test&#34;</span><span class=p>:</span> <span class=s2>&#34;jest&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;dev&#34;</span><span class=p>:</span> <span class=s2>&#34;webpack --mode development&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;build&#34;</span><span class=p>:</span> <span class=s2>&#34;webpack --mode production&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;predeploy&#34;</span><span class=p>:</span> <span class=s2>&#34;npm run build&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;deploy&#34;</span><span class=p>:</span> <span class=s2>&#34;gh-pages -d build&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>例如，运行 <code>npm run dev</code> 时执行 <code>webpack --mode development</code></p><p><strong>keywords</strong>
+<code>keywords</code>指定关键字，帮助人们搜索发现你的包</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;keywords&#34;</span><span class=p>:</span> <span class=p>[</span><span class=s2>&#34;drag&#34;</span><span class=p>,</span> <span class=s2>&#34;drop&#34;</span><span class=p>,</span> <span class=s2>&#34;drag and drop&#34;</span><span class=p>,</span> <span class=s2>&#34;dragndrop&#34;</span><span class=p>,</span> <span class=s2>&#34;draggable&#34;</span><span class=p>]</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>author</strong>
+<code>author</code>描述项目作者的详细资料</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;author&#34;</span><span class=p>:</span> <span class=s2>&#34;Oluwatobi Sofela &lt;oluwatobiss@codesweetly.com&gt; (https://www.codesweetly.com)&#34;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>或者</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;author&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;Oluwatobi Sofela&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 可选
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nt>&#34;email&#34;</span><span class=p>:</span> <span class=s2>&#34;oluwatobiss@codesweetly.com&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=c1>// 可选
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=nt>&#34;url&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.codesweetly.com&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>dependencies</strong>
+<code>dependencies</code>列出了项目在生产中依赖的所有软件包</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;dependencies&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;first-package&#34;</span><span class=p>:</span> <span class=s2>&#34;^1.0.4&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;second-package&#34;</span><span class=p>:</span> <span class=s2>&#34;~2.1.3&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>可以通过两种方式一个包添加到 <code>dependencies</code> 字段中：</p><ul><li>手动添加软件包的名称和<a href=https://docs.npmjs.com/about-semantic-versioning target=_blank rel="noopener noreffer">语义版本</a></li><li>运行 <code>npm install package-name --save-prod</code> 或 <code>yarn add package-name</code></li></ul><p><strong>devDependencies</strong>
+<code>devDependencies</code> 列出了在生产中不需要，在本地开发和测试中需要的依赖</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;devDependencies&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;first-dev-package&#34;</span><span class=p>:</span> <span class=s2>&#34;^5.8.1&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;second-dev-package&#34;</span><span class=p>:</span> <span class=s2>&#34;3.2.2—4.0.0&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>即用户使用 <code>npm install</code> 或 <code>yarn add</code> 时，软件包管理器将找到并下载所有列出的 devDependencies 到项目的 node_modules 目录。</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2024-09-07</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://www.ykzzo.com/npm-and-yarn/ data-title="包管理器 Npm And Yarn" data-hashtags="Package Manager,JavaScript"><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://www.ykzzo.com/npm-and-yarn/ data-hashtag="Package Manager"><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Linkedin" data-sharer=linkedin data-url=https://www.ykzzo.com/npm-and-yarn/><i class="fab fa-linkedin fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://www.ykzzo.com/npm-and-yarn/ data-title="包管理器 Npm And Yarn"><i data-svg-src=/lib/simple-icons/icons/line.min.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://www.ykzzo.com/npm-and-yarn/ data-title="包管理器 Npm And Yarn"><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href></a>,&nbsp;<a href></a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/fluent-python/ class=prev rel=prev title=流畅的Python(Fluent-Python)><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>流畅的Python(Fluent-Python)</a>
+<a href=/python-documentation/ class=next rel=next title=Python-Documentation>Python-Documentation<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=giscus class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app>Giscus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=run-time></span></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><section><span id=busuanzi_container_value_site_pv><i class="far fa-eye fa-fw"></i>
+<span id=busuanzi_value_site_pv></span>
+</span>&nbsp;|&nbsp;
+<span id=busuanzi_container_value_site_uv><i class="fa fa-user"></i>
+<span id=busuanzi_value_site_uv></span></span></section></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/lightgallery/css/lightgallery-bundle.min.cb289e50cc9ac33906b9be77654f1340844150a9150a1b4be88cab7b044c4e95.css integrity="sha256-yyieUMyawzkGub53ZU8TQIRBUKkVChtL6IyrewRMTpU="><link rel=stylesheet href=/lib/katex/katex.min.76e39bd605d45b2d1944123c66608b0c8bb9baeb70720b212571531c7cf9bc2a.css integrity="sha256-duOb1gXUWy0ZRBI8ZmCLDIu5uutwcgshJXFTHHz5vCo="><script type=text/javascript src=/lib/autocomplete/autocomplete.min.efcd9994416f8ef0e9904c0ebc34d39ab92f5fe72a60224553434d3a818b25e5.js integrity="sha256-782ZlEFvjvDpkEwOvDTTmrkvX+cqYCJFU0NNOoGLJeU="></script><script type=text/javascript src=/lib/algoliasearch/algoliasearch-lite.umd.min.bcee652c2a6d52152e89870be6fa7a3a76ca9ed62e0eea513b6f4f55f232613d.js integrity="sha256-vO5lLCptUhUuiYcL5vp6OnbKntYuDupRO29PVfIyYT0="></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.e76fb8d9f216898822b92b5be7fc0b3085b9a3685b14089d64a10935e83a08c5.js integrity="sha256-52+42fIWiYgiuStb5/wLMIW5o2hbFAidZKEJNeg6CMU="></script><script type=text/javascript src=/lib/lightgallery/lightgallery.min.715d25cf5a06cfcc60d28bd6b1478efb6a2c9bf28928999d7f1c517823df58bc.js integrity="sha256-cV0lz1oGz8xg0ovWsUeO+2osm/KJKJmdfxxReCPfWLw="></script><script type=text/javascript src=/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.c5b7c8ff4db1970dcec1614282b61f421ecf148ce44488247553b75ad442c79a.js integrity="sha256-xbfI/02xlw3OwWFCgrYfQh7PFIzkRIgkdVO3WtRCx5o="></script><script type=text/javascript src=/lib/lightgallery/plugins/zoom/lg-zoom.min.b11a55fa9ecf3559314c8095e293ba438a04c91624bf7a420e092a2930a07956.js integrity="sha256-sRpV+p7PNVkxTICV4pO6Q4oEyRYkv3pCDgkqKTCgeVY="></script><script type=text/javascript src=/lib/clipboard/clipboard.min.21708db6d7f8e20387183d7358648065dc45f7d635370fedb24df591f68f1e6b.js integrity="sha256-IXCNttf44gOHGD1zWGSAZdxF99Y1Nw/tsk31kfaPHms="></script><script type=text/javascript src=/lib/sharer/sharer.min.cc31d902aa4f3fcc8bb8c81aa534a4e2103e9b11f65b9fbd5b7156e089889ceb.js integrity="sha256-zDHZAqpPP8yLuMgapTSk4hA+mxH2W5+9W3FW4ImInOs="></script><script type=text/javascript src=/lib/katex/katex.min.eb18207487161674e717087c317db14ac1a62dadaecccb802499ce173bfeb739.js integrity="sha256-6xggdIcWFnTnFwh8MX2xSsGmLa2uzMuAJJnOFzv+tzk="></script><script type=text/javascript src=/lib/katex/contrib/auto-render.min.cb7f4ca60ed5dc3e258415f8c7a3b46d4a93578a52adf83011f18a7f190e7602.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="></script><script type=text/javascript src=/lib/katex/contrib/copy-tex.min.52ce78fab4860d24ef22128a52ce24ca01368a9034457a565a1d3fccbab0ddbb.js integrity="sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="></script><script type=text/javascript src=/lib/katex/contrib/mhchem.min.5c0a121a8b490afc85860a522347aeb34fb508c6b23044e5d29f6b2194227b51.js integrity="sha256-XAoSGotJCvyFhgpSI0eus0+1CMayMETl0p9rIZQie1E="></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{giscus:{category:"Announcements",categoryId:"DIC_kwDOMiVsFc4ChjcH",darkTheme:"dark",emitMetadata:"0",inputPosition:"bottom",lang:"zh-CN",lazyLoading:!1,lightTheme:"light",mapping:"pathname",reactionsEnabled:"1",repo:"1262706090/Giscus",repoId:"R_kgDOMiVsFQ"}},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"FKTW1AAMOA",algoliaIndex:"ykzzo",algoliaSearchKey:"48bbf64c00ada38e233bf8f046654419",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script><script type=text/javascript src=/js/custom.js></script></body></html>

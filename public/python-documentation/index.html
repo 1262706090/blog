@@ -1,383 +1,59 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>Python-Documentation - ykzzo&#39;s Blog</title><meta name="Description" content="ykzzo的博客"><meta property="og:url" content="http://localhost:1313/python-documentation/">
-  <meta property="og:site_name" content="ykzzo&#39;s Blog">
-  <meta property="og:title" content="Python-Documentation">
-  <meta property="og:description" content="Python-Documentation">
-  <meta property="og:locale" content="zh_CN">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-09-25T21:22:38+08:00">
-    <meta property="article:modified_time" content="2024-09-25T21:22:38+08:00">
-    <meta property="article:tag" content="Documentation">
-    <meta property="article:tag" content="Python">
-    <meta property="og:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:1313/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87">
-  <meta name="twitter:title" content="Python-Documentation">
-  <meta name="twitter:description" content="Python-Documentation">
-<meta name="application-name" content="ykzzo&#39;s Blog">
-<meta name="apple-mobile-web-app-title" content="ykzzo&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="20240812085355.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/python-documentation/" /><link rel="prev" href="http://localhost:1313/npm-and-yarn/" /><link rel="next" href="http://localhost:1313/assembly-language-3rd-edition-by-wang-shuang/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><meta name="baidu-site-verification" content="codeva-rd9ZCXPdEK" /><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Python-Documentation",
-        "inLanguage": "zh-CN",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/python-documentation\/"
-        },"genre": "posts","keywords": "Documentation, Python","wordcount":  908 ,
-        "url": "http:\/\/localhost:1313\/python-documentation\/","datePublished": "2024-09-25T21:22:38+08:00","dateModified": "2024-09-25T21:22:38+08:00","publisher": {
-            "@type": "Organization",
-            "name": ""},"author": {
-                "@type": "Person",
-                "name": "YK"
-            },"description": ""
-    }
-    </script></head>
-    <body data-header-desktop="normal" data-header-mobile="normal"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> 文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/about/"> 关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-                </a></div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="ykzzo&#39;s Blog">ykzzo&#39;s Blog</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
-                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
-                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
-                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
-                        取消
-                    </a>
-                </div><a class="menu-item" href="/posts/" title="">文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/about/" title="">关于</a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
-                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a></div>
-    </div>
-</header><div class="search-dropdown desktop">
-        <div id="search-dropdown-desktop"></div>
-    </div>
-    <div class="search-dropdown mobile">
-        <div id="search-dropdown-mobile"></div>
-    </div><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">目录</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python-Documentation</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>YK</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/note/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Note</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime="2024-09-25">2024-09-25</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime="2024-09-25">2024-09-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 908 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;
-
-
-
-
-
-
-
-<span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
-    
-    <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
-
-
-
-</div>
-        </div><div class="details toc" id="toc-static"  data-kept="">
-                <div class="details-summary toc-title">
-                    <span>目录</span>
-                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#python-tutorial">Python Tutorial</a>
-      <ul>
-        <li><a href="#21-唤出解释器">2.1. 唤出解释器</a>
-          <ul>
-            <li><a href="#211-传入参数">2.1.1. 传入参数</a></li>
-            <li><a href="#311-数字">3.1.1 数字</a></li>
-          </ul>
-        </li>
-        <li><a href="#43-range-函数">4.3. range() 函数</a></li>
-        <li><a href="#46-match-语句">4.6. match 语句</a>
-          <ul>
-            <li><a href="#481-默认值参数">4.8.1. 默认值参数</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav></div>
-            </div><div class="content" id="content"><h2 id="python-tutorial">Python Tutorial</h2>
-<p><a href="https://docs.python.org/zh-cn/3.11/tutorial/index.html#tutorial-index" target="_blank" rel="noopener noreffer ">Python Tutorial</a></p>
-<h3 id="21-唤出解释器">2.1. 唤出解释器</h3>
-<p>在主提示符中，输入文件结束符（Unix：Control-D，Windows：Control-Z）（即需要三个键 Control+Z+enter），就会退出解释器。或者输入命令：<code>quit()</code> 或 <code>exit()</code> 。</p>
-<p>如果想在执行脚本后保持交互模式，可以使用-i 选项：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python -i my_script.py
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="211-传入参数">2.1.1. 传入参数</h4>
-<p>解释器读取命令行参数，将脚本名与其他参数转化为字符串列表存到 <code>sys</code> 模块的 <code>argv</code> 变量里，<code>sys.argv[0]</code>表示脚本名称或相关信息（例如 <code>-c</code> 或模块名称）。未给定输入参数时，<code>sys.argv[0]</code> 是空字符串（存疑）。</p>
-<p>例如，以下文件 example.py 代码：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;脚本名称：&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;参数列表：&#34;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>正常情况</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PS C:\Users\Python&gt; python example.py
-</span></span><span class="line"><span class="cl">脚本名称： example.py
-</span></span><span class="line"><span class="cl">参数列表： []
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>运行脚本带参数</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PS C:\Users\Python&gt; python example.py arg1 arg2
-</span></span><span class="line"><span class="cl">脚本名称： example.py
-</span></span><span class="line"><span class="cl">参数列表： [&#39;arg1&#39;, &#39;arg2&#39;]
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>使用 <code>-c</code> 选项</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PS C:\Users\Python&gt; python -c &#34;import sys; print(sys.argv[0],sys.argv[1:])&#34; arg1 arg2
-</span></span><span class="line"><span class="cl">-c [&#39;arg1&#39;, &#39;arg2&#39;]
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>使用 <code>-m</code> 选项</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">PS C:\Users\Python&gt; python -m example arg1 arg2
-</span></span><span class="line"><span class="cl">脚本名称： C:\Users\Python\example.py
-</span></span><span class="line"><span class="cl">参数列表： [&#39;arg1&#39;, &#39;arg2&#39;]
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h4 id="311-数字">3.1.1 数字</h4>
-<p>交互模式下，上次输出的表达式会赋值给<code>_</code>，最好把该变量当做只读类型，否则会创建一个同名独立局部变量，使<code>_</code>变为一个普通变量名，失去原有效果。</p>
-<h3 id="43-range-函数">4.3. range() 函数</h3>
-<p><code>range()</code>函数接受一个、两个或三个函数</p>
-<ol>
-<li>
-<p>一个参数 <code>stop</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">range(stop)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>
-<p>生成从 <code>0</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>1</code>。</p>
-</li>
-<li>
-<p>例如，<code>range(5)</code>生成<code>[0,1,2,3,4]</code>。</p>
-</li>
-</ul>
-</li>
-<li>
-<p>两个参数 <code>start</code> 和 <code>stop</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">range(start,stop)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>
-<p>生成从 <code>start</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>1</code>。</p>
-</li>
-<li>
-<p>例如，<code>range(2,5)</code>生成<code>[2,3,4]</code>。</p>
-</li>
-</ul>
-</li>
-<li>
-<p>三个参数 <code>start</code>、<code>stop</code> 和 <code>step</code></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">range(start,stop,step)
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>
-<p>生成从 <code>start</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>step</code>。</p>
-</li>
-<li>
-<p>例如，<code>range(1,10,2)</code>生成<code>[1,3,5,7,9]</code>。</p>
-</li>
-</ul>
-</li>
-</ol>
-<h3 id="46-match-语句">4.6. match 语句</h3>
-<p><code>__match_args__</code>：</p>
-<ul>
-<li>使用<code>__match_args__</code>，当使用位置参数匹配类的属性时，必须定义<code>__match_args__</code>，以使用 Point(x,y)形式</li>
-<li>不使用<code>__match_args__</code>，对于简单的类实例，可以不定义<code>__match_args__</code>，只通过类名和关键字来匹配。</li>
-</ul>
-<h4 id="481-默认值参数">4.8.1. 默认值参数</h4>
-<p><strong>默认值参数最好使用不可变对象</strong>。</p>
-<p>调用函数时，函数参数本质上是对参数空间的引用，当未给是可变对象的默认值传参时，会重复使用这个空间，里面的值会不断改变。</p>
-<p><a href="https://blog.csdn.net/qq_43580193/article/details/107702997" target="_blank" rel="noopener noreffer ">为什么 Python 默认参数必须用不可变对象？</a></p>
-</div><div class="post-footer" id="post-footer">
-    <div class="post-info">
-        <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>更新于 2024-09-25</span>
-            </div></div>
-        <div class="post-info-line">
-            <div class="post-info-md"></div>
-            <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="http://localhost:1313/python-documentation/" data-title="Python-Documentation" data-hashtags="Documentation,Python"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="http://localhost:1313/python-documentation/" data-hashtag="Documentation"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/python-documentation/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="http://localhost:1313/python-documentation/" data-title="Python-Documentation"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="http://localhost:1313/python-documentation/" data-title="Python-Documentation"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
-            </div>
-        </div>
-    </div>
-
-    <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/documentation/">Documentation</a>,&nbsp;<a href="/tags/python/">Python</a></section>
-        <section>
-            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
-        </section>
-    </div>
-
-    <div class="post-nav"><a href="/npm-and-yarn/" class="prev" rel="prev" title="包管理器 Npm And Yarn"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>包管理器 Npm And Yarn</a>
-            <a href="/assembly-language-3rd-edition-by-wang-shuang/" class="next" rel="next" title="汇编语言（第3版）">汇编语言（第3版）<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
-</div>
-</article></div>
-            </main><footer class="footer">
-        <div class="footer-container">
-            <div class="footer-line">
-                <span id="run-time"></span>
-            </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">YKZZO</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
-
-
-<script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
-
-
-
-
-<section>
-    
-    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
-        
-        <span id="busuanzi_value_site_pv"></span>
-    </span>
-    
-
-    
-    &nbsp;|&nbsp;
-    
-
-    
-    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
-        
-        <span id="busuanzi_value_site_uv"></span>
-    </span>
-    
-</section>
-
-
-
-
-
-
-</div>
-    </footer></div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
-                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
-            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
-                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
-            </a>
-        </div><link rel="stylesheet" href="/lib/lightgallery/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/algoliasearch/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"FKTW1AAMOA","algoliaIndex":"ykzzo","algoliaSearchKey":"48bbf64c00ada38e233bf8f046654419","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js"></script><script type="text/javascript" src="/js/custom.js"></script></body>
-</html>
+<!doctype html><html lang=zh-CN><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Python-Documentation - ykzzo's Blog</title><meta name=Description content="ykzzo的博客"><meta property="og:url" content="https://www.ykzzo.com/python-documentation/">
+<meta property="og:site_name" content="ykzzo's Blog"><meta property="og:title" content="Python-Documentation"><meta property="og:description" content="Python-Documentation"><meta property="og:locale" content="zh_CN"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-09-25T21:22:38+08:00"><meta property="article:modified_time" content="2024-09-25T21:22:38+08:00"><meta property="og:image" content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.ykzzo.com/%E9%A6%96%E9%A1%B5%E4%B8%AD%E9%97%B4%E7%9A%84%E5%9B%BE%E7%89%87"><meta name=twitter:title content="Python-Documentation"><meta name=twitter:description content="Python-Documentation"><meta name=application-name content="ykzzo's Blog"><meta name=apple-mobile-web-app-title content="ykzzo's Blog"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=icon href=20240812085355.svg><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=mask-icon href=/safari-pinned-tab.svg color=#5bbad5><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://www.ykzzo.com/python-documentation/><link rel=prev href=https://www.ykzzo.com/npm-and-yarn/><link rel=next href=https://www.ykzzo.com/assembly-language-3rd-edition-by-wang-shuang/><link rel=stylesheet href=/css/style.min.cd96673f15d9819570886f6856268bf35511dde6823267c73fc8e28dbe1cccce.css integrity="sha256-zZZnPxXZgZVwiG9oViaL81UR3eaCMmfHP8jijb4czM4="><link rel=preload href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/fontawesome-free/all.min.f0c7b8d85cf716a020ea19fac22314de48452bc98568517fabdb0ca99ce66930.css integrity="sha256-8Me42Fz3FqAg6hn6wiMU3khFK8mFaFF/q9sMqZzmaTA="></noscript><link rel=preload href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc=" as=style onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel=stylesheet href=/lib/animate/animate.min.a61e123314188bd0453320008e01b4bbb665bee09039f4cbd9bef44de410ce67.css integrity="sha256-ph4SMxQYi9BFMyAAjgG0u7ZlvuCQOfTL2b70TeQQzmc="></noscript><meta name=baidu-site-verification content="codeva-rd9ZCXPdEK"><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Python-Documentation","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/www.ykzzo.com\/python-documentation\/"},"genre":"posts","keywords":"Documentation, Python","wordcount":908,"url":"https:\/\/www.ykzzo.com\/python-documentation\/","datePublished":"2024-09-25T21:22:38+08:00","dateModified":"2024-09-25T21:22:38+08:00","publisher":{"@type":"Organization","name":""},"author":{"@type":"Person","name":"YK"},"description":""}</script></head><body data-header-desktop=normal data-header-mobile=normal><script type=text/javascript>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"light"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"light"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>文章 </a><a class=menu-item href=/tags/>标签 </a><a class=menu-item href=/categories/>分类 </a><a class=menu-item href=/about/>关于 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i>
+</span></span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title="ykzzo's Blog">ykzzo's Blog</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw" aria-hidden=true></i>
+</a><a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw" aria-hidden=true></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin" aria-hidden=true></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title>文章</a><a class=menu-item href=/tags/ title>标签</a><a class=menu-item href=/categories/ title>分类</a><a class=menu-item href=/about/ title>关于</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw" aria-hidden=true></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Python-Documentation</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><i class="fas fa-user-circle fa-fw" aria-hidden=true></i>YK</a></span>&nbsp;<span class=post-category>收录于 <a href><i class="far fa-folder fa-fw" aria-hidden=true></i></a></span></div><div class=post-meta-line><i class="far fa-calendar fa-fw"></i>&nbsp;<time datetime=2024-09-25>2024-09-25</time>&nbsp;<i class="far fa-calendar-plus fa-fw"></i>&nbsp;<time datetime=2024-09-25>2024-09-25</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden=true></i>&nbsp;约 908 字&nbsp;
+<i class="far fa-clock fa-fw" aria-hidden=true></i>&nbsp;预计阅读 2 分钟&nbsp;
+<span id=busuanzi_container_value_page_pv><i class="far fa-eye fa-fw"></i>
+<span id=busuanzi_value_page_pv></span>&nbsp;次阅读</span></div></div><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right" aria-hidden=true></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#python-tutorial>Python Tutorial</a><ul><li><a href=#21-唤出解释器>2.1. 唤出解释器</a><ul><li><a href=#211-传入参数>2.1.1. 传入参数</a></li><li><a href=#311-数字>3.1.1 数字</a></li></ul></li><li><a href=#43-range-函数>4.3. range() 函数</a></li><li><a href=#46-match-语句>4.6. match 语句</a><ul><li><a href=#481-默认值参数>4.8.1. 默认值参数</a></li></ul></li></ul></li></ul></nav></div></div><div class=content id=content><h2 id=python-tutorial>Python Tutorial</h2><p><a href=https://docs.python.org/zh-cn/3.11/tutorial/index.html#tutorial-index target=_blank rel="noopener noreffer">Python Tutorial</a></p><h3 id=21-唤出解释器>2.1. 唤出解释器</h3><p>在主提示符中，输入文件结束符（Unix：Control-D，Windows：Control-Z）（即需要三个键 Control+Z+enter），就会退出解释器。或者输入命令：<code>quit()</code> 或 <code>exit()</code> 。</p><p>如果想在执行脚本后保持交互模式，可以使用-i 选项：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=line><span class=cl>python -i my_script.py
+</span></span></code></pre></td></tr></table></div></div><h4 id=211-传入参数>2.1.1. 传入参数</h4><p>解释器读取命令行参数，将脚本名与其他参数转化为字符串列表存到 <code>sys</code> 模块的 <code>argv</code> 变量里，<code>sys.argv[0]</code>表示脚本名称或相关信息（例如 <code>-c</code> 或模块名称）。未给定输入参数时，<code>sys.argv[0]</code> 是空字符串（存疑）。</p><p>例如，以下文件 example.py 代码：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>import</span> <span class=nn>sys</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=s2>&#34;脚本名称：&#34;</span><span class=p>,</span> <span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=s2>&#34;参数列表：&#34;</span><span class=p>,</span> <span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>[</span><span class=mi>1</span><span class=p>:])</span>
+</span></span></code></pre></td></tr></table></div></div><ul><li>正常情况</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>PS C:\Users\Python&gt; python example.py
+</span></span><span class=line><span class=cl>脚本名称： example.py
+</span></span><span class=line><span class=cl>参数列表： []
+</span></span></code></pre></td></tr></table></div></div><ul><li>运行脚本带参数</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>PS C:\Users\Python&gt; python example.py arg1 arg2
+</span></span><span class=line><span class=cl>脚本名称： example.py
+</span></span><span class=line><span class=cl>参数列表： [&#39;arg1&#39;, &#39;arg2&#39;]
+</span></span></code></pre></td></tr></table></div></div><ul><li>使用 <code>-c</code> 选项</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>PS C:\Users\Python&gt; python -c &#34;import sys; print(sys.argv[0],sys.argv[1:])&#34; arg1 arg2
+</span></span><span class=line><span class=cl>-c [&#39;arg1&#39;, &#39;arg2&#39;]
+</span></span></code></pre></td></tr></table></div></div><ul><li>使用 <code>-m</code> 选项</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>PS C:\Users\Python&gt; python -m example arg1 arg2
+</span></span><span class=line><span class=cl>脚本名称： C:\Users\Python\example.py
+</span></span><span class=line><span class=cl>参数列表： [&#39;arg1&#39;, &#39;arg2&#39;]
+</span></span></code></pre></td></tr></table></div></div><h4 id=311-数字>3.1.1 数字</h4><p>交互模式下，上次输出的表达式会赋值给<code>_</code>，最好把该变量当做只读类型，否则会创建一个同名独立局部变量，使<code>_</code>变为一个普通变量名，失去原有效果。</p><h3 id=43-range-函数>4.3. range() 函数</h3><p><code>range()</code>函数接受一个、两个或三个函数</p><ol><li><p>一个参数 <code>stop</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>range(stop)
+</span></span></code></pre></td></tr></table></div></div><ul><li><p>生成从 <code>0</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>1</code>。</p></li><li><p>例如，<code>range(5)</code>生成<code>[0,1,2,3,4]</code>。</p></li></ul></li><li><p>两个参数 <code>start</code> 和 <code>stop</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>range(start,stop)
+</span></span></code></pre></td></tr></table></div></div><ul><li><p>生成从 <code>start</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>1</code>。</p></li><li><p>例如，<code>range(2,5)</code>生成<code>[2,3,4]</code>。</p></li></ul></li><li><p>三个参数 <code>start</code>、<code>stop</code> 和 <code>step</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>range(start,stop,step)
+</span></span></code></pre></td></tr></table></div></div><ul><li><p>生成从 <code>start</code> 到 <code>stop-1</code> 的整数序列，步长为 <code>step</code>。</p></li><li><p>例如，<code>range(1,10,2)</code>生成<code>[1,3,5,7,9]</code>。</p></li></ul></li></ol><h3 id=46-match-语句>4.6. match 语句</h3><p><code>__match_args__</code>：</p><ul><li>使用<code>__match_args__</code>，当使用位置参数匹配类的属性时，必须定义<code>__match_args__</code>，以使用 Point(x,y)形式</li><li>不使用<code>__match_args__</code>，对于简单的类实例，可以不定义<code>__match_args__</code>，只通过类名和关键字来匹配。</li></ul><h4 id=481-默认值参数>4.8.1. 默认值参数</h4><p><strong>默认值参数最好使用不可变对象</strong>。</p><p>调用函数时，函数参数本质上是对参数空间的引用，当未给是可变对象的默认值传参时，会重复使用这个空间，里面的值会不断改变。</p><p><a href=https://blog.csdn.net/qq_43580193/article/details/107702997 target=_blank rel="noopener noreffer">为什么 Python 默认参数必须用不可变对象？</a></p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2024-09-25</span></div></div><div class=post-info-line><div class=post-info-md></div><div class=post-info-share><span><a href=javascript:void(0); title="分享到 Twitter" data-sharer=twitter data-url=https://www.ykzzo.com/python-documentation/ data-title=Python-Documentation data-hashtags=Documentation,Python><i class="fab fa-twitter fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Facebook" data-sharer=facebook data-url=https://www.ykzzo.com/python-documentation/ data-hashtag=Documentation><i class="fab fa-facebook-square fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Linkedin" data-sharer=linkedin data-url=https://www.ykzzo.com/python-documentation/><i class="fab fa-linkedin fa-fw" aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 Line" data-sharer=line data-url=https://www.ykzzo.com/python-documentation/ data-title=Python-Documentation><i data-svg-src=/lib/simple-icons/icons/line.min.svg aria-hidden=true></i></a><a href=javascript:void(0); title="分享到 微博" data-sharer=weibo data-url=https://www.ykzzo.com/python-documentation/ data-title=Python-Documentation><i class="fab fa-weibo fa-fw" aria-hidden=true></i></a></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw" aria-hidden=true></i>&nbsp;<a href></a>,&nbsp;<a href></a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav><a href=/npm-and-yarn/ class=prev rel=prev title="包管理器 Npm And Yarn"><i class="fas fa-angle-left fa-fw" aria-hidden=true></i>包管理器 Npm And Yarn</a>
+<a href=/assembly-language-3rd-edition-by-wang-shuang/ class=next rel=next title=汇编语言（第3版）>汇编语言（第3版）<i class="fas fa-angle-right fa-fw" aria-hidden=true></i></a></div></div><div id=comments><div id=giscus class=comment></div><noscript>Please enable JavaScript to view the comments powered by <a href=https://giscus.app>Giscus</a>.</noscript></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><span id=run-time></span></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="far fa-copyright fa-fw" aria-hidden=true></i><span itemprop=copyrightYear>2022 - 2024</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/ target=_blank></a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div><script async src=//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js></script><section><span id=busuanzi_container_value_site_pv><i class="far fa-eye fa-fw"></i>
+<span id=busuanzi_value_site_pv></span>
+</span>&nbsp;|&nbsp;
+<span id=busuanzi_container_value_site_uv><i class="fa fa-user"></i>
+<span id=busuanzi_value_site_uv></span></span></section></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw" aria-hidden=true></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw" aria-hidden=true></i></a></div><link rel=stylesheet href=/lib/lightgallery/css/lightgallery-bundle.min.cb289e50cc9ac33906b9be77654f1340844150a9150a1b4be88cab7b044c4e95.css integrity="sha256-yyieUMyawzkGub53ZU8TQIRBUKkVChtL6IyrewRMTpU="><link rel=stylesheet href=/lib/katex/katex.min.76e39bd605d45b2d1944123c66608b0c8bb9baeb70720b212571531c7cf9bc2a.css integrity="sha256-duOb1gXUWy0ZRBI8ZmCLDIu5uutwcgshJXFTHHz5vCo="><script type=text/javascript src=/lib/autocomplete/autocomplete.min.efcd9994416f8ef0e9904c0ebc34d39ab92f5fe72a60224553434d3a818b25e5.js integrity="sha256-782ZlEFvjvDpkEwOvDTTmrkvX+cqYCJFU0NNOoGLJeU="></script><script type=text/javascript src=/lib/algoliasearch/algoliasearch-lite.umd.min.bcee652c2a6d52152e89870be6fa7a3a76ca9ed62e0eea513b6f4f55f232613d.js integrity="sha256-vO5lLCptUhUuiYcL5vp6OnbKntYuDupRO29PVfIyYT0="></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.e76fb8d9f216898822b92b5be7fc0b3085b9a3685b14089d64a10935e83a08c5.js integrity="sha256-52+42fIWiYgiuStb5/wLMIW5o2hbFAidZKEJNeg6CMU="></script><script type=text/javascript src=/lib/lightgallery/lightgallery.min.715d25cf5a06cfcc60d28bd6b1478efb6a2c9bf28928999d7f1c517823df58bc.js integrity="sha256-cV0lz1oGz8xg0ovWsUeO+2osm/KJKJmdfxxReCPfWLw="></script><script type=text/javascript src=/lib/lightgallery/plugins/thumbnail/lg-thumbnail.min.c5b7c8ff4db1970dcec1614282b61f421ecf148ce44488247553b75ad442c79a.js integrity="sha256-xbfI/02xlw3OwWFCgrYfQh7PFIzkRIgkdVO3WtRCx5o="></script><script type=text/javascript src=/lib/lightgallery/plugins/zoom/lg-zoom.min.b11a55fa9ecf3559314c8095e293ba438a04c91624bf7a420e092a2930a07956.js integrity="sha256-sRpV+p7PNVkxTICV4pO6Q4oEyRYkv3pCDgkqKTCgeVY="></script><script type=text/javascript src=/lib/clipboard/clipboard.min.21708db6d7f8e20387183d7358648065dc45f7d635370fedb24df591f68f1e6b.js integrity="sha256-IXCNttf44gOHGD1zWGSAZdxF99Y1Nw/tsk31kfaPHms="></script><script type=text/javascript src=/lib/sharer/sharer.min.cc31d902aa4f3fcc8bb8c81aa534a4e2103e9b11f65b9fbd5b7156e089889ceb.js integrity="sha256-zDHZAqpPP8yLuMgapTSk4hA+mxH2W5+9W3FW4ImInOs="></script><script type=text/javascript src=/lib/katex/katex.min.eb18207487161674e717087c317db14ac1a62dadaecccb802499ce173bfeb739.js integrity="sha256-6xggdIcWFnTnFwh8MX2xSsGmLa2uzMuAJJnOFzv+tzk="></script><script type=text/javascript src=/lib/katex/contrib/auto-render.min.cb7f4ca60ed5dc3e258415f8c7a3b46d4a93578a52adf83011f18a7f190e7602.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="></script><script type=text/javascript src=/lib/katex/contrib/copy-tex.min.52ce78fab4860d24ef22128a52ce24ca01368a9034457a565a1d3fccbab0ddbb.js integrity="sha256-Us54+rSGDSTvIhKKUs4kygE2ipA0RXpWWh0/zLqw3bs="></script><script type=text/javascript src=/lib/katex/contrib/mhchem.min.5c0a121a8b490afc85860a522347aeb34fb508c6b23044e5d29f6b2194227b51.js integrity="sha256-XAoSGotJCvyFhgpSI0eus0+1CMayMETl0p9rIZQie1E="></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:50},comment:{giscus:{category:"Announcements",categoryId:"DIC_kwDOMiVsFc4ChjcH",darkTheme:"dark",emitMetadata:"0",inputPosition:"bottom",lang:"zh-CN",lazyLoading:!1,lightTheme:"light",mapping:"pathname",reactionsEnabled:"1",repo:"1262706090/Giscus",repoId:"R_kgDOMiVsFQ"}},lightgallery:!0,math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!0,left:"\\begin{equation}",right:"\\end{equation}"},{display:!0,left:"\\begin{equation*}",right:"\\end{equation*}"},{display:!0,left:"\\begin{align}",right:"\\end{align}"},{display:!0,left:"\\begin{align*}",right:"\\end{align*}"},{display:!0,left:"\\begin{alignat}",right:"\\end{alignat}"},{display:!0,left:"\\begin{alignat*}",right:"\\end{alignat*}"},{display:!0,left:"\\begin{gather}",right:"\\end{gather}"},{display:!0,left:"\\begin{CD}",right:"\\end{CD}"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{algoliaAppID:"FKTW1AAMOA",algoliaIndex:"ykzzo",algoliaSearchKey:"48bbf64c00ada38e233bf8f046654419",highlightTag:"em",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"algolia"}}</script><script type=text/javascript src=/js/theme.min.d7121d72cd85153ec9d35a888cee3eb28c2700ca763f649a538f6c772d750021.js integrity="sha256-1xIdcs2FFT7J01qIjO4+sownAMp2P2SaU49sdy11ACE="></script><script type=text/javascript src=https://cdn.jsdelivr.net/npm/jquery@2.1.3/dist/jquery.min.js></script><script type=text/javascript src=/js/custom.js></script></body></html>
